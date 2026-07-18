@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main>
       <section className="hero">
-        <Image src="/hero-pipe.png" alt="녹슨 배관에서 맑은 물이 흐르는 깨끗한 배관으로 변화하는 모습" fill priority unoptimized sizes="100vw" className="heroImage" />
+        <Image src="/hero-pipe.png" alt="녹슨 배관에서 맑은 물이 흐르는 깨끗한 배관으로 변화하는 모습" fill priority sizes="100vw" className="heroImage" />
         <div className="heroShade" />
         <div className="topbar">
           <div className="brand"><span className="drop">C</span><span>CLEAN WATER</span><small>SYSTEM</small></div>
@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       <section id="technology" className="technology">
-        <div className="techImage reveal"><Image src="/pipe-cleaning-illustration.png" alt="미세버블이 배관의 녹과 스케일을 분리하는 공법 일러스트" fill unoptimized sizes="(max-width: 800px) 100vw, 55vw" /></div>
+        <div className="techImage reveal"><Image src="/pipe-cleaning-illustration.png" alt="미세버블이 배관의 녹과 스케일을 분리하는 공법 일러스트" fill sizes="(max-width: 800px) 100vw, 55vw" /></div>
         <div className="techPanel reveal">
           <p className="eyebrow dark"><span /> OUR TECHNOLOGY · 02</p>
           <h2>자화활성수 ×<br /><em>압축 미세버블</em></h2>
@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       <section className="eco">
-        <div className="ecoVisual reveal"><Image src="/eco-technician.png" alt="배관 세척 후 맑은 물을 점검하는 전문 기사" fill unoptimized sizes="(max-width: 800px) 100vw, 45vw" /></div>
+        <div className="ecoVisual reveal"><Image src="/eco-technician.png" alt="배관 세척 후 맑은 물을 점검하는 전문 기사" fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
         <div className="ecoCopy reveal">
           <p className="eyebrow"><span /> ECO-FRIENDLY SERVICE</p>
           <h2>강한 세척보다<br /><em>올바른 세척.</em></h2>
