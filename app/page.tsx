@@ -1,119 +1,364 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const reasons = [
-  { no: "01", title: "배관 수명과 열효율", body: "한 번의 전문 시공으로 배관 사용 기간을 늘리고, 열효율 저하와 불필요한 연료비를 줄입니다." },
-  { no: "02", title: "주기적인 노후 배관 관리", body: "준공 후 시간이 지날수록 배관 내부의 녹과 스케일은 쌓입니다. 눈에 보이지 않을 때부터 관리가 필요합니다." },
-  { no: "03", title: "부식으로 인한 손실 예방", body: "누수·막힘·수질 저하로 이어지기 전에 배관을 관리해 더 큰 교체 비용과 생활 불편을 예방합니다." },
+const network = [
+  {
+    no: "01",
+    label: "HEADQUARTERS",
+    title: "본사",
+    copy: "브랜드 전략과 기술을 개발하고, 장비·필터·교육·고객관리 시스템을 하나의 기준으로 연결합니다.",
+    tags: ["브랜드 운영", "기술 개발", "전국 마케팅"],
+  },
+  {
+    no: "02",
+    label: "REGIONAL HUB",
+    title: "지사",
+    copy: "광역 단위 운영 거점으로 물류와 교육을 지원하며, 지역 네트워크의 안정적인 성장을 관리합니다.",
+    tags: ["광역 운영", "교육 지원", "물류 관리"],
+  },
+  {
+    no: "03",
+    label: "LOCAL CENTER",
+    title: "지점",
+    copy: "현장과 가장 가까운 관리 거점으로 대리점 교육, 품질 점검, 고객 경험을 체계적으로 관리합니다.",
+    tags: ["현장 지원", "품질 관리", "고객 경험"],
+  },
+  {
+    no: "04",
+    label: "SERVICE PARTNER",
+    title: "대리점",
+    copy: "표준 교육을 이수한 지역 파트너가 시공부터 정기 케어까지 고객의 배관을 책임 있게 관리합니다.",
+    tags: ["전문 시공", "정기 케어", "A/S 지원"],
+  },
 ];
 
-const methods = [
-  { name: "크린워터 갱생공법", desc: "스케일 제거 + 부식억제장비 설치\n배관 내부 부동태막 형성", cost: "약 7억원", time: "약 1개월", featured: true },
-  { name: "배관 전면 교체", desc: "기존 배관 철거 후\n스테인리스·동관으로 교체", cost: "약 24억원", time: "6개월 이상" },
-  { name: "에폭시 라이닝", desc: "배관 절단·고압 세척 후\n에폭시 도료 코팅", cost: "약 18억원", time: "3개월 이상" },
+const careItems = [
+  ["01", "정기 방문 관리", "3개월 주기로 배관·필터·장비 상태를 점검하고 관리 이력을 남깁니다."],
+  ["02", "배관 건강지수", "점검 결과를 이해하기 쉬운 지표로 정리해 현재 상태와 관리 시점을 안내합니다."],
+  ["03", "필터·장비 케어", "정품 필터의 교체 주기와 장비 컨디션을 지속적으로 확인합니다."],
+  ["04", "수질 분석 연계", "필요 시 전문기관 수질 분석을 연계해 물 상태를 더욱 면밀히 확인합니다."],
+];
+
+const values = [
+  ["Standard", "전국 어디서나 같은 품질", "교육부터 시공, 사후관리까지 알파브릿지의 표준 프로세스를 적용합니다."],
+  ["Technology", "현장을 바꾸는 기술", "배관 세척과 내부 도금, 필터 케어를 연결해 배관의 생애주기를 관리합니다."],
+  ["Care", "설치 이후가 진짜 시작", "일회성 시공에 그치지 않고 정기 방문과 기록으로 오래 신뢰받는 서비스를 만듭니다."],
 ];
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("visible")),
-      { threshold: 0.15 }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      },
+      { threshold: 0.12 }
     );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
   }, []);
 
   return (
     <main>
-      <section className="hero">
-        <Image src="/hero-pipe.png" alt="녹슨 배관에서 맑은 물이 흐르는 깨끗한 배관으로 변화하는 모습" fill priority sizes="100vw" className="heroImage" />
-        <div className="heroShade" />
-        <div className="topbar">
-          <div className="brand"><span className="drop">C</span><span>CLEAN WATER</span><small>SYSTEM</small></div>
-          <a href="tel:1644-7231" className="phone"><span>상담전화</span> 1644-7231</a>
-        </div>
-        <div className="heroContent">
-          <p className="eyebrow"><span /> PATENTED PIPE CARE SOLUTION</p>
-          <h1>보이지 않는 배관까지,<br /><em>맑은 물이 흐르도록.</em></h1>
-          <p className="heroLead">자화활성수와 미세버블을 결합한 특허 공법으로<br className="desktop" /> 배관 속 녹과 스케일을 친환경적으로 제거합니다.</p>
+      <header className="siteHeader">
+        <a className="brand" href="#top" aria-label="알파브릿지 홈">
+          <span className="brandMark">
+            <Image src="/alpha-bridge-logo.png" alt="" fill sizes="48px" priority />
+          </span>
+          <span className="brandType">
+            <strong>ALPHA BRIDGE</strong>
+            <small>알파브릿지</small>
+          </span>
+        </a>
+
+        <nav className={menuOpen ? "nav is-open" : "nav"} aria-label="주요 메뉴">
+          <a href="#about" onClick={() => setMenuOpen(false)}>기업소개</a>
+          <a href="#solution" onClick={() => setMenuOpen(false)}>배관 솔루션</a>
+          <a href="#network" onClick={() => setMenuOpen(false)}>파트너 네트워크</a>
+          <a href="#care" onClick={() => setMenuOpen(false)}>케어 서비스</a>
+        </nav>
+
+        <a className="headerCta" href="#contact">사업 제휴 문의 <span>↗</span></a>
+        <button
+          className={menuOpen ? "menuButton is-active" : "menuButton"}
+          type="button"
+          aria-label="메뉴 열기"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <i />
+          <i />
+        </button>
+      </header>
+
+      <section className="hero" id="top">
+        <div className="heroCopy">
+          <p className="kicker"><span /> WATER INFRASTRUCTURE COMPANY</p>
+          <h1>
+            깨끗한 물이 흐르는 길,<br />
+            <em>알파브릿지가 만듭니다.</em>
+          </h1>
+          <p className="heroText">
+            배관을 시공하는 데서 멈추지 않습니다.<br />
+            기술과 사람, 지역을 연결해 대한민국의 수도배관을<br className="desktopOnly" />
+            평생 관리하는 새로운 기준을 만듭니다.
+          </p>
           <div className="heroActions">
-            <a href="#contact" className="primaryBtn">무료 상담 요청 <b>↗</b></a>
-            <a href="#technology" className="textBtn">공법 알아보기 <span>↓</span></a>
+            <a className="primaryButton" href="#about">알파브릿지 알아보기 <span>↓</span></a>
+            <a className="linkButton" href="#network">파트너십 안내 <span>→</span></a>
           </div>
         </div>
-        <div className="scrollHint"><i /><span>SCROLL TO DISCOVER</span></div>
-        <div className="heroStat"><strong>01</strong><span>물리적 충격을 활용한<br />친환경 세척</span></div>
-      </section>
 
-      <section className="intro section">
-        <div className="sectionLabel reveal">OUR PROMISE <span>01</span></div>
-        <div className="introGrid">
-          <h2 className="reveal">우리집 맑은 물,<br /><em>배관부터 달라야 합니다.</em></h2>
-          <div className="introCopy reveal">
-            <p>배관은 물이 지나가는 가장 긴 그릇입니다. 재질이나 형태에 관계없이 내부에 흡착된 녹과 스케일을 효율적으로 제거해 일상의 물을 다시 깨끗하게 만듭니다.</p>
-            <div className="chips"><span>무화학 약품</span><span>저소음 시공</span><span>다양한 배관 적용</span></div>
+        <div className="heroVisual" aria-hidden="true">
+          <Image
+            src="/alpha-hero-pipeline.png"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 60vw"
+          />
+          <div className="heroImageFade" />
+          <div className="heroBadge">
+            <span>OUR VISION</span>
+            <strong>대한민국 수도배관<br />관리의 새로운 표준</strong>
           </div>
         </div>
-        <div className="bigStatement reveal"><span>CLEAN</span><span>WATER,</span><span className="outline">BETTER LIFE.</span></div>
+
+        <div className="heroBottom">
+          <span>TECHNOLOGY</span><i />
+          <span>NETWORK</span><i />
+          <span>LIFETIME CARE</span>
+        </div>
       </section>
 
-      <section id="technology" className="technology">
-        <div className="techImage reveal"><Image src="/pipe-cleaning-illustration.png" alt="미세버블이 배관의 녹과 스케일을 분리하는 공법 일러스트" fill sizes="(max-width: 800px) 100vw, 55vw" /></div>
-        <div className="techPanel reveal">
-          <p className="eyebrow dark"><span /> OUR TECHNOLOGY · 02</p>
-          <h2>자화활성수 ×<br /><em>압축 미세버블</em></h2>
-          <p>자화활성수기를 통과한 친환경 자화수와 압축 공기를 배관에 반복 투입합니다. 공기층이 수축·팽창하며 만드는 물리적 충격이 배관 벽의 녹과 스케일을 떨어뜨립니다.</p>
-          <div className="process">
-            <div><b>01</b><span>자화활성수<br />배관 투입</span></div><i>→</i>
-            <div><b>02</b><span>미세버블<br />수축·팽창</span></div><i>→</i>
-            <div><b>03</b><span>녹·스케일<br />분리 배출</span></div>
+      <section className="about section" id="about">
+        <div className="sectionHead" data-reveal>
+          <p className="sectionNo">01</p>
+          <p className="sectionEyebrow">ABOUT ALPHA BRIDGE</p>
+          <p className="sectionSide">BRAND · TECHNOLOGY · NETWORK</p>
+        </div>
+        <div className="aboutLead">
+          <h2 data-reveal>
+            한 번의 시공이 아닌,<br />
+            <em>평생의 물을 관리합니다.</em>
+          </h2>
+          <div className="aboutCopy" data-reveal>
+            <p>
+              알파브릿지는 장비 판매 중심의 회사가 아닙니다. 배관 기술, 표준화된 교육,
+              지역 파트너, 정기 케어 서비스를 하나로 연결하는 <strong>수도배관 관리 전문 기업</strong>입니다.
+            </p>
+            <p>
+              고객에게는 오래 안심할 수 있는 물 환경을, 파트너에게는 기술과 시스템을
+              기반으로 성장할 수 있는 지속 가능한 사업 기반을 제공합니다.
+            </p>
           </div>
-          <div className="patent"><span>특허 공법</span><p>화학 약품 대신 물과 공기의 힘으로<br />배관을 세척하는 친환경 솔루션</p></div>
+        </div>
+
+        <div className="valueGrid">
+          {values.map((item, index) => (
+            <article className="valueCard" data-reveal key={item[0]}>
+              <span className="valueIndex">0{index + 1}</span>
+              <p>{item[0]}</p>
+              <h3>{item[1]}</h3>
+              <div className="valueLine" />
+              <small>{item[2]}</small>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="reasons section">
-        <div className="sectionLabel reveal">WHY PIPE CLEANING <span>03</span></div>
-        <div className="titleRow reveal"><h2>왜, 지금<br /><em>배관세척일까요?</em></h2><p>깨끗해 보이는 수돗물도 노후 배관을 지나며 달라질 수 있습니다.<br />배관 관리는 선택이 아니라 우리 가족의 일상을 위한 기본입니다.</p></div>
-        <div className="reasonList">
-          {reasons.map((item) => <article className="reason reveal" key={item.no}><span>{item.no}</span><h3>{item.title}</h3><p>{item.body}</p><b>↗</b></article>)}
+      <section className="solution section" id="solution">
+        <div className="sectionHead light" data-reveal>
+          <p className="sectionNo">02</p>
+          <p className="sectionEyebrow">PIPE INNER PLATING</p>
+          <p className="sectionSide">ALPHA INNER SHIELD™</p>
+        </div>
+
+        <div className="solutionGrid">
+          <div className="solutionCopy" data-reveal>
+            <p className="miniLabel">배관 내부까지 생각한 보호 기술</p>
+            <h2>
+              물이 닿는 가장 안쪽,<br />
+              <em>도금으로 한 번 더 보호합니다.</em>
+            </h2>
+            <p className="solutionText">
+              배관 안쪽에 균일한 보호 도금층을 형성해 물과 배관 모재의 직접 접촉을 줄이고,
+              내부 표면을 매끄럽게 유지하도록 돕는 배관 솔루션입니다. 노후 배관의 관리
+              부담을 낮추고, 더 안정적인 물길을 만드는 데 초점을 맞췄습니다.
+            </p>
+            <ul className="featureList">
+              <li><b>01</b><span><strong>내부 표면 보호</strong>부식과 스케일 발생 요인을 줄이는 보호층</span></li>
+              <li><b>02</b><span><strong>위생적인 물길</strong>매끄러운 내면으로 오염물 부착 부담 완화</span></li>
+              <li><b>03</b><span><strong>배관 수명 관리</strong>교체 전 관리 선택지를 넓히는 예방 솔루션</span></li>
+            </ul>
+            <p className="finePrint">
+              * 적용 가능 여부와 기대 효과는 배관 재질, 노후도, 현장 조건에 따라 달라질 수 있으며 사전 진단 후 안내됩니다.
+            </p>
+          </div>
+
+          <div className="pipeDiagram" data-reveal>
+            <div className="orbit orbitOne" />
+            <div className="orbit orbitTwo" />
+            <div className="pipeCutaway">
+              <div className="pipeShell">
+                <div className="platingLayer">
+                  <div className="waterCore">
+                    <span className="waterGlint" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="diagramLabel labelShell"><span>01</span><b>배관 모재</b><small>Structural pipe</small></div>
+            <div className="diagramLabel labelPlating"><span>02</span><b>보호 도금층</b><small>Inner plating</small></div>
+            <div className="diagramLabel labelWater"><span>03</span><b>깨끗한 물길</b><small>Clean water</small></div>
+            <p className="diagramCaption">ALPHA INNER SHIELD™ <span>PIPE CROSS SECTION</span></p>
+          </div>
         </div>
       </section>
 
-      <section className="eco">
-        <div className="ecoVisual reveal"><Image src="/eco-technician.png" alt="배관 세척 후 맑은 물을 점검하는 전문 기사" fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
-        <div className="ecoCopy reveal">
-          <p className="eyebrow"><span /> ECO-FRIENDLY SERVICE</p>
-          <h2>강한 세척보다<br /><em>올바른 세척.</em></h2>
-          <p>배관을 무리하게 손상시키거나 화학 약품에 의존하지 않습니다. 배관의 재질과 현장 상태를 살핀 뒤, 물과 공기의 물리적 에너지로 필요한 부분을 섬세하게 관리합니다.</p>
-          <ul><li><b>✓</b> 배관 재질·형태에 관계없이 적용</li><li><b>✓</b> 녹과 스케일의 친환경적 제거</li><li><b>✓</b> 세척부터 부식 억제까지 통합 관리</li></ul>
+      <section className="network section" id="network">
+        <div className="sectionHead" data-reveal>
+          <p className="sectionNo">03</p>
+          <p className="sectionEyebrow">NATIONWIDE PARTNERSHIP</p>
+          <p className="sectionSide">CONNECTED GROWTH SYSTEM</p>
+        </div>
+        <div className="networkIntro">
+          <h2 data-reveal>
+            혼자가 아닌 시스템으로,<br />
+            <em>전국을 하나의 품질로.</em>
+          </h2>
+          <p data-reveal>
+            본사에서 지역 파트너까지 역할과 책임을 명확히 나누고,
+            기술·교육·물류·고객관리를 연결합니다. 단순 모집이 아니라
+            현장에서 지속되는 사업을 함께 만드는 운영 네트워크입니다.
+          </p>
+        </div>
+
+        <div className="networkFlow" data-reveal>
+          {network.map((item, index) => (
+            <article className="networkCard" key={item.no}>
+              <div className="networkCardTop">
+                <span>{item.no}</span>
+                <small>{item.label}</small>
+              </div>
+              <div className="networkSymbol" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+              <div className="networkTags">
+                {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </div>
+              {index < network.length - 1 && <b className="flowArrow">→</b>}
+            </article>
+          ))}
+        </div>
+
+        <div className="networkPromise" data-reveal>
+          <p>PARTNER PRINCIPLE</p>
+          <strong>알파브릿지는 모집이 아닌, 실제 사업 운영과 성장에 보상하는 파트너십을 지향합니다.</strong>
+          <span>표준 교육 · 운영 지원 · 기술 지원 · 품질 관리</span>
         </div>
       </section>
 
-      <section className="compare section">
-        <div className="sectionLabel reveal">SMARTER CHOICE <span>04</span></div>
-        <div className="titleRow reveal"><h2>철거는 줄이고,<br /><em>효율은 높이고.</em></h2><p>크린워터시스템의 갱생공법은 기존 배관을 활용해<br />공사 기간과 비용 부담을 효과적으로 낮춥니다.</p></div>
-        <div className="compareGrid reveal">
-          {methods.map((m) => <article className={m.featured ? "method featured" : "method"} key={m.name}>{m.featured && <span className="best">CLEAN WATER</span>}<h3>{m.name}</h3><p>{m.desc}</p><dl><div><dt>예상 공사비</dt><dd>{m.cost}</dd></div><div><dt>예상 기간</dt><dd>{m.time}</dd></div></dl></article>)}
+      <section className="care section" id="care">
+        <div className="careBackdrop" aria-hidden="true">CARE</div>
+        <div className="sectionHead light" data-reveal>
+          <p className="sectionNo">04</p>
+          <p className="sectionEyebrow">ALPHA BRIDGE CARE</p>
+          <p className="sectionSide">BEYOND INSTALLATION</p>
         </div>
-        <p className="note">* 비용과 기간은 원문에 제시된 비교 예시이며, 실제 현장 규모와 상태에 따라 달라질 수 있습니다.</p>
+        <div className="careIntro">
+          <div data-reveal>
+            <p className="miniLabel">설치 이후에도 계속되는 관리</p>
+            <h2>
+              3개월마다 확인하고,<br />
+              <em>평생 안심을 쌓습니다.</em>
+            </h2>
+          </div>
+          <p data-reveal>
+            전문 파트너가 정기적으로 방문해 배관과 필터 상태를 확인하고,
+            기록 기반으로 다음 관리 시점을 안내합니다. 고객은 더 쉽게 확인하고,
+            파트너는 더 체계적으로 관리하는 서비스 경험을 설계합니다.
+          </p>
+        </div>
+
+        <div className="careContent">
+          <div className="careTimeline" data-reveal>
+            <div className="cycle">
+              <span>EVERY</span>
+              <strong>3</strong>
+              <b>MONTHS</b>
+            </div>
+            <div className="cycleRing ringOne" />
+            <div className="cycleRing ringTwo" />
+            <div className="cycleDot dotOne" />
+            <div className="cycleDot dotTwo" />
+            <div className="cycleDot dotThree" />
+          </div>
+          <div className="careList">
+            {careItems.map((item) => (
+              <article data-reveal key={item[0]}>
+                <span>{item[0]}</span>
+                <h3>{item[1]}</h3>
+                <p>{item[2]}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section id="contact" className="contact">
-        <div className="contactGlow" />
-        <div className="contactInner reveal">
-          <p className="eyebrow"><span /> START WITH CLEAN WATER</p>
-          <h2>우리집 배관,<br /><em>지금 확인해보세요.</em></h2>
-          <p>현장에 맞는 세척 방법부터 예상 비용까지<br />크린워터시스템이 친절하게 안내해 드립니다.</p>
-          <a href="tel:1644-7231" className="callBtn"><small>고객센터</small><strong>1644-7231</strong><b>전화 상담 ↗</b></a>
-          <div className="contactInfo"><span>cleanwater7233@naver.com</span><span>충청북도 옥천군 군북면 비야대정로 213-11</span></div>
+      <section className="vision section">
+        <p className="visionEyebrow" data-reveal>THE NEXT STANDARD OF WATER CARE</p>
+        <h2 data-reveal>
+          기술을 잇고, 지역을 잇고,<br />
+          <em>더 건강한 일상을 잇습니다.</em>
+        </h2>
+        <div className="visionLine" data-reveal>
+          <span>PIPE TECHNOLOGY</span>
+          <i />
+          <span>PEOPLE &amp; NETWORK</span>
+          <i />
+          <span>CLEAN WATER LIFE</span>
         </div>
       </section>
 
-      <footer><div className="brand"><span className="drop">C</span><span>CLEAN WATER</span><small>SYSTEM</small></div><p>대표 이명주 · 사업자등록번호 305-86-18170</p><p>© CLEAN WATER SYSTEM. ALL RIGHTS RESERVED.</p></footer>
-      <a className="floatingCall" href="tel:1644-7231" aria-label="전화 상담"><span>☎</span><small>빠른상담</small></a>
+      <section className="contact section" id="contact">
+        <div className="contactCard" data-reveal>
+          <div>
+            <p className="miniLabel">BUILD THE STANDARD TOGETHER</p>
+            <h2>알파브릿지와 함께<br />새로운 물길을 시작하세요.</h2>
+          </div>
+          <div className="contactCopy">
+            <p>
+              지역 사업 파트너십부터 배관 솔루션 도입까지,<br />
+              알파브릿지가 함께 검토하고 안내해 드립니다.
+            </p>
+            <a href="tel:16447231">사업 제휴 상담 <span>1644-7231</span><b>↗</b></a>
+            <small>상담 가능 시간 · 평일 09:00 — 18:00</small>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div className="footerBrand">
+          <span className="footerMark"><Image src="/alpha-bridge-logo.png" alt="" fill sizes="60px" /></span>
+          <span><strong>ALPHA BRIDGE</strong><small>알파브릿지</small></span>
+        </div>
+        <div className="footerMeta">
+          <p>깨끗한 물을 평생 관리하는 수도배관 전문 기업</p>
+          <p>© 2026 ALPHA BRIDGE. ALL RIGHTS RESERVED.</p>
+        </div>
+        <a href="#top" className="toTop" aria-label="페이지 맨 위로">↑</a>
+      </footer>
     </main>
   );
 }
