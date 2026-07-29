@@ -232,15 +232,18 @@ export default function Home() {
             <div className="pipeCutaway">
               <div className="pipeShell">
                 <div className="platingLayer">
-                  <div className="waterCore">
-                    <span className="waterGlint" />
-                  </div>
+                  <div className="waterCore" />
                 </div>
               </div>
+              <span className="materialMarker markerShell">01</span>
+              <span className="materialMarker markerPlating">02</span>
+              <span className="materialMarker markerWater">03</span>
             </div>
-            <div className="diagramLabel labelShell"><span>01</span><b>배관 모재</b><small>Structural pipe</small></div>
-            <div className="diagramLabel labelPlating"><span>02</span><b>보호 도금층</b><small>Inner plating</small></div>
-            <div className="diagramLabel labelWater"><span>03</span><b>깨끗한 물길</b><small>Clean water</small></div>
+            <div className="diagramLegend">
+              <div><span>01</span><p><b>배관 모재</b><small>회색 사선 영역</small></p></div>
+              <div><span>02</span><p><b>보호 도금층</b><small>금색 보호 영역</small></p></div>
+              <div><span>03</span><p><b>깨끗한 물길</b><small>청색 통수 영역</small></p></div>
+            </div>
             <p className="diagramCaption">ALPHA INNER SHIELD™ <span>PIPE CROSS SECTION</span></p>
           </div>
         </div>

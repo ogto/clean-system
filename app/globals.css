@@ -1455,3 +1455,285 @@ footer,
     transition: none;
   }
 }
+
+/* Readability and diagram clarification */
+.nav a { font-size: 15px; }
+.headerCta { font-size: 14px; }
+.kicker,
+.sectionEyebrow,
+.miniLabel,
+.visionEyebrow { font-size: 12px; }
+.hero h1 { font-size: clamp(51px, 5vw, 81px); }
+.heroText { font-size: 18px; }
+.primaryButton { font-size: 15px; }
+.linkButton { font-size: 14px; }
+.heroBadge span { font-size: 11px; }
+.heroBadge strong { font-size: 18px; }
+.heroBottom { font-size: 10px; }
+.sectionHead p { font-size: 11px; }
+.about h2,
+.solution h2,
+.network h2,
+.care h2 { font-size: clamp(45px, 4.4vw, 71px); }
+.aboutCopy p,
+.networkIntro > p { font-size: 18px; }
+.valueIndex,
+.valueCard > p { font-size: 12px; }
+.valueCard h3 { font-size: 27px; }
+.valueCard small { font-size: 15px; }
+.solutionText { font-size: 17px; }
+.featureList b { font-size: 12px; }
+.featureList span { font-size: 14px; }
+.featureList strong { font-size: 17px; }
+.finePrint { font-size: 12px; }
+.networkCardTop span { font-size: 12px; }
+.networkCardTop small { font-size: 9px; }
+.networkCard h3 { font-size: 30px; }
+.networkCard > p { font-size: 14px; }
+.networkTags span { font-size: 11px; }
+.networkPromise p { font-size: 10px; }
+.networkPromise strong { font-size: 16px; }
+.networkPromise span { font-size: 12px; }
+.careIntro > p { font-size: 17px; }
+.careList span { font-size: 12px; }
+.careList h3 { font-size: 20px; }
+.careList p { font-size: 13px; }
+.cycle span,
+.cycle b { font-size: 11px; }
+.vision h2 { font-size: clamp(51px, 6.5vw, 101px); }
+.visionLine { font-size: 10px; }
+.contact h2 { font-size: clamp(43px, 4vw, 65px); }
+.contactCopy > p { font-size: 16px; }
+.contactCopy > a { font-size: 14px; }
+.contactCopy > small { font-size: 11px; }
+.footerBrand strong { font-size: 16px; }
+.footerBrand small,
+.footerMeta { font-size: 11px; }
+.networkGraphHeader span { font-size: 11px; }
+.networkGraphHeader p { font-size: 13px; }
+.nodeNumber { font-size: 11px; }
+.networkNode strong { font-size: 19px; }
+.networkNode small { font-size: 9px; }
+.networkDetail > span { font-size: 10px; }
+.networkDetail h3 { font-size: 33px; }
+.networkDetail p { font-size: 14px; }
+.networkDetail b { font-size: 11px; }
+
+.pipeDiagram {
+  min-height: 700px;
+  padding: 45px 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+.pipeDiagram .orbit,
+.pipeCutaway::before,
+.pipeCutaway::after,
+.waterCore::before,
+.waterCore::after {
+  display: none;
+}
+
+.pipeCutaway {
+  flex: 0 0 auto;
+  border: 0;
+}
+
+.materialMarker {
+  position: absolute;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 850;
+  box-shadow: 0 8px 20px rgba(0, 12, 31, .28);
+}
+
+.markerShell {
+  top: 19%;
+  right: 20%;
+  background: #617984;
+}
+
+.markerPlating {
+  top: 47%;
+  left: 20%;
+  background: #b78229;
+}
+
+.markerWater {
+  top: 50%;
+  left: 50%;
+  background: #007fa3;
+  transform: translate(-50%, -50%);
+}
+
+.diagramLegend {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-top: 58px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.diagramLegend > div {
+  min-width: 0;
+  padding: 17px 16px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(110, 208, 220, .22);
+  background: #062a50;
+}
+
+.diagramLegend > div:nth-child(1) { border-top: 3px solid #8ea1aa; }
+.diagramLegend > div:nth-child(2) { border-top: 3px solid #c9983f; }
+.diagramLegend > div:nth-child(3) { border-top: 3px solid #079dc1; }
+
+.diagramLegend span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  color: var(--aqua);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.diagramLegend p {
+  min-width: 0;
+  margin: 0;
+}
+
+.diagramLegend b {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+}
+
+.diagramLegend small {
+  display: block;
+  margin-top: 5px;
+  color: rgba(255,255,255,.44);
+  font-size: 11px;
+}
+
+.diagramCaption {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  margin: 18px 0 0;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 0;
+    height: auto;
+    grid-template-rows: auto auto;
+  }
+
+  .heroVisual {
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.5 / 1;
+    background: #eef7fb;
+  }
+
+  .heroVisual > img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .heroImageFade,
+  .heroBadge {
+    display: none;
+  }
+
+  .pipeDiagram {
+    min-height: 650px;
+  }
+}
+
+@media (max-width: 560px) {
+  .heroCopy {
+    padding-bottom: 34px;
+  }
+
+  .hero h1 { font-size: clamp(44px, 10.5vw, 67px); }
+  .heroText { font-size: 16px; }
+  .primaryButton { font-size: 14px; }
+  .linkButton { font-size: 13px; }
+  .sectionHead p { font-size: 10px; }
+  .about h2,
+  .solution h2,
+  .network h2,
+  .care h2,
+  .vision h2 { font-size: clamp(40px, 10vw, 55px); }
+  .aboutCopy p,
+  .networkIntro > p { font-size: 16px; }
+  .valueCard small { font-size: 15px; }
+  .solutionText,
+  .careIntro > p { font-size: 16px; }
+  .featureList span { font-size: 13px; }
+  .finePrint { font-size: 11px; }
+  .networkCard > p,
+  .networkDetail p { font-size: 13px; }
+  .careList p { font-size: 13px; }
+  .contactCopy > p { font-size: 15px; }
+  .footerMeta { font-size: 10px; }
+
+  .heroVisual {
+    aspect-ratio: 1.5 / 1;
+  }
+
+  .pipeDiagram {
+    min-height: 0;
+    padding: 35px 0 15px;
+    overflow: visible;
+  }
+
+  .materialMarker {
+    width: 32px;
+    height: 32px;
+    font-size: 10px;
+  }
+
+  .diagramLegend {
+    margin-top: 38px;
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .diagramLegend > div {
+    padding: 13px 14px;
+  }
+
+  .diagramLegend b { font-size: 14px; }
+  .diagramLegend small { font-size: 11px; }
+
+  .diagramCaption {
+    max-width: 100%;
+    margin-top: 14px;
+    overflow: visible;
+    white-space: normal;
+    text-align: center;
+    text-overflow: clip;
+  }
+}
