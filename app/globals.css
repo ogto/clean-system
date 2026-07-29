@@ -26,6 +26,7 @@ body {
 a { color: inherit; text-decoration: none; }
 button { color: inherit; font: inherit; }
 em { color: var(--blue); font-style: normal; }
+.keepTogether { white-space: nowrap; }
 .section { padding: 118px max(5vw, 28px); }
 [data-reveal] {
   opacity: 0;

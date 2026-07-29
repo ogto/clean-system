@@ -112,7 +112,7 @@ export default function Home() {
         <div className="heroCopy">
           <p className="kicker"><span /> WATER INFRASTRUCTURE COMPANY</p>
           <h1>
-            깨끗한 물이 흐르는 길,<br />
+            깨끗한 물이 <span className="keepTogether">흐르는 길,</span><br />
             <em>알파브릿지가 만듭니다.</em>
           </h1>
           <p className="heroText">
