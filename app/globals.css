@@ -761,3 +761,697 @@ footer {
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .orbitTwo, .ringTwo, .waterCore::before, .waterCore::after { animation: none; }
 }
+
+/* Revision: stronger brand, real product visual, technical schematic, interactive network */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main,
+section,
+header,
+footer,
+.solutionGrid,
+.networkIntro,
+.careContent {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.brandMark {
+  width: 52px;
+  height: 52px;
+}
+
+.brandType strong {
+  font-size: 18px;
+  letter-spacing: .11em;
+}
+
+.brandType small {
+  margin-top: 7px;
+  font-size: 11px;
+  letter-spacing: .38em;
+}
+
+.solutionScene {
+  position: relative;
+  width: min(100%, 1560px);
+  aspect-ratio: 1.904 / 1;
+  margin: 66px auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .17);
+  background: #fff;
+  box-shadow: 0 35px 80px rgba(0, 8, 25, .28);
+}
+
+.solutionScene img {
+  object-fit: cover;
+}
+
+.solutionScene figcaption {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: rgba(3, 29, 60, .86);
+  backdrop-filter: blur(12px);
+}
+
+.solutionScene figcaption span {
+  color: var(--aqua);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+
+.solutionScene figcaption strong {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pipeDiagram {
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.pipeCutaway {
+  width: min(32vw, 430px);
+  border: 1px solid rgba(93, 222, 230, .16);
+  background: transparent;
+  box-shadow: none;
+}
+
+.pipeCutaway::before,
+.pipeCutaway::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: rgba(92, 218, 226, .12);
+}
+
+.pipeCutaway::before {
+  left: -24%;
+  right: -24%;
+  top: 50%;
+  height: 1px;
+}
+
+.pipeCutaway::after {
+  top: -24%;
+  bottom: -24%;
+  left: 50%;
+  width: 1px;
+}
+
+.pipeShell {
+  width: 78%;
+  height: 78%;
+  padding: 13%;
+  border: 1px solid #b9c8cf;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.42) 0 2px, transparent 2px 8px),
+    #8ea1aa;
+  box-shadow: none;
+}
+
+.platingLayer {
+  padding: 7%;
+  border: 1px solid #f0cf86;
+  background: #c9983f;
+  box-shadow: none;
+}
+
+.waterCore {
+  border: 1px solid rgba(255,255,255,.46);
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+    #079dc1;
+  background-size: 28px 28px;
+  box-shadow: none;
+}
+
+.waterCore::before {
+  left: 13%;
+  top: 32%;
+  width: 74%;
+  height: 28%;
+  border: 1px solid rgba(255,255,255,.45);
+  animation: none;
+}
+
+.waterCore::after {
+  left: 23%;
+  top: 39%;
+  width: 54%;
+  height: 14%;
+  border: 1px solid rgba(255,255,255,.28);
+  animation: none;
+}
+
+.waterGlint {
+  display: none;
+}
+
+.orbitOne {
+  width: 84%;
+}
+
+.orbitTwo {
+  width: 100%;
+  animation-duration: 90s;
+}
+
+.diagramLabel {
+  min-width: 145px;
+  border: 1px solid rgba(110, 208, 220, .26);
+  border-left: 2px solid var(--aqua);
+  background: #062a50;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.diagramLabel::after {
+  background: rgba(96, 220, 227, .6);
+}
+
+.diagramCaption {
+  padding: 8px 11px;
+  background: #062a50;
+}
+
+.networkGraph {
+  position: relative;
+  min-height: 610px;
+  margin-bottom: 18px;
+  padding: 40px 42px;
+  overflow: hidden;
+  border: 1px solid #d7e5ed;
+  background:
+    linear-gradient(rgba(8,43,85,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8,43,85,.035) 1px, transparent 1px),
+    #fff;
+  background-size: 38px 38px;
+  box-shadow: 0 24px 60px rgba(7, 58, 91, .08);
+}
+
+.networkGraph::after {
+  content: "CONNECTED";
+  position: absolute;
+  right: -18px;
+  bottom: -36px;
+  color: rgba(8, 43, 85, .035);
+  font-size: clamp(70px, 10vw, 155px);
+  font-weight: 900;
+  letter-spacing: -.07em;
+}
+
+.networkGraphHeader {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #dbe7ed;
+}
+
+.networkGraphHeader span {
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .19em;
+}
+
+.networkGraphHeader p {
+  margin: 0;
+  color: #8395a3;
+  font-size: 11px;
+}
+
+.networkGraphCanvas {
+  position: relative;
+  z-index: 2;
+  min-height: 470px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+  gap: 46px;
+  align-items: center;
+}
+
+.networkRail {
+  position: absolute;
+  z-index: 0;
+  left: 4%;
+  top: 50%;
+  width: calc(71% - 62px);
+  height: 3px;
+  overflow: hidden;
+  background: #d7e5ec;
+  transform: translateY(-50%);
+}
+
+.networkRail i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transition: width .65s cubic-bezier(.2,.8,.2,1);
+}
+
+.networkNodes {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 10px;
+}
+
+.networkNode {
+  min-width: 0;
+  padding: 22px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nodeNumber {
+  margin-bottom: 14px;
+  color: #91a4b2;
+  font-size: 9px;
+  font-weight: 800;
+  transition: color .3s;
+}
+
+.nodePulse {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+  padding-bottom: 24px;
+  border: 1px solid #bfd4df;
+  border-radius: 50%;
+  background: #f6fafc;
+  box-shadow: 0 0 0 0 rgba(8, 185, 214, 0);
+  transition: width .4s, height .4s, border-color .3s, background .3s, box-shadow .3s, transform .3s;
+}
+
+.nodePulse > i {
+  display: block;
+  width: 8px;
+  border-radius: 2px 2px 0 0;
+  background: #9ab1bf;
+  transition: height .45s cubic-bezier(.2,.8,.2,1), background .3s;
+}
+
+.nodePulse > i:nth-child(1) { height: 19px; }
+.nodePulse > i:nth-child(2) { height: 31px; }
+.nodePulse > i:nth-child(3) { height: 24px; }
+
+.networkNode strong {
+  color: var(--navy);
+  font-size: 17px;
+  transition: color .3s;
+}
+
+.networkNode small {
+  margin-top: 7px;
+  overflow: hidden;
+  color: #9aadba;
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.networkNode:hover .nodePulse,
+.networkNode:focus-visible .nodePulse,
+.networkNode.is-active .nodePulse {
+  width: 124px;
+  height: 124px;
+  border-color: var(--cyan);
+  background: var(--navy);
+  box-shadow: 0 0 0 12px rgba(8, 185, 214, .08), 0 18px 45px rgba(4, 54, 91, .18);
+  transform: translateY(-5px);
+}
+
+.networkNode.is-active .nodeNumber,
+.networkNode:hover .nodeNumber {
+  color: var(--cyan);
+}
+
+.networkNode.is-active .nodePulse > i,
+.networkNode:hover .nodePulse > i {
+  background: var(--aqua);
+}
+
+.networkNode.is-active .nodePulse > i:nth-child(1) { height: 29px; }
+.networkNode.is-active .nodePulse > i:nth-child(2) { height: 48px; }
+.networkNode.is-active .nodePulse > i:nth-child(3) { height: 38px; }
+
+.networkDetail {
+  min-width: 0;
+  padding: 34px;
+  border-top: 3px solid var(--cyan);
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 22px 45px rgba(4, 47, 83, .16);
+  animation: detailIn .45s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes detailIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.networkDetail > span {
+  color: var(--aqua);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.networkDetail h3 {
+  margin: 22px 0 13px;
+  font-size: 30px;
+}
+
+.networkDetail p {
+  margin: 0;
+  color: rgba(255,255,255,.6);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.networkDetail div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 28px;
+}
+
+.networkDetail b {
+  padding: 7px 9px;
+  border: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.7);
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.networkFlow {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .brandMark {
+    width: 48px;
+    height: 48px;
+  }
+
+  .brandType strong {
+    font-size: 16px;
+  }
+
+  .brandType small {
+    font-size: 10px;
+    letter-spacing: .32em;
+  }
+
+  .solutionScene {
+    width: 100%;
+    margin-top: 46px;
+    box-shadow: 0 20px 50px rgba(0, 8, 25, .22);
+  }
+
+  .solutionScene figcaption {
+    right: 10px;
+    bottom: 10px;
+    padding: 9px 11px;
+  }
+
+  .solutionScene figcaption strong {
+    display: none;
+  }
+
+  .pipeCutaway {
+    width: min(62vw, 380px);
+  }
+
+  .networkGraph {
+    min-height: 0;
+    padding: 30px;
+  }
+
+  .networkGraphCanvas {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-top: 30px;
+  }
+
+  .networkRail {
+    display: none;
+  }
+
+  .networkNodes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .networkNode {
+    min-height: 190px;
+  }
+
+  .nodePulse {
+    width: 80px;
+    height: 80px;
+  }
+
+  .networkNode:hover .nodePulse,
+  .networkNode:focus-visible .nodePulse,
+  .networkNode.is-active .nodePulse {
+    width: 100px;
+    height: 100px;
+  }
+
+  .networkDetail {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .siteHeader {
+    padding-left: 18px;
+    padding-right: 14px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brandMark {
+    flex: 0 0 auto;
+    width: 43px;
+    height: 43px;
+  }
+
+  .brandType {
+    min-width: 0;
+  }
+
+  .brandType strong {
+    font-size: 14px;
+    letter-spacing: .08em;
+    white-space: nowrap;
+  }
+
+  .brandType small {
+    font-size: 9px;
+    letter-spacing: .3em;
+  }
+
+  .heroCopy,
+  .aboutLead,
+  .networkIntro,
+  .careIntro,
+  .solutionCopy,
+  .contactCard > div {
+    min-width: 0;
+  }
+
+  .hero h1,
+  .about h2,
+  .solution h2,
+  .network h2,
+  .care h2,
+  .vision h2,
+  .contact h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .solutionScene {
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .solutionScene img {
+    object-fit: contain;
+  }
+
+  .solutionScene figcaption {
+    display: none;
+  }
+
+  .pipeDiagram {
+    width: 100%;
+    min-height: 450px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .pipeCutaway {
+    width: min(66vw, 285px);
+  }
+
+  .diagramLabel {
+    min-width: 105px;
+    max-width: 118px;
+    padding: 9px;
+  }
+
+  .diagramLabel b {
+    font-size: 11px;
+  }
+
+  .diagramLabel small {
+    font-size: 7px;
+  }
+
+  .labelShell { left: 0; top: 19%; }
+  .labelPlating { right: 0; top: 46%; }
+  .labelWater { left: 0; bottom: 18%; }
+
+  .diagramCaption {
+    max-width: 92%;
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+  }
+
+  .networkGraph {
+    width: 100%;
+    padding: 22px 16px;
+  }
+
+  .networkGraphHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .networkGraphHeader p {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .networkNodes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  .networkNode {
+    min-height: 164px;
+    padding: 15px 0;
+  }
+
+  .nodeNumber {
+    margin-bottom: 8px;
+  }
+
+  .nodePulse {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 12px;
+    padding-bottom: 17px;
+  }
+
+  .networkNode:hover .nodePulse,
+  .networkNode:focus-visible .nodePulse,
+  .networkNode.is-active .nodePulse {
+    width: 82px;
+    height: 82px;
+    box-shadow: 0 0 0 7px rgba(8, 185, 214, .08), 0 14px 30px rgba(4, 54, 91, .16);
+  }
+
+  .nodePulse > i {
+    width: 6px;
+  }
+
+  .networkNode strong {
+    font-size: 15px;
+  }
+
+  .networkNode small {
+    max-width: 100%;
+    font-size: 6px;
+  }
+
+  .networkDetail {
+    padding: 25px 20px;
+  }
+
+  .networkDetail h3 {
+    font-size: 26px;
+  }
+
+  .careTimeline {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ringTwo {
+    width: min(350px, calc(100vw - 40px));
+    height: min(350px, calc(100vw - 40px));
+  }
+
+  .ringOne {
+    width: min(285px, calc(100vw - 74px));
+    height: min(285px, calc(100vw - 74px));
+  }
+
+  .visionLine,
+  .contactCopy,
+  .footerMeta {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .networkRail i,
+  .nodePulse,
+  .nodePulse > i,
+  .networkDetail {
+    animation: none;
+    transition: none;
+  }
+}

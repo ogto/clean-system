@@ -49,6 +49,8 @@ const values = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeNetwork, setActiveNetwork] = useState(0);
+  const [networkPaused, setNetworkPaused] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,6 +65,15 @@ export default function Home() {
     document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (networkPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(
+      () => setActiveNetwork((current) => (current + 1) % network.length),
+      3200
+    );
+    return () => window.clearInterval(timer);
+  }, [networkPaused]);
 
   return (
     <main>
@@ -180,6 +191,19 @@ export default function Home() {
           <p className="sectionSide">ALPHA INNER SHIELD™</p>
         </div>
 
+        <figure className="solutionScene" data-reveal>
+          <Image
+            src="/og.png"
+            alt="도금 보호층과 맑은 물이 흐르는 알파브릿지 배관 인프라"
+            fill
+            sizes="(max-width: 900px) 100vw, 90vw"
+          />
+          <figcaption>
+            <span>ALPHA INNER SHIELD™</span>
+            <strong>도금 기술로 완성하는 더 깨끗한 물길</strong>
+          </figcaption>
+        </figure>
+
         <div className="solutionGrid">
           <div className="solutionCopy" data-reveal>
             <p className="miniLabel">배관 내부까지 생각한 보호 기술</p>
@@ -238,6 +262,53 @@ export default function Home() {
             기술·교육·물류·고객관리를 연결합니다. 단순 모집이 아니라
             현장에서 지속되는 사업을 함께 만드는 운영 네트워크입니다.
           </p>
+        </div>
+
+        <div
+          className="networkGraph"
+          data-reveal
+          onMouseEnter={() => setNetworkPaused(true)}
+          onMouseLeave={() => setNetworkPaused(false)}
+        >
+          <div className="networkGraphHeader">
+            <span>INTERACTIVE NETWORK</span>
+            <p>각 거점을 선택해 역할과 연결 구조를 확인해 보세요.</p>
+          </div>
+          <div className="networkGraphCanvas">
+            <div className="networkRail" aria-hidden="true">
+              <i style={{ width: `${(activeNetwork / (network.length - 1)) * 100}%` }} />
+            </div>
+            <div className="networkNodes">
+              {network.map((item, index) => (
+                <button
+                  className={activeNetwork === index ? "networkNode is-active" : "networkNode"}
+                  type="button"
+                  key={item.no}
+                  onClick={() => setActiveNetwork(index)}
+                  onFocus={() => {
+                    setActiveNetwork(index);
+                    setNetworkPaused(true);
+                  }}
+                  onBlur={() => setNetworkPaused(false)}
+                  onMouseEnter={() => setActiveNetwork(index)}
+                  aria-pressed={activeNetwork === index}
+                >
+                  <span className="nodeNumber">{item.no}</span>
+                  <span className="nodePulse"><i /><i /><i /></span>
+                  <strong>{item.title}</strong>
+                  <small>{item.label}</small>
+                </button>
+              ))}
+            </div>
+            <aside className="networkDetail" key={network[activeNetwork].no}>
+              <span>{network[activeNetwork].no} · {network[activeNetwork].label}</span>
+              <h3>{network[activeNetwork].title}</h3>
+              <p>{network[activeNetwork].copy}</p>
+              <div>
+                {network[activeNetwork].tags.map((tag) => <b key={tag}>{tag}</b>)}
+              </div>
+            </aside>
+          </div>
         </div>
 
         <div className="networkFlow" data-reveal>
