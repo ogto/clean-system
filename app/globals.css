@@ -217,7 +217,15 @@
   .buttonOutline { border-color: #aebbc7; background: #fff; color: var(--ink); }
   .buttonOutline:hover { border-color: var(--navy-700); background: #f8fafc; }
 
-  .heroVisual { position: relative; min-width: 0; overflow: hidden; background: #f1f3f4; }
+  .heroVisual {
+    --hero-photo-right: 0;
+    --hero-photo-left: auto;
+    --hero-photo-width: 116%;
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    background: #f1f3f4;
+  }
   .heroVisual::after {
     content: "";
     position: absolute;
@@ -227,8 +235,11 @@
   }
 
   .heroVisual img {
+    right: var(--hero-photo-right) !important;
+    left: var(--hero-photo-left) !important;
+    width: var(--hero-photo-width) !important;
     object-fit: cover;
-    object-position: 64% 42%;
+    object-position: center 42%;
     animation: heroPhotoIn .9s ease both;
   }
 
@@ -669,7 +680,7 @@
   .hero { min-height: 0; grid-template-columns: 1fr; }
   .heroCopy { min-height: 470px; padding: 68px 8vw 60px; }
   .hero h1 { font-size: clamp(40px, 6vw, 52px); }
-  .heroVisual { min-height: 430px; }
+  .heroVisual { --hero-photo-right: auto; --hero-photo-left: 0; --hero-photo-width: 100%; min-height: 430px; }
   .heroVisual img { object-position: 65% 43%; }
   .contentSection { padding: 52px 0; }
   .marketGrid, .candidateGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
