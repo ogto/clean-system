@@ -32,6 +32,7 @@ import {
   Droplets,
   Megaphone,
 } from "lucide-react";
+import { KoreaMap } from "./korea-map";
 
 type ContentItem = {
   icon: LucideIcon;
@@ -157,26 +158,6 @@ const faqs = [
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <h2 className="sectionTitle">{children}</h2>;
-}
-
-function KoreaMap() {
-  return (
-    <div className="mapWrap" aria-label="전국 파트너 모집 지역 안내">
-      <svg className="koreaMap" viewBox="0 0 360 340" role="img" aria-label="대한민국 모집 권역 지도">
-        <path
-          className="mapMain"
-          d="M157 18c22 4 43 20 54 39 10 17 5 34 16 51 8 13 26 24 22 42-3 13-18 20-20 34-3 14 12 26 10 43-2 17-20 23-28 36-9 15-4 34-19 47-13 12-35 9-44-6-8-13-5-31-16-42-10-11-28-15-30-32-3-18 12-30 13-45 1-16-15-28-12-45 2-14 16-21 25-31 12-14 6-30 13-46 7-17 19-33 35-43Z"
-        />
-        <path className="mapLine" d="M132 75c29 11 53 10 88-3M111 130c31 12 74 12 122-4M111 180c40-8 79-3 117 12M124 226c28-7 61 4 89 28M169 27c-8 46-5 91 9 133M177 160c-13 48-8 90 9 132" />
-        <path className="mapIsland" d="M126 320c16-7 37-7 52 0-10 10-42 11-52 0Z" />
-      </svg>
-      <span className="mapPin pinSeoul"><MapPin aria-hidden="true" />서울/경기</span>
-      <span className="mapPin pinChungcheong"><MapPin aria-hidden="true" />충청</span>
-      <span className="mapPin pinGangwon"><MapPin aria-hidden="true" />강원</span>
-      <span className="mapPin pinGyeongsang"><MapPin aria-hidden="true" />경상</span>
-      <span className="mapPin pinJeju"><MapPin aria-hidden="true" />제주</span>
-    </div>
-  );
 }
 
 export default function Home() {
