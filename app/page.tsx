@@ -195,7 +195,7 @@ export default function Home() {
         <div className="headerInner">
           <a className="brand" href="#top" aria-label="알파브릿지 홈">
             <span className="brandLogo" aria-hidden="true">
-              <Image src="/alpha-bridge-brand.png" alt="" fill sizes="64px" priority />
+              <Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="(max-width: 640px) 66px, 78px" priority />
             </span>
             <span className="brandName">ALPHA BRIDGE</span>
           </a>
@@ -429,7 +429,7 @@ export default function Home() {
         <div className="container footerInner">
           <div className="footerBrand">
             <span className="footerLogo" aria-hidden="true">
-              <Image src="/alpha-bridge-brand.png" alt="" fill sizes="72px" />
+              <Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="84px" />
             </span>
             <div>
               <strong>ALPHA BRIDGE</strong>
