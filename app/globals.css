@@ -146,7 +146,9 @@
   .menuButton { display: none; }
 
   .hero {
+    width: min(100%, 1440px);
     min-height: clamp(570px, 30vw, 720px);
+    margin-inline: auto;
     display: grid;
     grid-template-columns: minmax(0, 41%) minmax(0, 59%);
     border-bottom: 1px solid var(--line-soft);
@@ -629,6 +631,10 @@
     transition: opacity .55s ease var(--delay), transform .55s ease var(--delay);
   }
   [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 1441px) {
+  .heroCopy { padding-left: 48px; }
 }
 
 @media (max-width: 1120px) {
