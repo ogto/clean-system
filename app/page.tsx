@@ -213,7 +213,10 @@ export default function Home() {
       <header className="siteHeader">
         <div className="headerInner">
           <a className="brand" href="#top" aria-label="알파브릿지 홈">
-            ALPHA BRIDGE
+            <span className="brandLogo" aria-hidden="true">
+              <Image src="/alpha-bridge-brand.png" alt="" fill sizes="64px" priority />
+            </span>
+            <span className="brandName">ALPHA BRIDGE</span>
           </a>
 
           <nav id="primary-navigation" className={menuOpen ? "nav is-open" : "nav"} aria-label="주요 메뉴">
@@ -263,7 +266,7 @@ export default function Home() {
             alt="알파브릿지 담당자와 지역 파트너가 배관 관리 사업을 상담하는 모습"
             fill
             priority
-            sizes="(max-width: 900px) 100vw, 59vw"
+            sizes="(max-width: 920px) 100vw, 59vw"
           />
           <span className="heroPhotoLabel">PARTNER CONSULTING</span>
         </div>
@@ -444,8 +447,13 @@ export default function Home() {
       <footer>
         <div className="container footerInner">
           <div className="footerBrand">
-            <strong>ALPHA BRIDGE</strong>
-            <p>생활 배관 관리 사업 파트너 모집<br />신뢰와 기술로 지역과 함께 성장합니다.</p>
+            <span className="footerLogo" aria-hidden="true">
+              <Image src="/alpha-bridge-brand.png" alt="" fill sizes="72px" />
+            </span>
+            <div>
+              <strong>ALPHA BRIDGE</strong>
+              <p>생활 배관 관리 사업 파트너 모집<br />신뢰와 기술로 지역과 함께 성장합니다.</p>
+            </div>
           </div>
           <div className="footerInfo">
             <p><a href="#top">개인정보처리방침</a><a href="#top">이용약관</a><a href="#top">문의하기</a></p>

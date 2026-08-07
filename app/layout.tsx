@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    icons: { icon: "/alpha-bridge-logo.png" },
+    icons: { icon: "/alpha-bridge-brand.png" },
     openGraph: {
       title: "알파브릿지 비즈니스 파트너 모집",
       description: "지역의 물길을 관리하고 오래 함께 성장할 파트너를 찾습니다.",
