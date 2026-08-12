@@ -134,19 +134,12 @@
   .qualificationFlow > div > svg { position: absolute; top: 23px; right: -14px; width: 16px; color: rgba(105,186,241,.58); }
   .expertiseNote { margin-top: 30px; padding: 15px 18px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(240,200,90,.28); border-radius: 9px; background: rgba(240,200,90,.08); color: rgba(255,255,255,.8); font-size: 12px; line-height: 1.55; }
   .expertiseNote svg { width: 20px; flex: 0 0 auto; color: var(--gold-light); }
-  .credentialGallery { position: relative; padding: 6px 10px 68px; }
+  .credentialGallery { position: relative; padding: 6px 10px 72px; }
   .credentialTitle { margin-bottom: 18px; color: #fff; font-size: 15px; font-weight: 900; text-align: center; }
-  .credentialDocuments { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .credentialDocument { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border: 5px solid #fff; background: #f8f6ef; box-shadow: 0 22px 50px rgba(0,0,0,.32); }
-  .credentialDocument img { object-fit: cover; }
-  .credentialDocument:first-child img { object-position: 50% center; }
-  .credentialDocument:nth-child(2) img { object-position: left center; }
-  .credentialBadge { position: absolute; z-index: 3; right: 50%; bottom: 8px; width: 230px; min-height: 94px; padding: 38px 18px 13px; display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: center; border: 2px solid rgba(5,42,91,.2); border-radius: 12px; background: #fff; color: var(--ink); box-shadow: 0 14px 32px rgba(0,0,0,.34); transform: translateX(50%); }
-  .credentialBadge > span { position: absolute; top: -2px; right: -2px; left: -2px; min-height: 32px; display: grid; place-items: center; border-radius: 10px 10px 0 0; background: var(--navy); color: #fff; font-size: 13px; font-weight: 900; }
-  .credentialBadge > svg { width: 42px; height: 42px; padding: 8px; border-radius: 50%; background: var(--water-soft); color: var(--blue); }
-  .credentialBadge div { display: flex; align-items: flex-start; flex-direction: column; }
-  .credentialBadge strong { font-size: 13px; }
-  .credentialBadge small { margin-top: 3px; color: var(--muted); font-size: 10px; }
+  .credentialBackdrop { position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 6px; box-shadow: 0 24px 55px rgba(0,0,0,.34); }
+  .credentialBackdrop img { object-fit: cover; }
+  .credentialForeground { position: absolute; z-index: 2; right: 50%; bottom: 4px; width: 48%; aspect-ratio: 3 / 2; overflow: hidden; border: 4px solid #fff; border-radius: 8px; background: #fff; box-shadow: 0 18px 38px rgba(0,0,0,.42); transform: translateX(50%); }
+  .credentialForeground img { object-fit: cover; }
 
   .managementSection { padding: 82px 0 88px; background: #f4f8fb; }
   .managementGrid { display: grid; grid-template-columns: 1.03fr .97fr; gap: 28px; }
@@ -326,10 +319,8 @@
     .qualificationFlow > div { scroll-snap-align: start; }
     .qualificationFlow > div > svg { right: -12px; }
     .credentialGallery { padding-inline: 0; }
-    .credentialDocuments { gap: 10px; }
-    .credentialDocument { border-width: 3px; }
     .credentialTitle { font-size: 13px; }
-    .credentialBadge { width: 210px; min-height: 88px; }
+    .credentialForeground { width: 54%; border-width: 3px; }
     .managementSection { padding: 62px 0; }
     .managementProcess { padding: 29px 20px; }
     .managementProcess .sectionHeading h2 { font-size: 24px; }

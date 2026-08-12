@@ -11,8 +11,9 @@ test("keeps the Alpha Bridge homepage content in the Next.js source", async () =
   assert.match(page, /알파브릿지의 전문 서비스/);
   assert.doesNotMatch(page, /flowSection/);
   assert.ok(page.indexOf('className="expertiseSection"') < page.indexOf('className="serviceSection"'));
-  assert.match(page, /credentialDocuments/);
-  assert.match(page, /credentialBadge/);
+  assert.match(page, /credentialBackdrop/);
+  assert.match(page, /credentialForeground/);
+  assert.doesNotMatch(page, /credentialBadge/);
   assert.doesNotMatch(page, /codex-preview|Your site is taking shape/i);
 });
 

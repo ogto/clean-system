@@ -304,19 +304,12 @@ export default function Home() {
 
           <div className="credentialGallery" aria-label="배관 및 수질관리 전문 자격 증빙">
             <p className="credentialTitle">한국수질관리연합회 자격증</p>
-            <div className="credentialDocuments">
-              <figure className="credentialDocument">
-                <Image src="/water-quality-manager-certificate.jpg" alt="한국 수질 관리 연합회 수질 배관 전문 관리자 자격증" fill sizes="(max-width: 720px) 43vw, 235px" />
-              </figure>
-              <figure className="credentialDocument">
-                <Image src="/pipe-water-quality-specialist-certificate.jpg" alt="배관 및 수질관리전문 자격증과 자격증 표지" fill sizes="(max-width: 720px) 43vw, 235px" />
-              </figure>
+            <div className="credentialBackdrop">
+              <Image src="/pipe-water-quality-specialist-certificate.jpg" alt="배관 및 수질관리전문 자격증과 자격증 표지" fill sizes="(max-width: 980px) 88vw, 520px" />
             </div>
-            <div className="credentialBadge">
-              <span>자격증 예시</span>
-              <BadgeCheck aria-hidden="true" />
-              <div><strong>배관·수질관리</strong><small>전문 자격 보유</small></div>
-            </div>
+            <figure className="credentialForeground">
+              <Image src="/water-quality-manager-certificate.jpg" alt="사진이 포함된 수질 배관 전문 관리자 자격증" fill sizes="(max-width: 720px) 48vw, 250px" />
+            </figure>
           </div>
         </div>
       </section>
