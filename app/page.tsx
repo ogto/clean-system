@@ -14,7 +14,6 @@ import {
   ClipboardCheck,
   Droplets,
   Factory,
-  FileCheck2,
   Gauge,
   GraduationCap,
   Hotel,
@@ -161,15 +160,6 @@ const services: Service[] = [
   },
 ];
 
-const process = [
-  [Droplets, "수질관리"],
-  [Wrench, "배관관리"],
-  [Pipette, "배관세척"],
-  [Gauge, "수질 솔루션"],
-  [CalendarCheck2, "정기관리"],
-  [FileCheck2, "관리기록"],
-] as const;
-
 const managementSteps = [
   [Phone, "현장 상담"],
   [Building2, "시설·배관 확인"],
@@ -294,33 +284,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flowSection" id="water-pipe">
-        <div className="container">
-          <p>ALPHA BRIDGE</p>
-          <h2>WATER &amp; PIPE MANAGEMENT</h2>
-          <span>수질 + 배관 + 지속관리를 하나의 시스템으로 연결합니다.</span>
-          <div className="flowGrid">
-            {process.map(([Icon, label], index) => (
-              <div className="flowItem" key={label}><i><Icon aria-hidden="true" /></i><strong>{label}</strong>{index < process.length - 1 ? <ArrowRight className="flowArrow" aria-hidden="true" /> : null}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="serviceSection" id="solution">
-        <div className="container">
-          <div className="sectionHeading"><p>OUR SERVICES</p><h2>알파브릿지의 전문 서비스</h2><span>카드를 선택하면 상세 내용을 확인할 수 있습니다.</span></div>
-          <div className="serviceGrid">
-            {services.map(({ icon: Icon, detail: itemDetail, ...service }) => (
-              <button className="serviceCard" type="button" onClick={() => setDetail(itemDetail)} key={service.number}>
-                <span className="serviceNumber">{service.number}</span><i><Icon aria-hidden="true" /></i><h3>{service.title}</h3><p>{service.copy}</p><b>자세히 보기<ArrowRight aria-hidden="true" /></b>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="expertiseSection" id="expertise" aria-labelledby="expertise-title">
+      <section className="expertiseSection" id="water-pipe" aria-labelledby="expertise-title">
         <div className="container expertiseGrid">
           <div className="expertiseCopy">
             <p>PROFESSIONAL QUALIFICATION</p>
@@ -339,14 +303,33 @@ export default function Home() {
           </div>
 
           <div className="credentialGallery" aria-label="배관 및 수질관리 전문 자격 증빙">
-            <figure className="credentialCard credentialPrimary">
-              <div><Image src="/water-quality-manager-certificate.jpg" alt="한국 수질 관리 연합회 수질 배관 전문 관리자 자격증" fill sizes="(max-width: 720px) 92vw, 420px" /></div>
-              <figcaption><strong>수질·배관 전문 관리자</strong><span>전문 관리 자격</span></figcaption>
-            </figure>
-            <figure className="credentialCard credentialSecondary">
-              <div><Image src="/pipe-water-quality-specialist-certificate.jpg" alt="배관 및 수질관리전문 자격증과 자격증 표지" fill sizes="(max-width: 720px) 92vw, 420px" /></div>
-              <figcaption><strong>배관 및 수질관리전문</strong><span>자격 검정 및 교육 이수</span></figcaption>
-            </figure>
+            <p className="credentialTitle">한국수질관리연합회 자격증</p>
+            <div className="credentialDocuments">
+              <figure className="credentialDocument">
+                <Image src="/water-quality-manager-certificate.jpg" alt="한국 수질 관리 연합회 수질 배관 전문 관리자 자격증" fill sizes="(max-width: 720px) 43vw, 235px" />
+              </figure>
+              <figure className="credentialDocument">
+                <Image src="/pipe-water-quality-specialist-certificate.jpg" alt="배관 및 수질관리전문 자격증과 자격증 표지" fill sizes="(max-width: 720px) 43vw, 235px" />
+              </figure>
+            </div>
+            <div className="credentialBadge">
+              <span>자격증 예시</span>
+              <BadgeCheck aria-hidden="true" />
+              <div><strong>배관·수질관리</strong><small>전문 자격 보유</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="serviceSection" id="solution">
+        <div className="container">
+          <div className="sectionHeading"><p>OUR SERVICES</p><h2>알파브릿지의 전문 서비스</h2><span>카드를 선택하면 상세 내용을 확인할 수 있습니다.</span></div>
+          <div className="serviceGrid">
+            {services.map(({ icon: Icon, detail: itemDetail, ...service }) => (
+              <button className="serviceCard" type="button" onClick={() => setDetail(itemDetail)} key={service.number}>
+                <span className="serviceNumber">{service.number}</span><i><Icon aria-hidden="true" /></i><h3>{service.title}</h3><p>{service.copy}</p><b>자세히 보기<ArrowRight aria-hidden="true" /></b>
+              </button>
+            ))}
           </div>
         </div>
       </section>

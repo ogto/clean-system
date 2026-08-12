@@ -103,17 +103,6 @@
   .introMessage { margin-top: 35px; color: #63768a; font-size: 14px; line-height: 1.8; }
   .introMessage strong { color: var(--navy); font-size: 16px; }
 
-  .flowSection { padding: 54px 0 50px; overflow: hidden; background: radial-gradient(circle at 50% -20%, #0d5eae, #062d66 58%, #031d43); color: #fff; text-align: center; }
-  .flowSection .container > p { color: rgba(255,255,255,.72); font-size: 13px; font-weight: 800; letter-spacing: .08em; }
-  .flowSection .container > h2 { margin-top: 3px; color: var(--gold-light); font-size: 27px; font-weight: 900; letter-spacing: .02em; }
-  .flowSection .container > span { color: rgba(255,255,255,.72); font-size: 13px; }
-  .flowGrid { margin-top: 34px; display: grid; grid-template-columns: repeat(6, 1fr); }
-  .flowItem { position: relative; display: flex; align-items: center; flex-direction: column; gap: 13px; }
-  .flowItem > i { width: 104px; height: 104px; display: grid; place-items: center; border: 2px solid #2e88de; border-radius: 50%; background: linear-gradient(145deg, rgba(29,113,203,.38), rgba(2,24,59,.6)); box-shadow: inset 0 0 24px rgba(26,141,255,.22), 0 0 22px rgba(16,126,236,.12); }
-  .flowItem i svg { width: 40px; height: 40px; color: #fff; stroke-width: 1.45; }
-  .flowItem strong { font-size: 13px; }
-  .flowArrow { position: absolute; top: 43px; right: -9px; width: 18px; color: #50a7f0; }
-
   .serviceSection { padding: 82px 0 88px; background: #fff; }
   .sectionHeading { text-align: center; }
   .sectionHeading > span { margin-top: 8px; display: block; color: var(--muted); font-size: 13px; }
@@ -145,15 +134,19 @@
   .qualificationFlow > div > svg { position: absolute; top: 23px; right: -14px; width: 16px; color: rgba(105,186,241,.58); }
   .expertiseNote { margin-top: 30px; padding: 15px 18px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(240,200,90,.28); border-radius: 9px; background: rgba(240,200,90,.08); color: rgba(255,255,255,.8); font-size: 12px; line-height: 1.55; }
   .expertiseNote svg { width: 20px; flex: 0 0 auto; color: var(--gold-light); }
-  .credentialGallery { position: relative; min-height: 520px; }
-  .credentialCard { position: absolute; overflow: hidden; border: 1px solid rgba(240,200,90,.45); border-radius: 13px; background: #fff; box-shadow: 0 28px 65px rgba(0,0,0,.35); }
-  .credentialCard > div { position: relative; aspect-ratio: 3 / 2; background: #e8edf2; }
-  .credentialCard img { object-fit: cover; }
-  .credentialCard figcaption { min-height: 62px; padding: 13px 17px; display: flex; align-items: flex-start; justify-content: center; flex-direction: column; background: #fff; color: var(--ink); }
-  .credentialCard figcaption strong { font-size: 13px; }
-  .credentialCard figcaption span { margin-top: 3px; color: var(--muted); font-size: 10px; }
-  .credentialPrimary { z-index: 1; top: 0; left: 0; width: 86%; transform: rotate(-1.3deg); }
-  .credentialSecondary { z-index: 2; right: 0; bottom: 0; width: 78%; transform: rotate(1.8deg); }
+  .credentialGallery { position: relative; padding: 6px 10px 68px; }
+  .credentialTitle { margin-bottom: 18px; color: #fff; font-size: 15px; font-weight: 900; text-align: center; }
+  .credentialDocuments { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .credentialDocument { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border: 5px solid #fff; background: #f8f6ef; box-shadow: 0 22px 50px rgba(0,0,0,.32); }
+  .credentialDocument img { object-fit: cover; }
+  .credentialDocument:first-child img { object-position: 50% center; }
+  .credentialDocument:nth-child(2) img { object-position: left center; }
+  .credentialBadge { position: absolute; z-index: 3; right: 50%; bottom: 8px; width: 230px; min-height: 94px; padding: 38px 18px 13px; display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: center; border: 2px solid rgba(5,42,91,.2); border-radius: 12px; background: #fff; color: var(--ink); box-shadow: 0 14px 32px rgba(0,0,0,.34); transform: translateX(50%); }
+  .credentialBadge > span { position: absolute; top: -2px; right: -2px; left: -2px; min-height: 32px; display: grid; place-items: center; border-radius: 10px 10px 0 0; background: var(--navy); color: #fff; font-size: 13px; font-weight: 900; }
+  .credentialBadge > svg { width: 42px; height: 42px; padding: 8px; border-radius: 50%; background: var(--water-soft); color: var(--blue); }
+  .credentialBadge div { display: flex; align-items: flex-start; flex-direction: column; }
+  .credentialBadge strong { font-size: 13px; }
+  .credentialBadge small { margin-top: 3px; color: var(--muted); font-size: 10px; }
 
   .managementSection { padding: 82px 0 88px; background: #f4f8fb; }
   .managementGrid { display: grid; grid-template-columns: 1.03fr .97fr; gap: 28px; }
@@ -255,10 +248,8 @@
     .nav { gap: 20px; }
     .headerCall { min-width: 155px; margin-left: 20px; padding-inline: 16px; }
     .concernGrid { gap: 8px; }
-    .flowItem > i { width: 92px; height: 92px; }
     .serviceGrid { grid-template-columns: repeat(3, 1fr); }
     .expertiseGrid { gap: 38px; }
-    .credentialGallery { min-height: 470px; }
     .spacesGrid { grid-template-columns: repeat(4, 1fr); }
   }
 
@@ -279,10 +270,9 @@
     .heroInner { padding-left: 30px; }
     .heroVeil { background: linear-gradient(90deg, rgba(255,255,255,.98), rgba(255,255,255,.86) 45%, rgba(255,255,255,.18) 80%); }
     .concernGrid { grid-template-columns: repeat(3, 1fr); gap: 30px 12px; }
-    .flowGrid { width: max-content; min-width: 100%; grid-template-columns: repeat(6, 150px); justify-content: center; }
     .expertiseGrid { grid-template-columns: 1fr; }
     .expertiseCopy { max-width: 720px; }
-    .credentialGallery { width: min(720px, 100%); min-height: 570px; margin: 6px auto 0; }
+    .credentialGallery { width: min(620px, 100%); margin: 12px auto 0; }
     .managementGrid { grid-template-columns: 1fr; }
     .caseStudy { grid-template-columns: .48fr .52fr; }
   }
@@ -320,14 +310,6 @@
     .concernGrid article > span { width: 78px; height: 78px; }
     .concernGrid svg { width: 35px; height: 35px; }
     .introMessage br { display: none; }
-    .flowSection { padding-block: 45px; }
-    .flowSection .container > h2 { font-size: 22px; }
-    .flowGrid { width: 100%; margin-top: 30px; padding: 4px 4px 13px; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 128px; justify-content: start; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-    .flowGrid::-webkit-scrollbar { display: none; }
-    .flowItem { scroll-snap-align: start; }
-    .flowItem > i { width: 84px; height: 84px; }
-    .flowItem i svg { width: 34px; height: 34px; }
-    .flowArrow { right: -1px; top: 36px; }
     .serviceSection { padding: 64px 0; }
     .serviceGrid { margin-top: 30px; grid-template-columns: 1fr; }
     .serviceCard { min-height: 216px; padding: 24px; display: grid; grid-template-columns: 70px 1fr; grid-template-rows: auto auto 1fr auto; column-gap: 18px; }
@@ -343,9 +325,11 @@
     .qualificationFlow::-webkit-scrollbar { display: none; }
     .qualificationFlow > div { scroll-snap-align: start; }
     .qualificationFlow > div > svg { right: -12px; }
-    .credentialGallery { min-height: 0; display: grid; gap: 16px; }
-    .credentialCard { position: relative; inset: auto; width: 100%; transform: none; }
-    .credentialCard figcaption { min-height: 58px; }
+    .credentialGallery { padding-inline: 0; }
+    .credentialDocuments { gap: 10px; }
+    .credentialDocument { border-width: 3px; }
+    .credentialTitle { font-size: 13px; }
+    .credentialBadge { width: 210px; min-height: 88px; }
     .managementSection { padding: 62px 0; }
     .managementProcess { padding: 29px 20px; }
     .managementProcess .sectionHeading h2 { font-size: 24px; }
