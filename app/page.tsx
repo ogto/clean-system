@@ -35,7 +35,6 @@ import {
 type Detail = {
   id: string;
   title: string;
-  eyebrow: string;
   image: string;
   description: string;
   message: string;
@@ -91,7 +90,6 @@ const services: Service[] = [
     detail: {
       id: "water-quality",
       title: "수질관리",
-      eyebrow: "WATER QUALITY MANAGEMENT",
       image: "/eco-technician.png",
       description: "시설의 사용 목적과 급수 환경을 확인하고, 현장 수질 상태에 맞는 관리 방향을 제안합니다.",
       message: "보이는 물뿐 아니라 물이 지나오는 환경까지 관리합니다.",
@@ -106,7 +104,6 @@ const services: Service[] = [
     detail: {
       id: "pipe-management",
       title: "배관관리",
-      eyebrow: "PIPE MANAGEMENT",
       image: "/hero-pipe.png",
       description: "배관의 노후도와 오염 가능성을 진단하고 설비 특성에 맞춰 관리 주기와 개선 방법을 설계합니다.",
       message: "배관을 바꾸기 전에, 먼저 정확히 진단합니다.",
@@ -121,7 +118,6 @@ const services: Service[] = [
     detail: {
       id: "pipe-cleaning",
       title: "배관세척",
-      eyebrow: "PROFESSIONAL PIPE CLEANING",
       image: "/pipe-cleaning-illustration.png",
       description: "시설과 배관의 상태를 고려한 전문 세척 방식으로 내부 이물질과 침전물을 관리합니다.",
       message: "깨끗한 물은 깨끗한 배관에서 시작됩니다.",
@@ -136,7 +132,6 @@ const services: Service[] = [
     detail: {
       id: "water-solution",
       title: "맞춤 워터솔루션",
-      eyebrow: "CUSTOM WATER SOLUTION",
       image: "/alpha-hero-pipeline.png",
       description: "진단 결과를 바탕으로 필터, 세척, 정기관리 등 시설에 필요한 요소를 하나의 관리 체계로 연결합니다.",
       message: "진단부터 개선, 기록까지 하나의 솔루션으로 연결합니다.",
@@ -151,7 +146,6 @@ const services: Service[] = [
     detail: {
       id: "regular-care",
       title: "정기관리",
-      eyebrow: "REGULAR MANAGEMENT",
       image: "/partner-field-team.png",
       description: "점검 일정, 작업 결과, 개선 이력을 체계적으로 관리해 시설의 안정적인 수질 환경을 유지합니다.",
       message: "한 번의 작업보다 꾸준한 관리가 더 중요합니다.",
@@ -257,7 +251,6 @@ export default function Home() {
         <div className="heroInner">
           <p className="eyebrow">더 나은 물, 더 나은 삶</p>
           <h1 id="hero-title">프리미엄<br /><strong>워터 솔루션</strong></h1>
-          <p className="heroEnglish">WATER &amp; PIPE MANAGEMENT</p>
           <p className="heroDescription">물의 품질을 넘어, 물이 지나오는 환경까지 관리합니다.<br />알파브릿지는 수질과 배관을 함께 진단하고 관리하는 전문기업입니다.</p>
           <div className="heroActions">
             <a className="primaryButton" href="#water-pipe">수질·배관 관리 상담<ArrowRight aria-hidden="true" /></a>
@@ -273,7 +266,6 @@ export default function Home() {
 
       <section className="introSection" id="company">
         <div className="container">
-          <p className="sectionEyebrow">WHY ALPHA BRIDGE</p>
           <h2>우리가 매일 사용하는 물,<br />그 물이 지나오는 배관은 잘 관리되고 있을까요?</h2>
           <div className="concernGrid">
             {concerns.map(({ icon: Icon, title, copy }) => (
@@ -287,7 +279,6 @@ export default function Home() {
       <section className="expertiseSection" id="water-pipe" aria-labelledby="expertise-title">
         <div className="container expertiseGrid">
           <div className="expertiseCopy">
-            <p>PROFESSIONAL QUALIFICATION</p>
             <h2 id="expertise-title"><span>전문가가 관리해야</span><br />정확하고 안전합니다.</h2>
             <p className="expertiseLead">배관과 수질관리는 전문 지식과 현장 경험이 함께 필요한 영역입니다. 알파브릿지는 관련 전문 교육과 자격 기준을 바탕으로 시설별 관리 계획을 세웁니다.</p>
             <div className="qualificationFlow" aria-label="전문 자격 관리 과정">
@@ -316,7 +307,7 @@ export default function Home() {
 
       <section className="serviceSection" id="solution">
         <div className="container">
-          <div className="sectionHeading"><p>OUR SERVICES</p><h2>알파브릿지의 전문 서비스</h2><span>카드를 선택하면 상세 내용을 확인할 수 있습니다.</span></div>
+          <div className="sectionHeading"><h2>알파브릿지의 전문 서비스</h2><span>카드를 선택하면 상세 내용을 확인할 수 있습니다.</span></div>
           <div className="serviceGrid">
             {services.map(({ icon: Icon, detail: itemDetail, ...service }) => (
               <button className="serviceCard" type="button" onClick={() => setDetail(itemDetail)} key={service.number}>
@@ -330,7 +321,6 @@ export default function Home() {
       <section className="managementSection" id="management">
         <div className="container caseStudy">
           <div className="caseCopy">
-            <p>BEFORE &amp; AFTER</p>
             <h2>배관세척 전·후,<br />변화를 직접 확인하세요.</h2>
             <span>동일한 배관 내부를 세척 전과 후로 비교해 오염과 스케일 제거 상태를 한눈에 보여드립니다.</span>
             <small>※ 관리 결과를 설명하기 위한 예시 이미지이며, 실제 결과는 배관 재질과 노후도에 따라 달라질 수 있습니다.</small>
@@ -345,13 +335,13 @@ export default function Home() {
 
         <div className="container managementGrid">
           <div className="managementProcess">
-            <div className="sectionHeading left"><p>MANAGEMENT PROCESS</p><h2>알파브릿지의 관리 프로세스</h2></div>
+            <div className="sectionHeading left"><h2>알파브릿지의 관리 프로세스</h2></div>
             <div className="stepsGrid">
               {managementSteps.map(([Icon, label], index) => <div key={label}><i><Icon aria-hidden="true" /></i><span>{index + 1}</span><strong>{label}</strong></div>)}
             </div>
           </div>
           <article className="certificateCard">
-            <div><p>ALPHA BRIDGE QUALITY STANDARD</p><h2>수질관리 인증</h2><span>관리되고 있다는 것을 보여주는 새로운 기준</span><ul><li><Check />정기적인 수질·배관 관리 실시</li><li><Check />관리기록 및 점검 보유</li><li><Check />필요한 배관 관리 및 세척</li><li><Check />지속적인 사후 관리</li></ul></div>
+            <div><h2>수질관리 인증</h2><span>관리되고 있다는 것을 보여주는 새로운 기준</span><ul><li><Check />정기적인 수질·배관 관리 실시</li><li><Check />관리기록 및 점검 보유</li><li><Check />필요한 배관 관리 및 세척</li><li><Check />지속적인 사후 관리</li></ul></div>
             <div className="certificateSeal"><BadgeCheck aria-hidden="true" /><small>ALPHA BRIDGE</small><strong>수질관리<br />인증사업장</strong><span>QUALITY MANAGEMENT</span></div>
           </article>
         </div>
@@ -359,14 +349,14 @@ export default function Home() {
 
       <section className="spacesSection">
         <div className="container">
-          <div className="sectionHeading"><p>WHO WE MANAGE</p><h2>알파브릿지가 관리하는 공간</h2></div>
+          <div className="sectionHeading"><h2>알파브릿지가 관리하는 공간</h2></div>
           <div className="spacesGrid">{spaces.map(([Icon, label]) => <article key={label}><Icon aria-hidden="true" /><strong>{label}</strong></article>)}</div>
         </div>
       </section>
 
       <section className="partnerSection" id="partner">
         <div className="container partnerPanel">
-          <div><p>BUSINESS PARTNER</p><h2>알파브릿지와 함께<br />지역의 워터 매니지먼트 시장을 만듭니다.</h2><span>지사·대리점·영업점 파트너를 모집합니다.</span></div>
+          <div><h2>알파브릿지와 함께<br />지역의 워터 매니지먼트 시장을 만듭니다.</h2><span>지사·대리점·영업점 파트너를 모집합니다.</span></div>
           <div className="partnerActions"><a href="tel:1533-0000"><Phone />관리 상담 1533-XXXX</a><a href="mailto:contact@alpha-waterbridge.com"><CalendarCheck2 />파트너 문의하기</a></div>
         </div>
       </section>
@@ -382,7 +372,7 @@ export default function Home() {
         <div className="modalBackdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setDetail(null); }}>
           <section className="detailModal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
             <button className="modalClose" type="button" aria-label="팝업 닫기" onClick={() => setDetail(null)}><X /></button>
-            <header><p>{detail.eyebrow}</p><h2 id="detail-title">{detail.title}</h2></header>
+            <header><h2 id="detail-title">{detail.title}</h2></header>
             <div className="modalImage"><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
             <div className="modalBody"><p>{detail.description}</p><ul>{detail.bullets.map((bullet) => <li key={bullet}><Check />{bullet}</li>)}</ul><strong>{detail.message}</strong><a href="#partner" onClick={() => setDetail(null)}>상담 문의하기<ArrowRight /></a></div>
           </section>

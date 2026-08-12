@@ -14,6 +14,8 @@ test("keeps the Alpha Bridge homepage content in the Next.js source", async () =
   assert.match(page, /credentialBackdrop/);
   assert.match(page, /credentialForeground/);
   assert.doesNotMatch(page, /credentialBadge/);
+  assert.doesNotMatch(page, /heroEnglish|sectionEyebrow|detail\.eyebrow/);
+  assert.doesNotMatch(page, /WHY ALPHA BRIDGE|PROFESSIONAL QUALIFICATION|OUR SERVICES|BEFORE &amp; AFTER|MANAGEMENT PROCESS|ALPHA BRIDGE QUALITY STANDARD|WHO WE MANAGE|BUSINESS PARTNER/);
   assert.doesNotMatch(page, /codex-preview|Your site is taking shape/i);
 });
 
