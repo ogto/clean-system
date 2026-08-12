@@ -1,0 +1,7 @@
+.openai/
+.wrangler/
+dist/
+tmp/
+site-deploy.tar.gz
+dev.stdout.log
+dev.stderr.log
