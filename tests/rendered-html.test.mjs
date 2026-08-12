@@ -28,16 +28,20 @@ test("server-renders the Alpha Bridge water management homepage", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
-test("keeps production metadata and generated imagery wired", async () => {
+test("keeps production metadata, comparison, and qualification imagery wired", async () => {
   const [page, layout] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    access(new URL("../public/water-city-hero.png", import.meta.url)),
+    access(new URL("../public/pipe-before-after.png", import.meta.url)),
+    access(new URL("../public/water-quality-manager-certificate.jpg", import.meta.url)),
+    access(new URL("../public/pipe-water-quality-specialist-certificate.jpg", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
 
-  assert.match(page, /water-city-hero\.png/);
-  assert.match(layout, /프리미엄 수질·배관 관리/);
+  assert.match(page, /pipe-before-after\.png/);
+  assert.match(page, /water-quality-manager-certificate\.jpg/);
+  assert.match(page, /pipe-water-quality-specialist-certificate\.jpg/);
+  assert.match(layout, /수질·배관관리 전문 워터솔루션/);
   assert.match(layout, /\/og\.png/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview/);
 });
