@@ -5,189 +5,231 @@ import { useEffect, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
-  ArrowUp,
-  BarChart3,
-  BriefcaseBusiness,
+  BadgeCheck,
   Building2,
   CalendarCheck2,
   Check,
-  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardCheck,
+  Droplets,
+  Factory,
   FileCheck2,
-  FileText,
-  Flag,
+  Gauge,
   GraduationCap,
-  HardHat,
-  Headphones,
-  MapPin,
+  Hotel,
+  House,
   Menu,
-  MessageCircle,
+  Microscope,
   Phone,
-  Presentation,
-  SearchCheck,
+  Pipette,
+  School,
+  ShieldCheck,
+  Sparkles,
   Store,
-  Target,
-  Users,
+  TestTube2,
+  Waves,
   Wrench,
   X,
-  Droplets,
-  Megaphone,
 } from "lucide-react";
-import { KoreaMap } from "./korea-map";
 
-type ContentItem = {
-  icon: LucideIcon;
+type Detail = {
+  id: string;
+  title: string;
+  eyebrow: string;
+  image: string;
+  description: string;
+  message: string;
+  bullets: string[];
+};
+
+type Service = {
+  number: string;
   title: string;
   copy: string;
+  icon: LucideIcon;
+  detail: Detail;
 };
 
 const navLinks = [
-  ["#business", "사업 소개"],
-  ["#partner-model", "파트너 모델"],
-  ["#support", "본사 지원"],
-  ["#opening", "개설 절차"],
-  ["#region", "모집 지역"],
-  ["#faq", "자주 묻는 질문"],
+  ["#company", "회사소개"],
+  ["#water-pipe", "수질·배관관리"],
+  ["#solution", "워터솔루션"],
+  ["#management", "관리·인증"],
+  ["#partner", "파트너·상담"],
 ];
 
-const marketReasons: ContentItem[] = [
+const heroSlides = [
   {
-    icon: Droplets,
-    title: "지속되는 생활 수요",
-    copy: "생활 필수 인프라로 꾸준한 관리 수요가 지속됩니다.",
+    image: "/alpha-hero-pipeline.png",
+    alt: "도시와 깨끗한 물이 흐르는 산업용 배관",
   },
   {
-    icon: MapPin,
-    title: "지역 밀착형 서비스",
-    copy: "지역 기반 네트워크로 신뢰와 고객 관계를 쌓습니다.",
+    image: "/eco-technician.png",
+    alt: "현장에서 수질 상태를 확인하는 전문 기술자",
   },
   {
+    image: "/hero-pipe.png",
+    alt: "깨끗하게 관리된 급수 배관 설비",
+  },
+];
+
+const concerns = [
+  { icon: Droplets, title: "녹물·이물질", copy: "눈에 보이지 않는 배관 내부의 침전물" },
+  { icon: Waves, title: "냄새·탁도", copy: "생활용수의 불쾌한 냄새와 흐림" },
+  { icon: Wrench, title: "노후 배관", copy: "부식과 스케일로 저하되는 배관 성능" },
+  { icon: Sparkles, title: "스케일·부식", copy: "설비 수명과 수질에 영향을 주는 오염" },
+  { icon: CalendarCheck2, title: "관리 주기 미확인", copy: "기록 없이 놓치기 쉬운 정기 관리" },
+  { icon: ShieldCheck, title: "위생·안전 우려", copy: "시설 이용자의 건강과 신뢰 문제" },
+];
+
+const services: Service[] = [
+  {
+    number: "01",
+    title: "수질관리",
+    copy: "사용 환경에 맞는 수질 진단과 개선 솔루션",
+    icon: TestTube2,
+    detail: {
+      id: "water-quality",
+      title: "수질관리",
+      eyebrow: "WATER QUALITY MANAGEMENT",
+      image: "/eco-technician.png",
+      description: "시설의 사용 목적과 급수 환경을 확인하고, 현장 수질 상태에 맞는 관리 방향을 제안합니다.",
+      message: "보이는 물뿐 아니라 물이 지나오는 환경까지 관리합니다.",
+      bullets: ["현장 사용 환경 확인", "수질 상태 점검 및 기록", "시설별 맞춤 관리안 제시"],
+    },
+  },
+  {
+    number: "02",
+    title: "배관관리",
+    copy: "노후 배관과 급수설비의 상태를 체계적으로 관리",
     icon: Wrench,
-    title: "현장 중심 사업",
-    copy: "설치·점검 등 현장 중심의 실용적인 서비스를 제공합니다.",
+    detail: {
+      id: "pipe-management",
+      title: "배관관리",
+      eyebrow: "PIPE MANAGEMENT",
+      image: "/hero-pipe.png",
+      description: "배관의 노후도와 오염 가능성을 진단하고 설비 특성에 맞춰 관리 주기와 개선 방법을 설계합니다.",
+      message: "배관을 바꾸기 전에, 먼저 정확히 진단합니다.",
+      bullets: ["노후·부식 상태 확인", "급수설비 점검", "예방 중심 관리 계획"],
+    },
   },
   {
-    icon: BarChart3,
-    title: "확장 가능한 시장",
-    copy: "주거·상업 공간을 아우르는 지역 사업으로 성장할 수 있습니다.",
+    number: "03",
+    title: "배관세척",
+    copy: "배관 내부의 스케일과 이물질을 전문적으로 세척",
+    icon: Pipette,
+    detail: {
+      id: "pipe-cleaning",
+      title: "배관세척",
+      eyebrow: "PROFESSIONAL PIPE CLEANING",
+      image: "/pipe-cleaning-illustration.png",
+      description: "시설과 배관의 상태를 고려한 전문 세척 방식으로 내부 이물질과 침전물을 관리합니다.",
+      message: "깨끗한 물은 깨끗한 배관에서 시작됩니다.",
+      bullets: ["세척 전 상태 확인", "맞춤 세척 공정 적용", "세척 결과 및 관리 이력 제공"],
+    },
+  },
+  {
+    number: "04",
+    title: "수질 솔루션",
+    copy: "시설 목적에 맞는 수질관리 솔루션과 제품 제공",
+    icon: Gauge,
+    detail: {
+      id: "water-solution",
+      title: "맞춤 워터솔루션",
+      eyebrow: "CUSTOM WATER SOLUTION",
+      image: "/alpha-hero-pipeline.png",
+      description: "진단 결과를 바탕으로 필터, 세척, 정기관리 등 시설에 필요한 요소를 하나의 관리 체계로 연결합니다.",
+      message: "진단부터 개선, 기록까지 하나의 솔루션으로 연결합니다.",
+      bullets: ["시설별 솔루션 설계", "제품 및 공정 제안", "사후관리 체계 구축"],
+    },
+  },
+  {
+    number: "05",
+    title: "정기관리",
+    copy: "일회성 작업이 아닌 지속적인 평가와 기록 관리",
+    icon: ClipboardCheck,
+    detail: {
+      id: "regular-care",
+      title: "정기관리",
+      eyebrow: "REGULAR MANAGEMENT",
+      image: "/partner-field-team.png",
+      description: "점검 일정, 작업 결과, 개선 이력을 체계적으로 관리해 시설의 안정적인 수질 환경을 유지합니다.",
+      message: "한 번의 작업보다 꾸준한 관리가 더 중요합니다.",
+      bullets: ["정기 점검 일정 운영", "관리 이력 체계화", "변화 추이 및 개선점 안내"],
+    },
   },
 ];
 
-const processSteps = [
-  { icon: MessageCircle, title: "고객 상담" },
-  { icon: SearchCheck, title: "현장 확인" },
-  { icon: FileText, title: "맞춤 제안" },
-  { icon: HardHat, title: "방문 설치" },
-  { icon: CalendarCheck2, title: "정기 점검" },
-];
+const process = [
+  [Droplets, "수질관리"],
+  [Wrench, "배관관리"],
+  [Pipette, "배관세척"],
+  [Gauge, "수질 솔루션"],
+  [CalendarCheck2, "정기관리"],
+  [FileCheck2, "관리기록"],
+] as const;
 
-const partnerTypes = [
-  {
-    icon: Building2,
-    title: "지역 지사",
-    subtitle: "지역 관리·인력 운영·사업 확장",
-    points: ["지역 파트너 네트워크 구축", "영업점 관리 및 운영 지원", "본사와 연계한 권역 사업 운영"],
-    button: "지사 모델 자세히 보기",
-    tone: "dark",
-  },
-  {
-    icon: Store,
-    title: "지역 영업점",
-    subtitle: "고객 확보·상담·지역 영업",
-    points: ["고객 발굴 및 상담·계약", "설치·관리 서비스 일정 연결", "안정적인 지역 고객 관계 형성"],
-    button: "영업점 모델 자세히 보기",
-    tone: "light",
-  },
-];
+const managementSteps = [
+  [Phone, "현장 상담"],
+  [Building2, "시설·배관 확인"],
+  [Microscope, "상태 분석"],
+  [ClipboardCheck, "맞춤 솔루션 제안"],
+  [Wrench, "세척·관리 적용"],
+  [BadgeCheck, "관리 이력·인증"],
+] as const;
 
-const supportItems: ContentItem[] = [
-  {
-    icon: GraduationCap,
-    title: "제품·기술 교육",
-    copy: "제품 이해부터 설치·관리 기초까지 체계적으로 교육합니다.",
-  },
-  {
-    icon: Presentation,
-    title: "영업 자료 제공",
-    copy: "제안서·상담 자료 등 영업에 필요한 자료를 제공합니다.",
-  },
-  {
-    icon: Headphones,
-    title: "상담·견적 지원",
-    copy: "고객 문의와 현장 판단을 본사와 함께 검토합니다.",
-  },
-  {
-    icon: Wrench,
-    title: "설치 교육",
-    copy: "현장 실습과 안전 기준으로 전문성을 강화합니다.",
-  },
-  {
-    icon: Megaphone,
-    title: "운영·마케팅 지원",
-    copy: "지역 홍보와 고객 관리에 필요한 콘텐츠를 제공합니다.",
-  },
-];
+const qualificationSteps = [
+  [GraduationCap, "전문 교육"],
+  [ClipboardCheck, "자격 검정"],
+  [BadgeCheck, "자격 취득"],
+  [Wrench, "현장 적용"],
+  [CalendarCheck2, "지속 교육"],
+] as const;
 
-const openingSteps: ContentItem[] = [
-  { icon: MessageCircle, title: "파트너 상담", copy: "사업 방향 및 모델 안내" },
-  { icon: MapPin, title: "지역·조건 검토", copy: "지역 적합성 및 조건 검토" },
-  { icon: FileCheck2, title: "계약 및 교육", copy: "계약 체결 및 기본 교육" },
-  { icon: BriefcaseBusiness, title: "영업 준비", copy: "자료·도구·제품 준비" },
-  { icon: Flag, title: "사업 시작", copy: "영업 개시 및 운영 지원" },
-];
-
-const candidateTraits: ContentItem[] = [
-  { icon: BriefcaseBusiness, title: "지역 영업 경험", copy: "지역 시장에 대한 이해와 영업 경험이 있는 분" },
-  { icon: Users, title: "고객 관리 역량", copy: "고객과 신뢰를 쌓고 관계를 관리할 수 있는 분" },
-  { icon: HardHat, title: "현장 실행력", copy: "현장을 중심으로 문제를 해결해 나가는 분" },
-  { icon: Target, title: "장기적인 사업 의지", copy: "함께 성장할 수 있는 의지와 열정이 있는 분" },
-];
-
-const recruitmentRows = [
-  { color: "navy", title: "지사 모집", region: "권역별 협의" },
-  { color: "gold", title: "영업점 모집", region: "전국 주요 지역" },
-  { color: "gray", title: "상담 가능 지역", region: "전국" },
-];
-
-const faqs = [
-  ["지사 또는 영업점 개설 비용은 어떻게 되나요?", "파트너 유형과 운영 구성에 따라 달라지며, 상담 후 세부 항목을 안내합니다."],
-  ["지역 독점권을 받을 수 있나요?", "희망 지역과 기존 운영 현황을 검토한 뒤 담당 권역을 협의합니다."],
-  ["기술 경험이 없어도 사업 운영이 가능한가요?", "관련 경험은 도움이 되며, 필요한 제품·설치·운영 교육을 제공합니다."],
-  ["교육은 어떤 방식으로 진행되나요?", "기초 이론과 현장 실습을 중심으로 단계별 교육을 진행합니다."],
-  ["수익 구조와 정산 방식은 어떻게 되나요?", "파트너 모델과 실제 영업 활동에 따라 달라지며 상담 시 상세히 설명합니다."],
-];
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="sectionTitle">{children}</h2>;
-}
+const spaces = [
+  [Building2, "아파트·공동주택"],
+  [School, "학교·교육시설"],
+  [Store, "음식점·카페"],
+  [Factory, "공장·산업시설"],
+  [Hotel, "병원·요양시설"],
+  [GraduationCap, "경로당·복지시설"],
+  [Building2, "상가·업무시설"],
+  [House, "일반 가정"],
+] as const;
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [detail, setDetail] = useState<Detail | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    const revealElements = document.querySelectorAll("[data-reveal]");
-    revealElements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (media.matches) return;
+    const timer = window.setInterval(() => {
+      setHeroIndex((current) => (current + 1) % heroSlides.length);
+    }, 5200);
+    return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    const closeWithEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+    document.body.classList.toggle("modalOpen", Boolean(detail));
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setDetail(null);
+        setMenuOpen(false);
+      }
     };
-    window.addEventListener("keydown", closeWithEscape);
-    return () => window.removeEventListener("keydown", closeWithEscape);
-  }, []);
+    window.addEventListener("keydown", onEscape);
+    return () => {
+      document.body.classList.remove("modalOpen");
+      window.removeEventListener("keydown", onEscape);
+    };
+  }, [detail]);
+
+  const moveHero = (direction: number) => {
+    setHeroIndex((current) => (current + direction + heroSlides.length) % heroSlides.length);
+  };
 
   return (
     <main id="top">
@@ -195,262 +237,181 @@ export default function Home() {
         <div className="headerInner">
           <a className="brand" href="#top" aria-label="알파브릿지 홈">
             <span className="brandLogo" aria-hidden="true">
-              <Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="(max-width: 640px) 66px, 78px" priority />
+              <Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="72px" priority />
             </span>
-            <span className="brandName">ALPHA BRIDGE</span>
+            <span className="brandWords"><strong>ALPHA BRIDGE</strong><small>WATER &amp; PIPE MANAGEMENT</small></span>
           </a>
 
-          <nav id="primary-navigation" className={menuOpen ? "nav is-open" : "nav"} aria-label="주요 메뉴">
+          <nav id="primary-navigation" className={menuOpen ? "nav isOpen" : "nav"} aria-label="주요 메뉴">
             {navLinks.map(([href, label]) => (
               <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
             ))}
           </nav>
 
-          <a className="headerCta" href="#contact">
-            <CalendarCheck2 aria-hidden="true" />
-            파트너 상담 신청
-          </a>
-
-          <button
-            className="menuButton"
-            type="button"
-            aria-controls="primary-navigation"
-            aria-expanded={menuOpen}
-            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
+          <a className="headerCall" href="tel:1533-0000"><Phone aria-hidden="true" /><span>관리상담<strong>1533-XXXX</strong></span></a>
+          <button className="menuButton" type="button" aria-controls="primary-navigation" aria-expanded={menuOpen} aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} onClick={() => setMenuOpen((open) => !open)}>
             {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
         </div>
       </header>
 
       <section className="hero" aria-labelledby="hero-title">
-        <div className="heroCopy">
-          <p className="heroEyebrow">ALPHA BRIDGE BUSINESS PARTNER</p>
-          <h1 id="hero-title">
-            지역의 생활 배관 시장을<br />
-            <strong>함께 개척할 파트너를 모집합니다</strong>
-          </h1>
-          <p className="heroText">
-            가정용 수도계량기·이음배관 관리 서비스를 기반으로<br />
-            지사와 영업점의 안정적인 지역 운영을 지원합니다.
-          </p>
-          <div className="heroActions">
-            <a className="button buttonPrimary" href="#contact"><MessageCircle aria-hidden="true" />지사 상담</a>
-            <a className="button buttonOutline" href="#contact"><Phone aria-hidden="true" />영업점 상담</a>
-          </div>
-        </div>
-
-        <div className="heroVisual">
-          <Image
-            src="/partner-consultation-hero.png"
-            alt="알파브릿지 담당자와 지역 파트너가 배관 관리 사업을 상담하는 모습"
-            fill
-            priority
-            sizes="(max-width: 920px) 100vw, 59vw"
-          />
-          <span className="heroPhotoLabel">PARTNER CONSULTING</span>
-        </div>
-      </section>
-
-      <section className="contentSection market" id="business">
-        <div className="container">
-          <SectionTitle>왜 지금 생활 배관 관리 사업인가요?</SectionTitle>
-          <div className="marketGrid">
-            {marketReasons.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article className="infoCard revealItem" data-reveal style={{ "--delay": `${index * 70}ms` } as React.CSSProperties} key={item.title}>
-                  <span className="lineIcon"><Icon aria-hidden="true" /></span>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="processSection" aria-labelledby="process-title">
-        <div className="container processPanel" data-reveal>
-          <h2 id="process-title">상담에서 설치·관리까지 이어지는 사업 구조</h2>
-          <div className="processGrid">
-            {processSteps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div className="processItem" key={step.title}>
-                  <span><Icon aria-hidden="true" /></span>
-                  <strong>{step.title}</strong>
-                  {index < processSteps.length - 1 ? <ArrowRight className="processArrow" aria-hidden="true" /> : null}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="contentSection partnerSection" id="partner-model">
-        <div className="container">
-          <SectionTitle>두 가지 방식으로 함께합니다</SectionTitle>
-          <div className="partnerGrid">
-            {partnerTypes.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article className={`partnerCard ${item.tone}`} data-reveal style={{ "--delay": `${index * 90}ms` } as React.CSSProperties} key={item.title}>
-                  <div className="partnerIcon"><Icon aria-hidden="true" /></div>
-                  <div className="partnerBody">
-                    <h3>{item.title}</h3>
-                    <p>{item.subtitle}</p>
-                    <ul>
-                      {item.points.map((point) => <li key={point}><Check aria-hidden="true" />{point}</li>)}
-                    </ul>
-                    <a href="#contact">{item.button}<ArrowRight aria-hidden="true" /></a>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="contentSection supportSection" id="support">
-        <div className="container">
-          <SectionTitle>사업 운영에 필요한 기반을 지원합니다</SectionTitle>
-          <div className="supportGrid">
-            {supportItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article data-reveal style={{ "--delay": `${index * 55}ms` } as React.CSSProperties} key={item.title}>
-                  <span><Icon aria-hidden="true" /></span>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="contentSection openingSection" id="opening">
-        <div className="container">
-          <SectionTitle>상담부터 영업 시작까지</SectionTitle>
-          <div className="openingGrid">
-            {openingSteps.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article data-reveal style={{ "--delay": `${index * 65}ms` } as React.CSSProperties} key={item.title}>
-                  <b>{index + 1}</b>
-                  <Icon aria-hidden="true" />
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                  {index < openingSteps.length - 1 ? <ArrowRight className="openingArrow" aria-hidden="true" /> : null}
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="regionSection" id="region">
-        <div className="container regionPanel" data-reveal>
-          <KoreaMap />
-          <div className="regionContent">
-            <SectionTitle>지역별 파트너를 모집합니다</SectionTitle>
-            <p>지역 생활권을 기준으로 사업 가능 여부와 운영 조건을 함께 검토합니다.</p>
-            <div className="regionRows">
-              {recruitmentRows.map((row) => (
-                <div key={row.title}>
-                  <span className={`regionDot ${row.color}`} />
-                  <strong>{row.title}</strong>
-                  <b>{row.region}</b>
-                  <ArrowRight aria-hidden="true" />
-                </div>
-              ))}
+        <div className="heroSlides" aria-hidden="true">
+          {heroSlides.map((slide, index) => (
+            <div className={index === heroIndex ? "heroSlide active" : "heroSlide"} key={slide.image}>
+              <Image src={slide.image} alt="" fill priority={index === 0} sizes="(min-width: 1600px) 1600px, 100vw" />
             </div>
-            <a className="regionButton" href="#contact">우리 지역 모집 여부 확인<ArrowRight aria-hidden="true" /></a>
+          ))}
+          <div className="heroVeil" />
+        </div>
+        <div className="heroInner">
+          <p className="eyebrow">더 나은 물, 더 나은 삶</p>
+          <h1 id="hero-title">프리미엄<br /><strong>워터 솔루션</strong></h1>
+          <p className="heroEnglish">WATER &amp; PIPE MANAGEMENT</p>
+          <p className="heroDescription">물의 품질을 넘어, 물이 지나오는 환경까지 관리합니다.<br />알파브릿지는 수질과 배관을 함께 진단하고 관리하는 전문기업입니다.</p>
+          <div className="heroActions">
+            <a className="primaryButton" href="#water-pipe">수질·배관 관리 상담<ArrowRight aria-hidden="true" /></a>
+            <a className="outlineButton" href="#partner">사업 파트너 문의</a>
           </div>
+        </div>
+        <button className="heroArrow prev" type="button" aria-label="이전 배너" onClick={() => moveHero(-1)}><ChevronLeft /></button>
+        <button className="heroArrow next" type="button" aria-label="다음 배너" onClick={() => moveHero(1)}><ChevronRight /></button>
+        <div className="heroDots" aria-label="배너 선택">
+          {heroSlides.map((slide, index) => <button className={index === heroIndex ? "active" : ""} type="button" aria-label={`${index + 1}번 배너`} onClick={() => setHeroIndex(index)} key={slide.image} />)}
         </div>
       </section>
 
-      <section className="contentSection candidateSection">
+      <section className="introSection" id="company">
         <div className="container">
-          <SectionTitle>이런 분과 함께하고 싶습니다</SectionTitle>
-          <div className="candidateGrid">
-            {candidateTraits.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article data-reveal style={{ "--delay": `${index * 65}ms` } as React.CSSProperties} key={item.title}>
-                  <span><Icon aria-hidden="true" /></span>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                </article>
-              );
-            })}
+          <p className="sectionEyebrow">WHY ALPHA BRIDGE</p>
+          <h2>우리가 매일 사용하는 물,<br />그 물이 지나오는 배관은 잘 관리되고 있을까요?</h2>
+          <div className="concernGrid">
+            {concerns.map(({ icon: Icon, title, copy }) => (
+              <article key={title}><span><Icon aria-hidden="true" /></span><h3>{title}</h3><p>{copy}</p></article>
+            ))}
           </div>
+          <p className="introMessage">눈에 보이는 물은 깨끗해 보여도, 배관 내부는 다양한 문제에 노출되어 있습니다.<br /><strong>그래서 알파브릿지는 물만 보는 것이 아니라, 물이 지나오는 환경까지 관리합니다.</strong></p>
         </div>
       </section>
 
-      <section className="faqSection" id="faq">
+      <section className="flowSection" id="water-pipe">
         <div className="container">
-          <SectionTitle>자주 묻는 질문</SectionTitle>
-          <div className="faqList" data-reveal>
-            {faqs.map(([question, answer], index) => (
-              <details key={question}>
-                <summary><span>Q{index + 1}</span><strong>{question}</strong><ChevronDown aria-hidden="true" /></summary>
-                <p>{answer}</p>
-              </details>
+          <p>ALPHA BRIDGE</p>
+          <h2>WATER &amp; PIPE MANAGEMENT</h2>
+          <span>수질 + 배관 + 지속관리를 하나의 시스템으로 연결합니다.</span>
+          <div className="flowGrid">
+            {process.map(([Icon, label], index) => (
+              <div className="flowItem" key={label}><i><Icon aria-hidden="true" /></i><strong>{label}</strong>{index < process.length - 1 ? <ArrowRight className="flowArrow" aria-hidden="true" /> : null}</div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="contactSection" id="contact">
-        <div className="container contactBanner" data-reveal>
-          <div className="contactImage">
-            <Image
-              src="/partner-field-team.png"
-              alt="알파브릿지 현장 기술진이 수도계량기를 함께 점검하는 모습"
-              fill
-              sizes="(max-width: 700px) 100vw, 320px"
-            />
+      <section className="serviceSection" id="solution">
+        <div className="container">
+          <div className="sectionHeading"><p>OUR SERVICES</p><h2>알파브릿지의 전문 서비스</h2><span>카드를 선택하면 상세 내용을 확인할 수 있습니다.</span></div>
+          <div className="serviceGrid">
+            {services.map(({ icon: Icon, detail: itemDetail, ...service }) => (
+              <button className="serviceCard" type="button" onClick={() => setDetail(itemDetail)} key={service.number}>
+                <span className="serviceNumber">{service.number}</span><i><Icon aria-hidden="true" /></i><h3>{service.title}</h3><p>{service.copy}</p><b>자세히 보기<ArrowRight aria-hidden="true" /></b>
+              </button>
+            ))}
           </div>
-          <div className="contactCopy">
-            <small>ALPHA BRIDGE BUSINESS PARTNER</small>
-            <h2>알파브릿지와 함께<br />지역 사업의 기회를 시작하세요</h2>
+        </div>
+      </section>
+
+      <section className="expertiseSection" id="expertise" aria-labelledby="expertise-title">
+        <div className="container expertiseGrid">
+          <div className="expertiseCopy">
+            <p>PROFESSIONAL QUALIFICATION</p>
+            <h2 id="expertise-title"><span>전문가가 관리해야</span><br />정확하고 안전합니다.</h2>
+            <p className="expertiseLead">배관과 수질관리는 전문 지식과 현장 경험이 함께 필요한 영역입니다. 알파브릿지는 관련 전문 교육과 자격 기준을 바탕으로 시설별 관리 계획을 세웁니다.</p>
+            <div className="qualificationFlow" aria-label="전문 자격 관리 과정">
+              {qualificationSteps.map(([Icon, label], index) => (
+                <div key={label}>
+                  <i><Icon aria-hidden="true" /></i>
+                  <strong>{label}</strong>
+                  {index < qualificationSteps.length - 1 ? <ArrowRight aria-hidden="true" /> : null}
+                </div>
+              ))}
+            </div>
+            <p className="expertiseNote"><BadgeCheck aria-hidden="true" />배관·수질관리 전문 자격을 갖춘 관리자가 현장에 맞는 관리 기준을 적용합니다.</p>
           </div>
-          <div className="contactActions">
-            <a className="kakaoButton" href="#contact" data-modal-trigger="partner-consultation"><span>TALK</span>카카오톡으로 상담하기</a>
-            <a className="phoneButton" href="tel:02-1234-5678"><Phone aria-hidden="true" />전화 상담하기</a>
+
+          <div className="credentialGallery" aria-label="배관 및 수질관리 전문 자격 증빙">
+            <figure className="credentialCard credentialPrimary">
+              <div><Image src="/water-quality-manager-certificate.jpg" alt="한국 수질 관리 연합회 수질 배관 전문 관리자 자격증" fill sizes="(max-width: 720px) 92vw, 420px" /></div>
+              <figcaption><strong>수질·배관 전문 관리자</strong><span>전문 관리 자격</span></figcaption>
+            </figure>
+            <figure className="credentialCard credentialSecondary">
+              <div><Image src="/pipe-water-quality-specialist-certificate.jpg" alt="배관 및 수질관리전문 자격증과 자격증 표지" fill sizes="(max-width: 720px) 92vw, 420px" /></div>
+              <figcaption><strong>배관 및 수질관리전문</strong><span>자격 검정 및 교육 이수</span></figcaption>
+            </figure>
           </div>
+        </div>
+      </section>
+
+      <section className="managementSection" id="management">
+        <div className="container caseStudy">
+          <div className="caseCopy">
+            <p>BEFORE &amp; AFTER</p>
+            <h2>배관세척 전·후,<br />변화를 직접 확인하세요.</h2>
+            <span>동일한 배관 내부를 세척 전과 후로 비교해 오염과 스케일 제거 상태를 한눈에 보여드립니다.</span>
+            <small>※ 관리 결과를 설명하기 위한 예시 이미지이며, 실제 결과는 배관 재질과 노후도에 따라 달라질 수 있습니다.</small>
+            <button type="button" onClick={() => setDetail(services[2].detail)}>배관세척 상담하기<ArrowRight /></button>
+          </div>
+          <div className="caseVisual">
+            <Image src="/pipe-before-after.png" alt="오염과 스케일이 쌓인 배관 내부와 세척 후 깨끗해진 동일 배관 내부 비교" fill sizes="(max-width: 760px) 100vw, 58vw" />
+            <span className="before">BEFORE · 세척 전</span>
+            <span className="after">AFTER · 세척 후</span>
+          </div>
+        </div>
+
+        <div className="container managementGrid">
+          <div className="managementProcess">
+            <div className="sectionHeading left"><p>MANAGEMENT PROCESS</p><h2>알파브릿지의 관리 프로세스</h2></div>
+            <div className="stepsGrid">
+              {managementSteps.map(([Icon, label], index) => <div key={label}><i><Icon aria-hidden="true" /></i><span>{index + 1}</span><strong>{label}</strong></div>)}
+            </div>
+          </div>
+          <article className="certificateCard">
+            <div><p>ALPHA BRIDGE QUALITY STANDARD</p><h2>수질관리 인증</h2><span>관리되고 있다는 것을 보여주는 새로운 기준</span><ul><li><Check />정기적인 수질·배관 관리 실시</li><li><Check />관리기록 및 점검 보유</li><li><Check />필요한 배관 관리 및 세척</li><li><Check />지속적인 사후 관리</li></ul></div>
+            <div className="certificateSeal"><BadgeCheck aria-hidden="true" /><small>ALPHA BRIDGE</small><strong>수질관리<br />인증사업장</strong><span>QUALITY MANAGEMENT</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section className="spacesSection">
+        <div className="container">
+          <div className="sectionHeading"><p>WHO WE MANAGE</p><h2>알파브릿지가 관리하는 공간</h2></div>
+          <div className="spacesGrid">{spaces.map(([Icon, label]) => <article key={label}><Icon aria-hidden="true" /><strong>{label}</strong></article>)}</div>
+        </div>
+      </section>
+
+      <section className="partnerSection" id="partner">
+        <div className="container partnerPanel">
+          <div><p>BUSINESS PARTNER</p><h2>알파브릿지와 함께<br />지역의 워터 매니지먼트 시장을 만듭니다.</h2><span>지사·대리점·영업점 파트너를 모집합니다.</span></div>
+          <div className="partnerActions"><a href="tel:1533-0000"><Phone />관리 상담 1533-XXXX</a><a href="mailto:contact@alpha-waterbridge.com"><CalendarCheck2 />파트너 문의하기</a></div>
         </div>
       </section>
 
       <footer>
         <div className="container footerInner">
-          <div className="footerBrand">
-            <span className="footerLogo" aria-hidden="true">
-              <Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="84px" />
-            </span>
-            <div>
-              <strong>ALPHA BRIDGE</strong>
-              <p>생활 배관 관리 사업 파트너 모집<br />신뢰와 기술로 지역과 함께 성장합니다.</p>
-            </div>
-          </div>
-          <div className="footerInfo">
-            <p><a href="#top">개인정보처리방침</a><a href="#top">이용약관</a><a href="#top">문의하기</a></p>
-            <p>알파브릿지 주식회사　|　대표: 홍길동　|　사업자등록번호: 123-45-67890</p>
-            <p>주소: 서울특별시 강남구 테헤란로 123　|　고객센터: 02-1234-5678</p>
-            <small>© ALPHA BRIDGE. All rights reserved.</small>
-          </div>
-          <div className="footerSeal"><span>AB</span><p>안심 기준 준수</p></div>
+          <div className="footerBrand"><div className="footerLogo"><span><Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="82px" /></span><strong>ALPHA BRIDGE</strong></div><p>WATER &amp; PIPE MANAGEMENT<br />물과 배관, 그리고 관리의 새로운 기준</p></div>
+          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 123-45-67890</p><p>고객센터: 1533-XXXX　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
         </div>
       </footer>
 
-      <aside className="floatingActions" aria-label="빠른 상담 메뉴">
-        <a className="floatKakao" href="#contact"><span>TALK</span><strong>카카오톡<br />상담</strong></a>
-        <a className="floatPhone" href="tel:02-1234-5678"><Phone aria-hidden="true" /><strong>전화<br />상담</strong></a>
-        <a className="floatTop" href="#top"><ArrowUp aria-hidden="true" /><strong>맨 위로</strong></a>
-      </aside>
+      {detail ? (
+        <div className="modalBackdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setDetail(null); }}>
+          <section className="detailModal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+            <button className="modalClose" type="button" aria-label="팝업 닫기" onClick={() => setDetail(null)}><X /></button>
+            <header><p>{detail.eyebrow}</p><h2 id="detail-title">{detail.title}</h2></header>
+            <div className="modalImage"><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
+            <div className="modalBody"><p>{detail.description}</p><ul>{detail.bullets.map((bullet) => <li key={bullet}><Check />{bullet}</li>)}</ul><strong>{detail.message}</strong><a href="#partner" onClick={() => setDetail(null)}>상담 문의하기<ArrowRight /></a></div>
+          </section>
+        </div>
+      ) : null}
     </main>
   );
 }
