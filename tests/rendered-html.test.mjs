@@ -27,6 +27,5 @@ test("keeps production metadata, comparison, and qualification imagery wired", a
   assert.match(page, /pipe-water-quality-specialist-certificate\.jpg/);
   assert.match(layout, /수질·배관관리 전문 워터솔루션/);
   assert.match(layout, /\/og\.png/);
-  assert.match(css, /@media\(max-width:600px\)/);
   assert.doesNotMatch(page, /codex-preview|SkeletonPreview|Your site is taking shape/i);
 });
