@@ -234,7 +234,7 @@ export default function Home() {
   return (
     <main id="top">
       <header className="siteHeader">
-        <div className="headerInner">
+        <div className="navInner">
           <a className="brand" href="#top" aria-label="알파브릿지 홈">
             <span className="brandLogo" aria-hidden="true">
               <Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="72px" priority />
