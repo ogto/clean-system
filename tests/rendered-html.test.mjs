@@ -34,3 +34,11 @@ test("keeps production metadata, comparison, and qualification imagery wired", a
   assert.match(layout, /\/og\.png/);
   assert.doesNotMatch(page, /codex-preview|SkeletonPreview|Your site is taking shape/i);
 });
+
+test("keeps the qualification section inside the mobile viewport", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(css, /\.expertiseGrid\s*>\s*\*\s*\{\s*min-width:\s*0/);
+  assert.match(css, /\.expertiseGrid\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s);
+  assert.match(css, /\.credentialForeground\s*\{[^}]*left:\s*50%[^}]*margin:\s*0[^}]*translateX\(-50%\)/s);
+});
