@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 test("keeps the Alpha Bridge homepage content in the Next.js source", async () => {
@@ -43,4 +43,26 @@ test("keeps the qualification section inside the mobile viewport", async () => {
   assert.match(css, /\.expertiseGrid\s*>\s*\*\s*\{\s*min-width:\s*0/);
   assert.match(css, /\.expertiseGrid\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s);
   assert.match(css, /\.credentialForeground\s*\{[^}]*left:\s*50%[^}]*margin:\s*0[^}]*translateX\(-50%\)/s);
+});
+
+test("wires all verification images into an interactive evidence carousel", async () => {
+  const [page, evidenceFiles] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readdir(new URL("../public/evidence/", import.meta.url)),
+  ]);
+
+  assert.equal(evidenceFiles.length, 18);
+  assert.equal(page.match(/image:\s*"\/evidence\//g)?.length, 18);
+  assert.match(page, /className="evidenceSection"/);
+  assert.match(page, /moveEvidence/);
+  assert.match(page, /setActiveEvidence\(currentEvidence\)/);
+  assert.match(page, /role="dialog"[^>]+aria-labelledby="evidence-modal-title"/);
+});
+
+test("uses the requested representative phone number everywhere", async () => {
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+
+  assert.match(page, /tel:1544-7763/);
+  assert.match(page, /고객센터: 1544-7763/);
+  assert.doesNotMatch(page, /1533|XXXX/);
 });

@@ -49,6 +49,13 @@ type Service = {
   detail: Detail;
 };
 
+type EvidenceItem = {
+  category: string;
+  title: string;
+  image: string;
+  alt: string;
+};
+
 const navLinks = [
   ["#company", "회사소개"],
   ["#water-pipe", "수질·배관관리"],
@@ -182,10 +189,33 @@ const spaces = [
   [House, "일반 가정"],
 ] as const;
 
+const evidenceItems: EvidenceItem[] = [
+  { category: "연구 자료", title: "자화수 섭취 후 DNA 손상 감소 실험", image: "/evidence/KakaoTalk_20260816_205706676.png", alt: "자화수 섭취 18주 후 DNA 손상 정도 연구 자료" },
+  { category: "연구 자료", title: "동물실험 혈당강하 및 암 DNA 손상 감소 실험", image: "/evidence/KakaoTalk_20260816_205643342.png", alt: "자화수 동물실험 혈당 변화와 경구 당부하 검사 연구 자료" },
+  { category: "시험성적서", title: "한국원적외선협회 음이온 시험성적서", image: "/evidence/KakaoTalk_20260816_205606648.png", alt: "한국원적외선응용평가연구원 음이온 시험성적서" },
+  { category: "시험 자료", title: "대장균·포도상구균 살균 비교 실험", image: "/evidence/KakaoTalk_20260816_205552985.png", alt: "제품 통과 전후 대장균과 포도상구균 살균 실험 비교 자료" },
+  { category: "시험보고서", title: "한국화학융합시험연구원 살균 시험보고서", image: "/evidence/KakaoTalk_20260816_205431726.png", alt: "한국화학융합시험연구원 살균 시험보고서 요약" },
+  { category: "시험성적서", title: "한국원적외선협회 살균 시험성적서", image: "/evidence/KakaoTalk_20260816_205503545.png", alt: "한국원적외선응용평가연구원 대장균과 포도상구균 살균 시험성적서" },
+  { category: "시험보고서", title: "살모넬라균·비브리오균 살균 시험보고서", image: "/evidence/KakaoTalk_20260816_205452743.png", alt: "한국화학융합시험연구원 살모넬라균과 비브리오균 살균 시험보고서" },
+  { category: "분석 자료", title: "자화수기 통과 전후 시료 분석 결과", image: "/evidence/KakaoTalk_20260816_205407149.png", alt: "자화수기 통과 전후 용존산소 시료 분석 결과" },
+  { category: "현장실증", title: "한국지역난방공사 기술·제품 성능확인서", image: "/evidence/KakaoTalk_20260816_205347911.png", alt: "한국지역난방공사 부식억제 및 스케일 제거 장비 현장실증 확인서" },
+  { category: "시험성적서", title: "한국화학융합시험연구원 강관 시험성적서", image: "/evidence/KakaoTalk_20260816_205335052.png", alt: "강관의 녹 억제장치 시험성적서" },
+  { category: "시험성적서", title: "한국산업기술시험원 스케일 포집 시험", image: "/evidence/KakaoTalk_20260816_205317556.png", alt: "한국산업기술시험원 자화수기 스케일 포집 시험 결과" },
+  { category: "특허", title: "탄산수 제조기를 이용한 관로 스케일 제거 특허", image: "/evidence/KakaoTalk_20260816_205306334.png", alt: "탄산수 제조기를 이용한 관로의 스케일 제거 및 갱생공법 특허증" },
+  { category: "특허", title: "철분 계통용 플런저관 특허", image: "/evidence/KakaoTalk_20260816_205257980.png", alt: "철분 계통용 플런저관 특허증" },
+  { category: "특허", title: "거품막을 이용한 부식 방지 및 스케일 제거 특허", image: "/evidence/KakaoTalk_20260816_205250371.png", alt: "자성체와 거품막을 이용하는 부식 방지 및 스케일 제거장치 특허증" },
+  { category: "특허", title: "다단 자석형 세정장치 특허", image: "/evidence/KakaoTalk_20260816_205240272.png", alt: "다단 자석형 세정장치 특허증" },
+  { category: "인증서", title: "위생안전기준 인증서", image: "/evidence/KakaoTalk_20260816_205228505.png", alt: "한국상하수도협회 자화이온화 발생장치 위생안전기준 인증서" },
+  { category: "확인서", title: "조달청 제조 등록업체 직접생산 확인", image: "/evidence/KakaoTalk_20260816_205200199.png", alt: "조달청 부식억제장비 제조업체 직접생산확인 점검 결과 통보서" },
+  { category: "사업자등록", title: "알파브릿지 사업자등록증", image: "/evidence/KakaoTalk_20260816_204937649.jpg", alt: "주식회사 알파브릿지 법인 사업자등록증" },
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
   const [detail, setDetail] = useState<Detail | null>(null);
+  const [evidenceIndex, setEvidenceIndex] = useState(0);
+  const [activeEvidence, setActiveEvidence] = useState<EvidenceItem | null>(null);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -197,10 +227,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle("modalOpen", Boolean(detail));
+    document.body.classList.toggle("modalOpen", Boolean(detail || activeEvidence));
     const onEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setDetail(null);
+        setActiveEvidence(null);
         setMenuOpen(false);
       }
     };
@@ -209,11 +240,17 @@ export default function Home() {
       document.body.classList.remove("modalOpen");
       window.removeEventListener("keydown", onEscape);
     };
-  }, [detail]);
+  }, [detail, activeEvidence]);
 
   const moveHero = (direction: number) => {
     setHeroIndex((current) => (current + direction + heroSlides.length) % heroSlides.length);
   };
+
+  const moveEvidence = (direction: number) => {
+    setEvidenceIndex((current) => (current + direction + evidenceItems.length) % evidenceItems.length);
+  };
+
+  const currentEvidence = evidenceItems[evidenceIndex];
 
   return (
     <main id="top">
@@ -232,7 +269,7 @@ export default function Home() {
             ))}
           </nav>
 
-          <a className="headerCall" href="tel:1533-0000"><Phone aria-hidden="true" /><span>관리상담<strong>1533-XXXX</strong></span></a>
+          <a className="headerCall" href="tel:1544-7763"><Phone aria-hidden="true" /><span>관리상담<strong>1544-7763</strong></span></a>
           <button className="menuButton" type="button" aria-controls="primary-navigation" aria-expanded={menuOpen} aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} onClick={() => setMenuOpen((open) => !open)}>
             {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
@@ -347,6 +384,47 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="evidenceSection" id="evidence" aria-labelledby="evidence-title">
+        <div className="container">
+          <div className="evidenceHeading">
+            <div>
+              <h2 id="evidence-title">기술 검증·인증 자료</h2>
+              <p>시험성적서, 현장실증, 특허 및 인증 자료를 한눈에 확인하세요.</p>
+            </div>
+            <span>검증 자료 {evidenceItems.length}건</span>
+          </div>
+
+          <div className="evidenceCarousel">
+            <button className="evidenceNav prev" type="button" aria-label="이전 검증 자료" onClick={() => moveEvidence(-1)}><ChevronLeft aria-hidden="true" /></button>
+            <button className="evidenceSlide" type="button" aria-label={`${currentEvidence.title} 크게 보기`} onClick={() => setActiveEvidence(currentEvidence)}>
+              <span className="evidenceImage">
+                <Image key={currentEvidence.image} src={currentEvidence.image} alt={currentEvidence.alt} fill sizes="(max-width: 720px) 100vw, 760px" />
+              </span>
+              <span className="evidenceCaption">
+                <small>{currentEvidence.category}</small>
+                <strong>{currentEvidence.title}</strong>
+                <span>이미지를 눌러 크게 보기<ArrowRight aria-hidden="true" /></span>
+              </span>
+            </button>
+            <button className="evidenceNav next" type="button" aria-label="다음 검증 자료" onClick={() => moveEvidence(1)}><ChevronRight aria-hidden="true" /></button>
+          </div>
+
+          <div className="evidenceStatus" aria-live="polite">
+            <span className="evidenceProgress"><i style={{ width: `${((evidenceIndex + 1) / evidenceItems.length) * 100}%` }} /></span>
+            <strong>{String(evidenceIndex + 1).padStart(2, "0")}<small>/ {String(evidenceItems.length).padStart(2, "0")}</small></strong>
+          </div>
+
+          <div className="evidenceThumbnails" aria-label="검증 자료 선택">
+            {evidenceItems.map((item, index) => (
+              <button className={index === evidenceIndex ? "active" : ""} type="button" aria-label={`${index + 1}번 ${item.title}`} aria-current={index === evidenceIndex ? "true" : undefined} onClick={() => setEvidenceIndex(index)} key={item.image}>
+                <span><Image src={item.image} alt="" fill sizes="84px" /></span>
+                <small>{String(index + 1).padStart(2, "0")}</small>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="spacesSection">
         <div className="container">
           <div className="sectionHeading"><h2>알파브릿지가 관리하는 공간</h2></div>
@@ -357,14 +435,14 @@ export default function Home() {
       <section className="partnerSection" id="partner">
         <div className="container partnerPanel">
           <div><h2>알파브릿지와 함께<br />지역의 워터 매니지먼트 시장을 만듭니다.</h2><span>지사·대리점·영업점 파트너를 모집합니다.</span></div>
-          <div className="partnerActions"><a href="tel:1533-0000"><Phone />관리 상담 1533-XXXX</a><a href="mailto:contact@alpha-waterbridge.com"><CalendarCheck2 />파트너 문의하기</a></div>
+          <div className="partnerActions"><a href="tel:1544-7763"><Phone />관리 상담 1544-7763</a><a href="mailto:contact@alpha-waterbridge.com"><CalendarCheck2 />파트너 문의하기</a></div>
         </div>
       </section>
 
       <footer>
         <div className="container footerInner">
           <div className="footerBrand"><div className="footerLogo"><span><Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="82px" /></span><strong>ALPHA BRIDGE</strong></div><p>WATER &amp; PIPE MANAGEMENT<br />물과 배관, 그리고 관리의 새로운 기준</p></div>
-          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 123-45-67890</p><p>고객센터: 1533-XXXX　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
+          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 123-45-67890</p><p>고객센터: 1544-7763　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
         </div>
       </footer>
 
@@ -375,6 +453,20 @@ export default function Home() {
             <header><h2 id="detail-title">{detail.title}</h2></header>
             <div className="modalImage"><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
             <div className="modalBody"><p>{detail.description}</p><ul>{detail.bullets.map((bullet) => <li key={bullet}><Check />{bullet}</li>)}</ul><strong>{detail.message}</strong><a href="#partner" onClick={() => setDetail(null)}>상담 문의하기<ArrowRight /></a></div>
+          </section>
+        </div>
+      ) : null}
+
+      {activeEvidence ? (
+        <div className="modalBackdrop evidenceModalBackdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setActiveEvidence(null); }}>
+          <section className="evidenceModal" role="dialog" aria-modal="true" aria-labelledby="evidence-modal-title">
+            <button className="modalClose" type="button" aria-label="검증 자료 닫기" onClick={() => setActiveEvidence(null)}><X aria-hidden="true" /></button>
+            <header>
+              <span>{activeEvidence.category}</span>
+              <h2 id="evidence-modal-title">{activeEvidence.title}</h2>
+              <small>{String(evidenceItems.indexOf(activeEvidence) + 1).padStart(2, "0")} / {String(evidenceItems.length).padStart(2, "0")}</small>
+            </header>
+            <div className="evidenceModalImage"><Image src={activeEvidence.image} alt={activeEvidence.alt} fill sizes="(max-width: 1080px) 100vw, 980px" priority /></div>
           </section>
         </div>
       ) : null}
