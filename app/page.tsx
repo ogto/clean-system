@@ -442,7 +442,7 @@ export default function Home() {
       <footer>
         <div className="container footerInner">
           <div className="footerBrand"><div className="footerLogo"><span><Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="82px" /></span><strong>ALPHA BRIDGE</strong></div><p>WATER &amp; PIPE MANAGEMENT<br />물과 배관, 그리고 관리의 새로운 기준</p></div>
-          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 123-45-67890</p><p>고객센터: 1544-7763　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
+          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 389-87-03895</p><p>고객센터: 1544-7763　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
         </div>
       </footer>
 

@@ -65,4 +65,6 @@ test("uses the requested representative phone number everywhere", async () => {
   assert.match(page, /tel:1544-7763/);
   assert.match(page, /고객센터: 1544-7763/);
   assert.doesNotMatch(page, /1533|XXXX/);
+  assert.match(page, /사업자등록번호: 389-87-03895/);
+  assert.doesNotMatch(page, /123-45-67890/);
 });
