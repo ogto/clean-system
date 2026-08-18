@@ -446,6 +446,17 @@ export default function Home() {
         </div>
       </footer>
 
+      <nav className="floatingChannels" aria-label="빠른 채널">
+        <button className="floatingChannel kakaoChannel" type="button" aria-label="카카오 상담 준비 중" aria-disabled="true" data-label="카카오 상담 준비 중">
+          <Image src="/brand/kakaotalk-official.png" alt="" width={46} height={46} />
+        </button>
+        <a className="floatingChannel naverChannel" href="https://m.blog.naver.com/k--prime" target="_blank" rel="noopener noreferrer" aria-label="알파브릿지 네이버 블로그 새 창에서 열기" data-label="네이버 블로그">
+          <span className="naverBlogCrop" aria-hidden="true">
+            <Image src="/brand/naver-blog-official-icon.png" alt="" width={320} height={242} sizes="64px" />
+          </span>
+        </a>
+      </nav>
+
       {detail ? (
         <div className="modalBackdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setDetail(null); }}>
           <section className="detailModal" role="dialog" aria-modal="true" aria-labelledby="detail-title">

@@ -68,3 +68,19 @@ test("uses the requested representative phone number everywhere", async () => {
   assert.match(page, /사업자등록번호: 389-87-03895/);
   assert.doesNotMatch(page, /123-45-67890/);
 });
+
+test("provides fixed Kakao and Naver Blog channel buttons with official assets", async () => {
+  const [page, css] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    access(new URL("../public/brand/kakaotalk-official.png", import.meta.url)),
+    access(new URL("../public/brand/naver-blog-official-icon.png", import.meta.url)),
+  ]);
+
+  assert.match(page, /className="floatingChannel kakaoChannel"[^>]+aria-disabled="true"/);
+  assert.match(page, /href="https:\/\/m\.blog\.naver\.com\/k--prime"/);
+  assert.match(page, /target="_blank" rel="noopener noreferrer"/);
+  assert.match(page, /\/brand\/kakaotalk-official\.png/);
+  assert.match(page, /\/brand\/naver-blog-official-icon\.png/);
+  assert.match(css, /\.floatingChannels\s*\{[^}]*position:\s*fixed[^}]*right:[^}]*bottom:/s);
+});
