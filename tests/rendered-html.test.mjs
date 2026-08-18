@@ -73,15 +73,17 @@ test("provides fixed Kakao and Naver Blog channel buttons with official assets",
   const [page, css] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
-    access(new URL("../public/brand/kakao-talk-consult-official.png", import.meta.url)),
+    access(new URL("../public/brand/kakaotalk-official-icon.png", import.meta.url)),
     access(new URL("../public/brand/naver-blog-official.png", import.meta.url)),
   ]);
 
   assert.match(page, /className="floatingChannel kakaoChannel"[^>]+aria-disabled="true"/);
   assert.match(page, /href="https:\/\/m\.blog\.naver\.com\/k--prime"/);
   assert.match(page, /target="_blank" rel="noopener noreferrer"/);
-  assert.match(page, /\/brand\/kakao-talk-consult-official\.png/);
+  assert.match(page, /\/brand\/kakaotalk-official-icon\.png/);
   assert.match(page, /\/brand\/naver-blog-official\.png/);
+  assert.match(page, /<strong>카카오톡<\/strong><small>상담 준비 중<\/small>/);
+  assert.match(page, /<strong>네이버 블로그<\/strong><small>공식 블로그<\/small>/);
   assert.doesNotMatch(page, /naverBlogCrop/);
   assert.match(css, /\.floatingChannels\s*\{[^}]*position:\s*fixed[^}]*right:[^}]*bottom:/s);
 });

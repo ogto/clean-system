@@ -447,11 +447,13 @@ export default function Home() {
       </footer>
 
       <nav className="floatingChannels" aria-label="빠른 채널">
-        <button className="floatingChannel kakaoChannel" type="button" aria-label="카카오 상담 준비 중" aria-disabled="true" data-label="카카오 상담 준비 중">
-          <Image src="/brand/kakao-talk-consult-official.png" alt="" width={100} height={46} />
+        <button className="floatingChannel kakaoChannel" type="button" aria-label="카카오톡 상담 준비 중" aria-disabled="true">
+          <span className="floatingChannelLogo" aria-hidden="true"><Image src="/brand/kakaotalk-official-icon.png" alt="" width={46} height={46} /></span>
+          <span className="floatingChannelCopy"><strong>카카오톡</strong><small>상담 준비 중</small></span>
         </button>
-        <a className="floatingChannel naverChannel" href="https://m.blog.naver.com/k--prime" target="_blank" rel="noopener noreferrer" aria-label="알파브릿지 네이버 블로그 새 창에서 열기" data-label="네이버 블로그">
-          <Image src="/brand/naver-blog-official.png" alt="" width={192} height={192} sizes="64px" />
+        <a className="floatingChannel naverChannel" href="https://m.blog.naver.com/k--prime" target="_blank" rel="noopener noreferrer" aria-label="알파브릿지 네이버 블로그 새 창에서 열기">
+          <span className="floatingChannelLogo" aria-hidden="true"><Image src="/brand/naver-blog-official.png" alt="" width={192} height={192} sizes="40px" /></span>
+          <span className="floatingChannelCopy"><strong>네이버 블로그</strong><small>공식 블로그</small></span>
         </a>
       </nav>
 

@@ -241,14 +241,19 @@
   .footerInfo small { color: rgba(255,255,255,.28); }
 
   .floatingChannels { position: fixed; z-index: 120; right: max(24px, env(safe-area-inset-right)); bottom: max(24px, env(safe-area-inset-bottom)); display: grid; justify-items: end; gap: 12px; }
-  .floatingChannel { position: relative; width: 64px; height: 64px; padding: 0; display: grid; place-items: center; overflow: visible; border: 1px solid rgba(4,42,87,.12); border-radius: 50%; background: #fff; box-shadow: 0 12px 30px rgba(2,31,67,.22); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
-  .floatingChannel::after { content: attr(data-label); position: absolute; top: 50%; right: calc(100% + 11px); padding: 8px 11px; border-radius: 7px; background: rgba(3,28,64,.94); color: #fff; font-size: 11px; font-weight: 800; line-height: 1; white-space: nowrap; opacity: 0; pointer-events: none; transform: translate(6px, -50%); transition: opacity .2s ease, transform .2s ease; }
+  .floatingChannel { position: relative; width: 154px; height: 56px; padding: 0 13px 0 8px; display: flex; align-items: center; gap: 10px; overflow: hidden; border: 1px solid rgba(4,42,87,.12); border-radius: 28px; background: #fff; box-shadow: 0 12px 30px rgba(2,31,67,.22); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
   .floatingChannel:hover, .floatingChannel:focus-visible { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(2,31,67,.28); }
-  .floatingChannel:hover::after, .floatingChannel:focus-visible::after { opacity: 1; transform: translate(0, -50%); }
-  .kakaoChannel { width: 100px; height: 46px; overflow: hidden; border: 0; border-radius: 23px; background: transparent; cursor: default; }
-  .kakaoChannel img { width: 100px; height: 46px; }
-  .naverChannel { border-color: rgba(3,199,90,.32); }
-  .naverChannel img { width: 44px; height: 44px; object-fit: contain; }
+  .floatingChannelLogo { width: 40px; height: 40px; display: grid; place-items: center; flex: 0 0 40px; overflow: hidden; border-radius: 12px; }
+  .floatingChannelCopy { min-width: 0; display: flex; align-items: flex-start; flex-direction: column; line-height: 1.15; white-space: nowrap; }
+  .floatingChannelCopy strong { color: inherit; font-size: 12px; font-weight: 900; letter-spacing: -.02em; }
+  .floatingChannelCopy small { margin-top: 3px; color: rgba(16,28,39,.58); font-size: 9px; font-weight: 700; }
+  .kakaoChannel { background: #fee500; color: #191919; cursor: default; }
+  .kakaoChannel .floatingChannelLogo { border-radius: 50%; }
+  .kakaoChannel img { width: 40px; height: 40px; }
+  .naverChannel { border-color: rgba(3,199,90,.32); color: #111; }
+  .naverChannel .floatingChannelLogo { background: #111; }
+  .naverChannel img { width: 34px; height: 34px; object-fit: contain; }
+  .naverChannel .floatingChannelCopy small { color: #079447; }
 
   .modalBackdrop { position: fixed; z-index: 200; inset: 0; padding: 30px; display: grid; place-items: center; overflow-y: auto; background: rgba(1,16,38,.76); backdrop-filter: blur(8px); animation: fadeIn .2s ease; }
   .detailModal { position: relative; width: min(820px, 100%); max-height: calc(100vh - 60px); overflow-y: auto; border-radius: 19px; background: #fff; box-shadow: 0 30px 100px rgba(0,0,0,.35); animation: modalUp .28s ease; }
@@ -410,11 +415,12 @@
     .partnerActions a { width: 100%; min-width: 0; }
     .footerInner { grid-template-columns: 1fr; gap: 25px; padding-block: 35px; }
     .floatingChannels { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); gap: 9px; }
-    .floatingChannel { width: 56px; height: 56px; }
-    .floatingChannel::after { display: none; }
-    .kakaoChannel { width: 92px; height: 42px; border-radius: 21px; }
-    .kakaoChannel img { width: 92px; height: 42px; }
-    .naverChannel img { width: 39px; height: 39px; }
+    .floatingChannel { width: 144px; height: 52px; padding-right: 11px; border-radius: 26px; }
+    .floatingChannelLogo { width: 36px; height: 36px; flex-basis: 36px; border-radius: 10px; }
+    .floatingChannelCopy strong { font-size: 11px; }
+    .floatingChannelCopy small { font-size: 8px; }
+    .kakaoChannel img { width: 36px; height: 36px; }
+    .naverChannel img { width: 30px; height: 30px; }
     .modalBackdrop { padding: 0; align-items: end; }
     .detailModal { width: 100%; max-height: 94vh; border-radius: 20px 20px 0 0; }
     .detailModal > header { padding: 24px 65px 20px 22px; }
