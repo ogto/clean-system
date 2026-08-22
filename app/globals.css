@@ -63,7 +63,7 @@
   .headerCall strong { display: block; color: #fff; font-size: 14px; letter-spacing: .03em; }
   .menuButton { display: none; }
 
-  .hero { position: relative; width: min(100%, 1600px); height: clamp(560px, 38vw, 640px); margin-inline: auto; overflow: hidden; background: #e8f4fb; }
+  .hero { position: relative; width: min(100%, 1600px); height: clamp(620px, 44vw, 720px); margin-inline: auto; overflow: hidden; background: #e8f4fb; }
   .heroSlides, .heroSlide, .heroVeil { position: absolute; inset: 0; }
   .heroSlide { opacity: 0; transform: scale(1.025); transition: opacity .8s ease, transform 5.8s ease; }
   .heroSlide.active { opacity: 1; transform: scale(1); }
