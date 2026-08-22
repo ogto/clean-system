@@ -82,13 +82,14 @@ const concerns = [
 ];
 
 const managedSpaces = [
-  { image: "/space-apartment.png", alt: "아파트·공동주택", width: 259, height: 379 },
-  { image: "/space-school.png", alt: "학교·교육시설", width: 263, height: 384 },
-  { image: "/space-cafe.png", alt: "음식점·카페", width: 260, height: 382 },
-  { image: "/space-factory.png", alt: "공장·산업시설", width: 261, height: 384 },
-  { image: "/space-hospital.png", alt: "병원·요양시설", width: 264, height: 386 },
-  { image: "/space-welfare.png", alt: "경로당·복지시설", width: 265, height: 391 },
-  { image: "/space-office.png", alt: "상가·업무시설", width: 265, height: 382 },
+  { image: "/space-apartment.png", alt: "아파트·공동주택", width: 469, height: 683 },
+  { image: "/space-school.png", alt: "학교·교육시설", width: 466, height: 685 },
+  { image: "/space-cafe.png", alt: "음식점·카페", width: 461, height: 692 },
+  { image: "/space-factory.png", alt: "공장·산업시설", width: 464, height: 684 },
+  { image: "/space-hospital.png", alt: "병원·요양시설", width: 460, height: 687 },
+  { image: "/space-welfare.png", alt: "경로당·복지시설", width: 464, height: 692 },
+  { image: "/space-office.png", alt: "상가·업무시설", width: 468, height: 691 },
+  { image: "/space-home.png", alt: "일반 가정", width: 472, height: 686 },
 ];
 
 const services: Service[] = [
@@ -426,9 +427,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="spacesSection">
+      <section className="spacesSection" aria-label="알파브릿지가 관리하는 공간">
         <div className="container">
-          <div className="sectionHeading spacesHeading"><h2>알파브릿지가 관리하는 공간</h2></div>
+          <div className="spacesHeading">
+            <Image className="spacesTitleImage" src="/space-title.png" alt="알파브릿지가 관리하는 공간" width={1406} height={163} sizes="(max-width: 720px) calc(100vw - 32px), 820px" />
+          </div>
           <div className="spacesGrid" aria-label="알파브릿지 관리 대상 시설">
             {managedSpaces.map((space) => (
               <article className="spaceCard" key={space.image}>
