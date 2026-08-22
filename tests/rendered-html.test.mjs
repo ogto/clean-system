@@ -113,7 +113,7 @@ test("provides fixed Kakao, Naver Blog, and YouTube channel buttons", async () =
 test("wires the supplied revision images and requested copy", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const assets = [
-    "lumi-water-hero.jpg",
+    "lumi-water-hero-new.png",
     "alpha-hero-pipeline.png",
     "eco-technician.png",
     "space-apartment.png",

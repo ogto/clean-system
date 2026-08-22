@@ -57,8 +57,8 @@ const navLinks = [
 
 const heroSlides = [
   {
-    image: "/lumi-water-hero.jpg",
-    alt: "알파브릿지 루미워터 제품과 구성 부품",
+    image: "/lumi-water-hero-new.png",
+    alt: "알파브릿지 루미워터 제품과 분리된 구성 부품",
   },
   {
     image: "/alpha-hero-pipeline.png",
