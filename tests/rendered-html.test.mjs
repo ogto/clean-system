@@ -94,6 +94,8 @@ test("wires the supplied revision images and requested copy", async () => {
   const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
   const assets = [
     "lumi-water-hero.jpg",
+    "alpha-hero-pipeline.png",
+    "water-city-hero.png",
     "managed-spaces.jpg",
     "management-track-record.jpg",
     "service-water-quality.jpg",
@@ -110,6 +112,9 @@ test("wires the supplied revision images and requested copy", async () => {
   assert.match(page, /한국상하수도협회 및 한국수질관리연합회/);
   assert.match(page, /자성과 양자처리 특허 기술/);
   assert.match(page, /3개월 주기 1:1 케어 서비스/);
+  assert.match(page, /setInterval[\s\S]*5200/);
+  assert.match(page, /aria-label="이전 배너"/);
+  assert.match(page, /aria-label="다음 배너"/);
   assert.doesNotMatch(page, /<h2>알파브릿지가 관리하는 공간<\/h2>/);
   assert.match(page, /대전광역시 서구 도산로 403번길 21, 635호/);
   assert.match(page, /소규모기술 창업 컨설팅/);
