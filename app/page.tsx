@@ -67,8 +67,8 @@ const heroSlides = [
     alt: "도시의 깨끗한 물과 산업용 급수 배관",
   },
   {
-    image: "/water-city-hero.png",
-    alt: "도시 수변 공간과 깨끗한 물이 흐르는 배관",
+    image: "/eco-technician.png",
+    alt: "배관 설비 앞에서 물의 상태를 확인하는 알파브릿지 전문 관리자",
   },
 ];
 

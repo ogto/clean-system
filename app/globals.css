@@ -69,7 +69,8 @@
   .heroSlide.active { opacity: 1; transform: scale(1); }
   .heroSlide img { object-fit: cover; object-position: center center; }
   .heroSlide:nth-child(2) img { object-position: center; }
-  .heroSlide:nth-child(3) img { object-position: center; }
+  .heroSlide:nth-child(3) { background: linear-gradient(90deg, #eef5fa, #f8fafb 55%, #e8eef3); }
+  .heroSlide:nth-child(3) img { object-fit: contain; object-position: 78% center; }
   .heroVeil { background: linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.91) 28%, rgba(255,255,255,.45) 51%, rgba(255,255,255,.04) 75%); }
   .heroInner { position: relative; z-index: 2; width: min(var(--container), calc(100% - 48px)); height: 100%; margin-inline: auto; display: flex; justify-content: center; align-items: flex-start; flex-direction: column; }
   .eyebrow { color: var(--blue); font-size: 20px; font-weight: 800; }
@@ -346,10 +347,11 @@
     .headerCall { width: 44px; min-width: 44px; min-height: 44px; padding: 0; }
     .headerCall span { display: none; }
     .menuButton { width: 44px; height: 44px; }
-    .hero { height: auto; padding-top: 72vw; background: #fff; }
-    .heroSlides { height: 72vw; bottom: auto; }
-    .heroSlide img { object-position: 64% center; }
-    .heroSlide:nth-child(2) img { object-position: 58% 36%; }
+    .hero { --mobile-hero-height: min(78vw, 430px); height: auto; padding-top: var(--mobile-hero-height); background: #fff; }
+    .heroSlides { height: var(--mobile-hero-height); bottom: auto; background: #eef5fa; }
+    .heroSlide { transform: none; }
+    .heroSlide.active { transform: none; }
+    .heroSlide img, .heroSlide:nth-child(2) img, .heroSlide:nth-child(3) img { object-fit: contain; object-position: center; }
     .heroVeil { background: linear-gradient(180deg, transparent 55%, rgba(255,255,255,.48)); }
     .heroInner { width: 100%; height: auto; padding: 42px 24px 48px; background: #fff; }
     .eyebrow { font-size: 15px; }
@@ -358,10 +360,10 @@
     .heroDescription br { display: none; }
     .heroActions { width: 100%; flex-direction: column; }
     .heroActions a { width: 100%; min-height: 56px; }
-    .heroArrow { top: calc(36vw + 36px); width: 38px; height: 38px; }
+    .heroArrow { top: calc(var(--mobile-hero-height) / 2); width: 38px; height: 38px; }
     .heroArrow.prev { left: 10px; }
     .heroArrow.next { right: 10px; }
-    .heroDots { top: calc(72vw - 25px); bottom: auto; }
+    .heroDots { top: calc(var(--mobile-hero-height) - 25px); bottom: auto; }
     .introSection { padding: 64px 0 60px; }
     .introSection h2, .sectionHeading h2 { font-size: 27px; }
     .concernGrid { grid-template-columns: repeat(2, 1fr); gap: 30px 10px; }
@@ -370,8 +372,8 @@
     .introMessage br { display: none; }
     .serviceSection { padding: 64px 0; }
     .serviceGrid { margin-top: 30px; grid-template-columns: 1fr; }
-    .serviceCard { min-height: 0; display: grid; grid-template-columns: 42% 58%; }
-    .serviceCardImage { height: 100%; min-height: 244px; }
+    .serviceCard { min-height: 0; display: grid; grid-template-columns: 1fr; }
+    .serviceCardImage { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
     .serviceCardBody { padding: 25px 22px; }
     .serviceCard h3 { margin-top: 10px; font-size: 20px; }
     .serviceCard p { min-height: 0; margin-top: 7px; }
@@ -390,10 +392,12 @@
     .managementProcess { padding: 29px 20px; }
     .managementProcess .sectionHeading h2 { font-size: 24px; }
     .stepsGrid { grid-template-columns: repeat(2, 1fr); }
-    .certificatePhoto { min-height: 420px; }
+    .certificatePhoto { min-height: 0; aspect-ratio: 3 / 2; }
+    .certificatePhoto img { object-fit: contain; }
     .caseStudy { grid-template-columns: 1fr; }
     .caseCopy { padding: 35px 27px; }
-    .caseVisual { min-height: 260px; }
+    .caseVisual { min-height: 0; aspect-ratio: 1672 / 941; background: #f4f7f9; }
+    .caseVisual img { object-fit: contain; }
     .evidenceSection { padding: 64px 0 60px; }
     .evidenceHeading { align-items: flex-start; flex-direction: column; gap: 16px; }
     .evidenceHeading h2 { font-size: 30px; }
@@ -431,7 +435,8 @@
     .detailModal { width: 100%; max-height: 94vh; border-radius: 20px 20px 0 0; }
     .detailModal > header { padding: 24px 65px 20px 22px; }
     .detailModal > header h2 { font-size: 25px; }
-    .modalImage { height: 31vh; min-height: 210px; }
+    .modalImage { height: auto; min-height: 0; aspect-ratio: 3 / 2; background: #f3f6f8; }
+    .modalImage img { object-fit: contain; }
     .modalBody { padding: 23px 22px 28px; }
     .modalBody ul { grid-template-columns: 1fr; }
     .evidenceModal { width: 100%; max-height: 96vh; border-radius: 20px 20px 0 0; }
@@ -449,7 +454,6 @@
     .brandWords small { display: none; }
     .heroInner { padding-inline: 20px; }
     .hero h1 { font-size: 44px; }
-    .certificatePhoto { min-height: 285px; }
     .stepsGrid { gap: 12px; }
     .evidenceImage { height: 430px; }
     .evidenceNav { top: 215px; }

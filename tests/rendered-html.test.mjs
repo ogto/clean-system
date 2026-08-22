@@ -45,6 +45,16 @@ test("keeps the qualification section inside the mobile viewport", async () => {
   assert.match(css, /\.credentialForeground\s*\{[^}]*left:\s*50%[^}]*margin:\s*0[^}]*translateX\(-50%\)/s);
 });
 
+test("preserves representative image proportions on mobile", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(css, /\.heroSlide img,[^{]+\{[^}]*object-fit:\s*contain/s);
+  assert.match(css, /\.serviceCardImage\s*\{[^}]*aspect-ratio:\s*3\s*\/\s*2/s);
+  assert.match(css, /\.certificatePhoto\s*\{[^}]*aspect-ratio:\s*3\s*\/\s*2/s);
+  assert.match(css, /\.caseVisual\s*\{[^}]*aspect-ratio:\s*1672\s*\/\s*941/s);
+  assert.match(css, /\.modalImage img\s*\{[^}]*object-fit:\s*contain/s);
+});
+
 test("keeps verification assets available while the evidence section is unpublished", async () => {
   const [page, evidenceFiles] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
@@ -95,7 +105,7 @@ test("wires the supplied revision images and requested copy", async () => {
   const assets = [
     "lumi-water-hero.jpg",
     "alpha-hero-pipeline.png",
-    "water-city-hero.png",
+    "eco-technician.png",
     "managed-spaces.jpg",
     "management-track-record.jpg",
     "service-water-quality.jpg",
