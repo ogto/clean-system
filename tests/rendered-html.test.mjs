@@ -110,6 +110,7 @@ test("wires the supplied revision images and requested copy", async () => {
   assert.match(page, /한국상하수도협회 및 한국수질관리연합회/);
   assert.match(page, /자성과 양자처리 특허 기술/);
   assert.match(page, /3개월 주기 1:1 케어 서비스/);
+  assert.doesNotMatch(page, /<h2>알파브릿지가 관리하는 공간<\/h2>/);
   assert.match(page, /대전광역시 서구 도산로 403번길 21, 635호/);
   assert.match(page, /소규모기술 창업 컨설팅/);
 });

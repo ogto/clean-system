@@ -410,7 +410,6 @@ export default function Home() {
 
       <section className="spacesSection">
         <div className="container">
-          <div className="sectionHeading"><h2>알파브릿지가 관리하는 공간</h2></div>
           <Image className="managedSpacesImage" src="/managed-spaces.jpg" alt="아파트, 학교, 음식점, 공장, 병원, 복지시설, 상가와 일반 가정 등 알파브릿지가 관리하는 공간" width={2172} height={724} sizes="(max-width: 1200px) 100vw, 1180px" />
         </div>
       </section>
