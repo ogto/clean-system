@@ -9,6 +9,12 @@ test("keeps the Alpha Bridge homepage content in the Next.js source", async () =
   assert.match(page, /워터 솔루션/);
   assert.match(page, /수질·배관 관리 상담/);
   assert.match(page, /알파브릿지의 전문 서비스/);
+  assert.match(page, /배관 및 수질점검/);
+  assert.match(page, /우수세척업체 인증 공법으로 배관을 깨끗이 세척합니다/);
+  assert.match(page, /양자수질필터를 설치하여 더 이상의 오염을 차단합니다/);
+  assert.match(page, /3개월마다 배관 및 필터를 꼼꼼히 관리합니다/);
+  assert.match(page, /수질관리 인증/);
+  assert.doesNotMatch(page, /title: "배관관리"|title: "정기관리"/);
   assert.match(page, /녹·스케일·세균/);
   assert.match(page, /우리 가족이 사용하는 물에 이런 것들이 있다고 한다면\?/);
   assert.match(page, /수질관리와 위생/);
@@ -121,7 +127,6 @@ test("wires the supplied revision images and requested copy", async () => {
     "space-title.png",
     "management-track-record.jpg",
     "service-water-quality.jpg",
-    "service-pipe-inspection.jpg",
     "service-pipe-cleaning.jpg",
     "service-water-solution-install.jpg",
     "service-regular-care.jpg",

@@ -94,77 +94,77 @@ const managedSpaces = [
 const services: Service[] = [
   {
     number: "01",
-    title: "수질관리",
-    copy: "사용 환경에 맞는 수질 진단과 개선 솔루션",
+    title: "배관 및 수질점검",
+    copy: "전문가가 방문하여 배관과 수질을 체크합니다",
     image: "/service-water-quality.jpg",
-    imageAlt: "전문 관리자가 수질을 측정하는 모습",
+    imageAlt: "전문가가 현장에서 수질을 점검하는 모습",
     detail: {
-      id: "water-quality",
-      title: "수질관리",
+      id: "pipe-water-inspection",
+      title: "배관 및 수질점검",
       image: "/service-water-quality.jpg",
-      description: "시설의 사용 목적과 급수 환경을 확인하고, 현장 수질 상태에 맞는 관리 방향을 제안합니다.",
-      message: "보이는 물뿐 아니라 물이 지나오는 환경까지 관리합니다.",
-      bullets: ["현장 사용 환경 확인", "수질 상태 점검 및 기록", "시설별 맞춤 관리안 제시"],
+      description: "전문가가 현장을 방문해 물이 지나오는 배관의 상태와 실제 사용하는 물의 수질을 함께 점검합니다.",
+      message: "정확한 관리는 전문가의 현장 점검에서 시작됩니다.",
+      bullets: ["현장 배관 상태 확인", "수질 상태 측정", "점검 결과 및 관리 방향 안내"],
     },
   },
   {
     number: "02",
-    title: "배관관리",
-    copy: "노후 배관과 급수설비의 상태를 체계적으로 관리",
-    image: "/service-pipe-inspection.jpg",
-    imageAlt: "전문 관리자가 배관 내부를 점검하는 모습",
-    detail: {
-      id: "pipe-management",
-      title: "배관관리",
-      image: "/service-pipe-inspection.jpg",
-      description: "배관의 노후도와 오염 가능성을 진단하고 설비 특성에 맞춰 관리 주기와 개선 방법을 설계합니다.",
-      message: "배관을 바꾸기 전에, 먼저 정확히 진단합니다.",
-      bullets: ["노후·부식 상태 확인", "급수설비 점검", "예방 중심 관리 계획"],
-    },
-  },
-  {
-    number: "03",
     title: "배관세척",
-    copy: "배관 내부의 스케일과 이물질을 전문적으로 세척",
+    copy: "우수세척업체 인증 공법으로 배관을 깨끗이 세척합니다",
     image: "/service-pipe-cleaning.jpg",
-    imageAlt: "배관의 오염수를 배출하며 세척하는 모습",
+    imageAlt: "배관의 오염수를 배출하며 전문적으로 세척하는 모습",
     detail: {
       id: "pipe-cleaning",
       title: "배관세척",
       image: "/service-pipe-cleaning.jpg",
-      description: "시설과 배관의 상태를 고려한 전문 세척 방식으로 내부 이물질과 침전물을 관리합니다.",
+      description: "우수세척업체 인증 공법을 적용해 배관 내부의 스케일과 이물질을 전문적으로 세척합니다.",
       message: "깨끗한 물은 깨끗한 배관에서 시작됩니다.",
-      bullets: ["세척 전 상태 확인", "맞춤 세척 공정 적용", "세척 결과 및 관리 이력 제공"],
+      bullets: ["세척 전 상태 확인", "우수세척업체 인증 공법 적용", "세척 결과 확인 및 기록"],
+    },
+  },
+  {
+    number: "03",
+    title: "수질솔루션 제공",
+    copy: "양자수질필터를 설치하여 더 이상의 오염을 차단합니다",
+    image: "/service-water-solution-install.jpg",
+    imageAlt: "전문가가 양자수질필터를 배관에 설치하는 모습",
+    detail: {
+      id: "water-solution",
+      title: "수질솔루션 제공",
+      image: "/lumi-water-product.jpg",
+      description: "진단과 세척 결과를 바탕으로 양자수질필터를 설치하여 배관과 수질의 추가 오염을 차단합니다.",
+      message: "세척 이후의 깨끗한 상태까지 이어지도록 관리합니다.",
+      bullets: ["자성과 양자처리 특허 기술", "양자수질필터 설치", "시설별 맞춤 적용"],
     },
   },
   {
     number: "04",
-    title: "수질 솔루션",
-    copy: "시설 목적에 맞는 수질관리 솔루션과 제품 제공",
-    image: "/service-water-solution-install.jpg",
-    imageAlt: "전문 관리자가 루미워터 제품을 배관에 설치하는 모습",
+    title: "정기점검",
+    copy: "3개월마다 배관 및 필터를 꼼꼼히 관리합니다",
+    image: "/service-regular-care.jpg",
+    imageAlt: "정기점검 결과를 태블릿으로 안내하는 모습",
     detail: {
-      id: "water-solution",
-      title: "맞춤 워터솔루션",
-      image: "/lumi-water-product.jpg",
-      description: "진단 결과를 바탕으로 필터, 세척, 정기관리 등 시설에 필요한 요소를 하나의 관리 체계로 연결합니다.",
-      message: "진단부터 개선, 기록까지 하나의 솔루션으로 연결합니다.",
-      bullets: ["자성과 양자처리 특허 기술", "시설별 맞춤 설계", "3개월 주기 1:1 케어 서비스"],
+      id: "regular-care",
+      title: "정기점검",
+      image: "/service-regular-care.jpg",
+      description: "3개월마다 배관과 양자수질필터의 상태를 꼼꼼히 확인하여 안정적인 수질 환경을 유지합니다.",
+      message: "한 번의 작업보다 꾸준한 점검이 더 중요합니다.",
+      bullets: ["3개월 주기 1:1 케어 서비스", "배관 및 필터 상태 확인", "점검 결과와 관리 이력 기록"],
     },
   },
   {
     number: "05",
-    title: "정기관리",
-    copy: "일회성 작업이 아닌 지속적인 평가와 기록 관리",
-    image: "/service-regular-care.jpg",
-    imageAlt: "정기관리 결과를 태블릿으로 안내하고 서명받는 모습",
+    title: "수질관리 인증",
+    copy: "관리받고 있는 인증제도를 통하여 신뢰를 얻습니다",
+    image: "/certified-site-plaque.jpg",
+    imageAlt: "루미워터 수질관리 인증 사업장 현판",
     detail: {
-      id: "regular-care",
-      title: "정기관리",
-      image: "/service-regular-care.jpg",
-      description: "점검 일정, 작업 결과, 개선 이력을 체계적으로 관리해 시설의 안정적인 수질 환경을 유지합니다.",
-      message: "한 번의 작업보다 꾸준한 관리가 더 중요합니다.",
-      bullets: ["정기 점검 일정 운영", "관리 이력 체계화", "변화 추이 및 개선점 안내"],
+      id: "water-management-certification",
+      title: "수질관리 인증",
+      image: "/certified-site-plaque.jpg",
+      description: "정기적인 배관 및 수질관리를 받고 있는 사업장임을 인증하여 시설 이용자에게 관리 상태와 신뢰를 보여줍니다.",
+      message: "관리받고 있다는 사실이 사업장의 신뢰가 됩니다.",
+      bullets: ["정기적인 수질·배관 관리", "관리 이력과 점검 기준 확인", "수질관리 인증 사업장 표시"],
     },
   },
 ];
@@ -363,7 +363,7 @@ export default function Home() {
             <h2>배관세척 전·후,<br />변화를 직접 확인하세요.</h2>
             <span>동일한 배관 내부를 세척 전과 후로 비교해 오염과 스케일 제거 상태를 한눈에 보여드립니다.</span>
             <small>※ 관리 결과를 설명하기 위한 예시 이미지이며, 실제 결과는 배관 재질과 노후도에 따라 달라질 수 있습니다.</small>
-            <button type="button" onClick={() => setDetail(services[2].detail)}>배관세척 상담하기<ArrowRight /></button>
+            <button type="button" onClick={() => setDetail(services[1].detail)}>배관세척 상담하기<ArrowRight /></button>
           </div>
           <div className="caseVisual">
             <Image src="/pipe-before-after.png" alt="오염과 스케일이 쌓인 배관 내부와 세척 후 깨끗해진 동일 배관 내부 비교" fill sizes="(max-width: 760px) 100vw, 58vw" />
@@ -482,7 +482,7 @@ export default function Home() {
           <section className="detailModal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
             <button className="modalClose" type="button" aria-label="팝업 닫기" onClick={() => setDetail(null)}><X /></button>
             <header><h2 id="detail-title">{detail.title}</h2></header>
-            <div className={detail.id === "water-solution" ? "modalImage contain" : "modalImage"}><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
+            <div className={detail.id === "water-solution" || detail.id === "water-management-certification" ? "modalImage contain" : "modalImage"}><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
             <div className="modalBody"><p>{detail.description}</p><ul>{detail.bullets.map((bullet) => <li key={bullet}><Check />{bullet}</li>)}</ul><strong>{detail.message}</strong><a href="#partner" onClick={() => setDetail(null)}>상담 문의하기<ArrowRight /></a></div>
           </section>
         </div>
