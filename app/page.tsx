@@ -73,12 +73,11 @@ const heroSlides = [
 ];
 
 const concerns = [
-  { icon: Droplets, title: "녹물·이물질", copy: "눈에 보이지 않는 배관 내부의 침전물" },
-  { icon: Waves, title: "냄새·탁도", copy: "생활용수의 불쾌한 냄새와 흐림" },
-  { icon: Wrench, title: "노후 배관", copy: "부식과 스케일로 저하되는 배관 성능" },
-  { icon: Sparkles, title: "스케일·부식", copy: "설비 수명과 수질에 영향을 주는 오염" },
-  { icon: CalendarCheck2, title: "관리 주기 미확인", copy: "기록 없이 놓치기 쉬운 정기 관리" },
-  { icon: ShieldCheck, title: "위생·안전 우려", copy: "시설 이용자의 건강과 신뢰 문제" },
+  { icon: Droplets, title: "녹·스케일·세균", copy: "우리 가족이 사용하는 물에 이런 것들이 있다고 한다면?" },
+  { icon: Waves, title: "냄새·탁도", copy: "왜 생활용수에 냄새가 나고 물이 맑지 않을까?" },
+  { icon: Wrench, title: "물이 지나오는 배관", copy: "우리가 사용하는 배관은 얼마나 부식되었나?" },
+  { icon: Sparkles, title: "배관 세척·관리", copy: "우리가 사용하는 물의 배관은 세척한 적이 있나?" },
+  { icon: ShieldCheck, title: "수질관리와 위생", copy: "우리는 배관관리와 정기적인 수질관리를 받아보았나?" },
 ];
 
 const managedSpaces = [

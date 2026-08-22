@@ -9,6 +9,10 @@ test("keeps the Alpha Bridge homepage content in the Next.js source", async () =
   assert.match(page, /워터 솔루션/);
   assert.match(page, /수질·배관 관리 상담/);
   assert.match(page, /알파브릿지의 전문 서비스/);
+  assert.match(page, /녹·스케일·세균/);
+  assert.match(page, /우리 가족이 사용하는 물에 이런 것들이 있다고 한다면\?/);
+  assert.match(page, /수질관리와 위생/);
+  assert.doesNotMatch(page, /녹물·이물질|관리 주기 미확인|위생·안전 우려/);
   assert.doesNotMatch(page, /flowSection/);
   assert.ok(page.indexOf('className="expertiseSection"') < page.indexOf('className="serviceSection"'));
   assert.match(page, /credentialBackdrop/);
