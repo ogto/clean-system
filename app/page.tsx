@@ -81,6 +81,16 @@ const concerns = [
   { icon: ShieldCheck, title: "위생·안전 우려", copy: "시설 이용자의 건강과 신뢰 문제" },
 ];
 
+const managedSpaces = [
+  { image: "/space-apartment.png", alt: "아파트·공동주택", width: 259, height: 379 },
+  { image: "/space-school.png", alt: "학교·교육시설", width: 263, height: 384 },
+  { image: "/space-cafe.png", alt: "음식점·카페", width: 260, height: 382 },
+  { image: "/space-factory.png", alt: "공장·산업시설", width: 261, height: 384 },
+  { image: "/space-hospital.png", alt: "병원·요양시설", width: 264, height: 386 },
+  { image: "/space-welfare.png", alt: "경로당·복지시설", width: 265, height: 391 },
+  { image: "/space-office.png", alt: "상가·업무시설", width: 265, height: 382 },
+];
+
 const services: Service[] = [
   {
     number: "01",
@@ -418,7 +428,14 @@ export default function Home() {
 
       <section className="spacesSection">
         <div className="container">
-          <Image className="managedSpacesImage" src="/managed-spaces.jpg" alt="아파트, 학교, 음식점, 공장, 병원, 복지시설, 상가와 일반 가정 등 알파브릿지가 관리하는 공간" width={2172} height={724} sizes="(max-width: 1200px) 100vw, 1180px" />
+          <div className="sectionHeading spacesHeading"><h2>알파브릿지가 관리하는 공간</h2></div>
+          <div className="spacesGrid" aria-label="알파브릿지 관리 대상 시설">
+            {managedSpaces.map((space) => (
+              <article className="spaceCard" key={space.image}>
+                <Image src={space.image} alt={space.alt} width={space.width} height={space.height} sizes="(max-width: 720px) 76vw, (max-width: 980px) 31vw, 277px" />
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

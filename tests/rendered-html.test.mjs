@@ -106,7 +106,13 @@ test("wires the supplied revision images and requested copy", async () => {
     "lumi-water-hero.jpg",
     "alpha-hero-pipeline.png",
     "eco-technician.png",
-    "managed-spaces.jpg",
+    "space-apartment.png",
+    "space-school.png",
+    "space-cafe.png",
+    "space-factory.png",
+    "space-hospital.png",
+    "space-welfare.png",
+    "space-office.png",
     "management-track-record.jpg",
     "service-water-quality.jpg",
     "service-pipe-inspection.jpg",
@@ -125,7 +131,7 @@ test("wires the supplied revision images and requested copy", async () => {
   assert.match(page, /setInterval[\s\S]*5200/);
   assert.match(page, /aria-label="이전 배너"/);
   assert.match(page, /aria-label="다음 배너"/);
-  assert.doesNotMatch(page, /<h2>알파브릿지가 관리하는 공간<\/h2>/);
+  assert.match(page, /<h2>알파브릿지가 관리하는 공간<\/h2>/);
   assert.match(page, /대전광역시 서구 도산로 403번길 21, 635호/);
   assert.match(page, /소규모기술 창업 컨설팅/);
 });
