@@ -45,7 +45,7 @@ test("keeps the qualification section inside the mobile viewport", async () => {
   assert.match(css, /\.credentialForeground\s*\{[^}]*left:\s*50%[^}]*margin:\s*0[^}]*translateX\(-50%\)/s);
 });
 
-test("wires all verification images into an interactive evidence carousel", async () => {
+test("keeps verification assets available while the evidence section is unpublished", async () => {
   const [page, evidenceFiles] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readdir(new URL("../public/evidence/", import.meta.url)),
@@ -53,7 +53,7 @@ test("wires all verification images into an interactive evidence carousel", asyn
 
   assert.equal(evidenceFiles.length, 18);
   assert.equal(page.match(/image:\s*"\/evidence\//g)?.length, 18);
-  assert.match(page, /className="evidenceSection"/);
+  assert.match(page, /className="evidenceSection"[^>]+hidden/);
   assert.match(page, /moveEvidence/);
   assert.match(page, /setActiveEvidence\(currentEvidence\)/);
   assert.match(page, /role="dialog"[^>]+aria-labelledby="evidence-modal-title"/);
@@ -69,7 +69,7 @@ test("uses the requested representative phone number everywhere", async () => {
   assert.doesNotMatch(page, /123-45-67890/);
 });
 
-test("provides fixed Kakao and Naver Blog channel buttons with official assets", async () => {
+test("provides fixed Kakao, Naver Blog, and YouTube channel buttons", async () => {
   const [page, css] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
@@ -84,6 +84,32 @@ test("provides fixed Kakao and Naver Blog channel buttons with official assets",
   assert.match(page, /\/brand\/naver-blog-official\.png/);
   assert.match(page, /<strong>카카오톡<\/strong><small>상담 준비 중<\/small>/);
   assert.match(page, /<strong>네이버 블로그<\/strong><small>공식 블로그<\/small>/);
+  assert.match(page, /https:\/\/www\.youtube\.com\/channel\/UCy2_LC3YjKd9CzyQtVhABcQ/);
+  assert.match(page, /className="floatingChannel youtubeChannel"/);
   assert.doesNotMatch(page, /naverBlogCrop/);
   assert.match(css, /\.floatingChannels\s*\{[^}]*position:\s*fixed[^}]*right:[^}]*bottom:/s);
+});
+
+test("wires the supplied revision images and requested copy", async () => {
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const assets = [
+    "lumi-water-hero.jpg",
+    "managed-spaces.jpg",
+    "management-track-record.jpg",
+    "service-water-quality.jpg",
+    "service-pipe-inspection.jpg",
+    "service-pipe-cleaning.jpg",
+    "service-water-solution-install.jpg",
+    "service-regular-care.jpg",
+    "certified-site-plaque.jpg",
+    "lumi-water-product.jpg",
+  ];
+
+  await Promise.all(assets.map((asset) => access(new URL(`../public/${asset}`, import.meta.url))));
+  for (const asset of assets) assert.match(page, new RegExp(asset.replace(".", "\\.")));
+  assert.match(page, /한국상하수도협회 및 한국수질관리연합회/);
+  assert.match(page, /자성과 양자처리 특허 기술/);
+  assert.match(page, /3개월 주기 1:1 케어 서비스/);
+  assert.match(page, /대전광역시 서구 도산로 403번길 21, 635호/);
+  assert.match(page, /소규모기술 창업 컨설팅/);
 });

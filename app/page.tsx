@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -13,20 +12,13 @@ import {
   ChevronRight,
   ClipboardCheck,
   Droplets,
-  Factory,
-  Gauge,
   GraduationCap,
-  Hotel,
-  House,
   Menu,
   Microscope,
   Phone,
-  Pipette,
-  School,
+  Play,
   ShieldCheck,
   Sparkles,
-  Store,
-  TestTube2,
   Waves,
   Wrench,
   X,
@@ -45,7 +37,8 @@ type Service = {
   number: string;
   title: string;
   copy: string;
-  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
   detail: Detail;
 };
 
@@ -66,16 +59,8 @@ const navLinks = [
 
 const heroSlides = [
   {
-    image: "/alpha-hero-pipeline.png",
-    alt: "도시와 깨끗한 물이 흐르는 산업용 배관",
-  },
-  {
-    image: "/eco-technician.png",
-    alt: "현장에서 수질 상태를 확인하는 전문 기술자",
-  },
-  {
-    image: "/hero-pipe.png",
-    alt: "깨끗하게 관리된 급수 배관 설비",
+    image: "/lumi-water-hero.jpg",
+    alt: "알파브릿지 루미워터 제품과 구성 부품",
   },
 ];
 
@@ -93,11 +78,12 @@ const services: Service[] = [
     number: "01",
     title: "수질관리",
     copy: "사용 환경에 맞는 수질 진단과 개선 솔루션",
-    icon: TestTube2,
+    image: "/service-water-quality.jpg",
+    imageAlt: "전문 관리자가 수질을 측정하는 모습",
     detail: {
       id: "water-quality",
       title: "수질관리",
-      image: "/eco-technician.png",
+      image: "/service-water-quality.jpg",
       description: "시설의 사용 목적과 급수 환경을 확인하고, 현장 수질 상태에 맞는 관리 방향을 제안합니다.",
       message: "보이는 물뿐 아니라 물이 지나오는 환경까지 관리합니다.",
       bullets: ["현장 사용 환경 확인", "수질 상태 점검 및 기록", "시설별 맞춤 관리안 제시"],
@@ -107,11 +93,12 @@ const services: Service[] = [
     number: "02",
     title: "배관관리",
     copy: "노후 배관과 급수설비의 상태를 체계적으로 관리",
-    icon: Wrench,
+    image: "/service-pipe-inspection.jpg",
+    imageAlt: "전문 관리자가 배관 내부를 점검하는 모습",
     detail: {
       id: "pipe-management",
       title: "배관관리",
-      image: "/hero-pipe.png",
+      image: "/service-pipe-inspection.jpg",
       description: "배관의 노후도와 오염 가능성을 진단하고 설비 특성에 맞춰 관리 주기와 개선 방법을 설계합니다.",
       message: "배관을 바꾸기 전에, 먼저 정확히 진단합니다.",
       bullets: ["노후·부식 상태 확인", "급수설비 점검", "예방 중심 관리 계획"],
@@ -121,11 +108,12 @@ const services: Service[] = [
     number: "03",
     title: "배관세척",
     copy: "배관 내부의 스케일과 이물질을 전문적으로 세척",
-    icon: Pipette,
+    image: "/service-pipe-cleaning.jpg",
+    imageAlt: "배관의 오염수를 배출하며 세척하는 모습",
     detail: {
       id: "pipe-cleaning",
       title: "배관세척",
-      image: "/pipe-cleaning-illustration.png",
+      image: "/service-pipe-cleaning.jpg",
       description: "시설과 배관의 상태를 고려한 전문 세척 방식으로 내부 이물질과 침전물을 관리합니다.",
       message: "깨끗한 물은 깨끗한 배관에서 시작됩니다.",
       bullets: ["세척 전 상태 확인", "맞춤 세척 공정 적용", "세척 결과 및 관리 이력 제공"],
@@ -135,25 +123,27 @@ const services: Service[] = [
     number: "04",
     title: "수질 솔루션",
     copy: "시설 목적에 맞는 수질관리 솔루션과 제품 제공",
-    icon: Gauge,
+    image: "/service-water-solution-install.jpg",
+    imageAlt: "전문 관리자가 루미워터 제품을 배관에 설치하는 모습",
     detail: {
       id: "water-solution",
       title: "맞춤 워터솔루션",
-      image: "/alpha-hero-pipeline.png",
+      image: "/lumi-water-product.jpg",
       description: "진단 결과를 바탕으로 필터, 세척, 정기관리 등 시설에 필요한 요소를 하나의 관리 체계로 연결합니다.",
       message: "진단부터 개선, 기록까지 하나의 솔루션으로 연결합니다.",
-      bullets: ["시설별 솔루션 설계", "제품 및 공정 제안", "사후관리 체계 구축"],
+      bullets: ["자성과 양자처리 특허 기술", "시설별 맞춤 설계", "3개월 주기 1:1 케어 서비스"],
     },
   },
   {
     number: "05",
     title: "정기관리",
     copy: "일회성 작업이 아닌 지속적인 평가와 기록 관리",
-    icon: ClipboardCheck,
+    image: "/service-regular-care.jpg",
+    imageAlt: "정기관리 결과를 태블릿으로 안내하고 서명받는 모습",
     detail: {
       id: "regular-care",
       title: "정기관리",
-      image: "/partner-field-team.png",
+      image: "/service-regular-care.jpg",
       description: "점검 일정, 작업 결과, 개선 이력을 체계적으로 관리해 시설의 안정적인 수질 환경을 유지합니다.",
       message: "한 번의 작업보다 꾸준한 관리가 더 중요합니다.",
       bullets: ["정기 점검 일정 운영", "관리 이력 체계화", "변화 추이 및 개선점 안내"],
@@ -176,17 +166,6 @@ const qualificationSteps = [
   [BadgeCheck, "자격 취득"],
   [Wrench, "현장 적용"],
   [CalendarCheck2, "지속 교육"],
-] as const;
-
-const spaces = [
-  [Building2, "아파트·공동주택"],
-  [School, "학교·교육시설"],
-  [Store, "음식점·카페"],
-  [Factory, "공장·산업시설"],
-  [Hotel, "병원·요양시설"],
-  [GraduationCap, "경로당·복지시설"],
-  [Building2, "상가·업무시설"],
-  [House, "일반 가정"],
 ] as const;
 
 const evidenceItems: EvidenceItem[] = [
@@ -294,11 +273,15 @@ export default function Home() {
             <a className="outlineButton" href="#partner">사업 파트너 문의</a>
           </div>
         </div>
-        <button className="heroArrow prev" type="button" aria-label="이전 배너" onClick={() => moveHero(-1)}><ChevronLeft /></button>
-        <button className="heroArrow next" type="button" aria-label="다음 배너" onClick={() => moveHero(1)}><ChevronRight /></button>
-        <div className="heroDots" aria-label="배너 선택">
-          {heroSlides.map((slide, index) => <button className={index === heroIndex ? "active" : ""} type="button" aria-label={`${index + 1}번 배너`} onClick={() => setHeroIndex(index)} key={slide.image} />)}
-        </div>
+        {heroSlides.length > 1 ? (
+          <>
+            <button className="heroArrow prev" type="button" aria-label="이전 배너" onClick={() => moveHero(-1)}><ChevronLeft /></button>
+            <button className="heroArrow next" type="button" aria-label="다음 배너" onClick={() => moveHero(1)}><ChevronRight /></button>
+            <div className="heroDots" aria-label="배너 선택">
+              {heroSlides.map((slide, index) => <button className={index === heroIndex ? "active" : ""} type="button" aria-label={`${index + 1}번 배너`} onClick={() => setHeroIndex(index)} key={slide.image} />)}
+            </div>
+          </>
+        ) : null}
       </section>
 
       <section className="introSection" id="company">
@@ -331,7 +314,7 @@ export default function Home() {
           </div>
 
           <div className="credentialGallery" aria-label="배관 및 수질관리 전문 자격 증빙">
-            <p className="credentialTitle">한국수질관리연합회 자격증</p>
+            <p className="credentialTitle">한국상하수도협회 및 한국수질관리연합회</p>
             <div className="credentialBackdrop">
               <Image src="/pipe-water-quality-specialist-certificate.jpg" alt="배관 및 수질관리전문 자격증과 자격증 표지" fill sizes="(max-width: 980px) 88vw, 520px" />
             </div>
@@ -346,9 +329,10 @@ export default function Home() {
         <div className="container">
           <div className="sectionHeading"><h2>알파브릿지의 전문 서비스</h2><span>카드를 선택하면 상세 내용을 확인할 수 있습니다.</span></div>
           <div className="serviceGrid">
-            {services.map(({ icon: Icon, detail: itemDetail, ...service }) => (
+            {services.map(({ detail: itemDetail, ...service }) => (
               <button className="serviceCard" type="button" onClick={() => setDetail(itemDetail)} key={service.number}>
-                <span className="serviceNumber">{service.number}</span><i><Icon aria-hidden="true" /></i><h3>{service.title}</h3><p>{service.copy}</p><b>자세히 보기<ArrowRight aria-hidden="true" /></b>
+                <span className="serviceCardImage"><Image src={service.image} alt={service.imageAlt} fill sizes="(max-width: 720px) 100vw, (max-width: 1180px) 33vw, 224px" /></span>
+                <span className="serviceCardBody"><span className="serviceNumber">{service.number}</span><h3>{service.title}</h3><p>{service.copy}</p><b>자세히 보기<ArrowRight aria-hidden="true" /></b></span>
               </button>
             ))}
           </div>
@@ -377,14 +361,13 @@ export default function Home() {
               {managementSteps.map(([Icon, label], index) => <div key={label}><i><Icon aria-hidden="true" /></i><span>{index + 1}</span><strong>{label}</strong></div>)}
             </div>
           </div>
-          <article className="certificateCard">
-            <div><h2>수질관리 인증</h2><span>관리되고 있다는 것을 보여주는 새로운 기준</span><ul><li><Check />정기적인 수질·배관 관리 실시</li><li><Check />관리기록 및 점검 보유</li><li><Check />필요한 배관 관리 및 세척</li><li><Check />지속적인 사후 관리</li></ul></div>
-            <div className="certificateSeal"><BadgeCheck aria-hidden="true" /><small>ALPHA BRIDGE</small><strong>수질관리<br />인증사업장</strong><span>QUALITY MANAGEMENT</span></div>
+          <article className="certificatePhoto">
+            <Image src="/certified-site-plaque.jpg" alt="루미워터 수질관리 인증 사업장 현판" fill sizes="(max-width: 980px) 100vw, 570px" />
           </article>
         </div>
       </section>
 
-      <section className="evidenceSection" id="evidence" aria-labelledby="evidence-title">
+      <section className="evidenceSection" id="evidence" aria-labelledby="evidence-title" hidden>
         <div className="container">
           <div className="evidenceHeading">
             <div>
@@ -428,7 +411,14 @@ export default function Home() {
       <section className="spacesSection">
         <div className="container">
           <div className="sectionHeading"><h2>알파브릿지가 관리하는 공간</h2></div>
-          <div className="spacesGrid">{spaces.map(([Icon, label]) => <article key={label}><Icon aria-hidden="true" /><strong>{label}</strong></article>)}</div>
+          <Image className="managedSpacesImage" src="/managed-spaces.jpg" alt="아파트, 학교, 음식점, 공장, 병원, 복지시설, 상가와 일반 가정 등 알파브릿지가 관리하는 공간" width={2172} height={724} sizes="(max-width: 1200px) 100vw, 1180px" />
+        </div>
+      </section>
+
+      <section className="trackRecordSection" aria-labelledby="track-record-title">
+        <div className="container">
+          <div className="sectionHeading"><h2 id="track-record-title">주요 관리 실적</h2><span>학교, 군부대, 생산설비, 공동주택과 공공시설 등 다양한 현장에서 함께했습니다.</span></div>
+          <Image className="trackRecordImage" src="/management-track-record.jpg" alt="학교, 군부대, 생산설비, 아파트 단지, 관공서, 병원, 호텔, 축산, 원예, 양식장과 사우나 분야의 주요 관리 실적" width={1512} height={1340} sizes="(max-width: 1200px) 100vw, 1060px" />
         </div>
       </section>
 
@@ -441,8 +431,8 @@ export default function Home() {
 
       <footer>
         <div className="container footerInner">
-          <div className="footerBrand"><div className="footerLogo"><span><Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="82px" /></span><strong>ALPHA BRIDGE</strong></div><p>WATER &amp; PIPE MANAGEMENT<br />물과 배관, 그리고 관리의 새로운 기준</p></div>
-          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 389-87-03895</p><p>고객센터: 1544-7763　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
+          <div className="footerBrand"><div className="footerLogo"><span><Image src="/alpha-bridge-symbol-transparent.png" alt="" fill sizes="82px" /></span><strong>ALPHA BRIDGE</strong></div><p>WATER &amp; PIPE MANAGEMENT<br />물과 배관, 그리고 관리의 새로운 기준<br /><strong>소규모기술 창업 컨설팅</strong></p></div>
+          <div className="footerInfo"><p><a href="#company">회사소개</a><a href="#water-pipe">수질·배관관리</a><a href="#partner">문의하기</a></p><p>알파브릿지 주식회사　|　사업자등록번호: 389-87-03895</p><p><strong>본사</strong>　대전광역시 서구 도산로 403번길 21, 635호 (용문동, 둔산전자타운)</p><p>고객센터: 1544-7763　|　contact@alpha-waterbridge.com</p><small>© ALPHA BRIDGE. All rights reserved.</small></div>
         </div>
       </footer>
 
@@ -455,6 +445,10 @@ export default function Home() {
           <span className="floatingChannelLogo" aria-hidden="true"><Image src="/brand/naver-blog-official.png" alt="" width={192} height={192} sizes="40px" /></span>
           <span className="floatingChannelCopy"><strong>네이버 블로그</strong><small>공식 블로그</small></span>
         </a>
+        <a className="floatingChannel youtubeChannel" href="https://www.youtube.com/channel/UCy2_LC3YjKd9CzyQtVhABcQ" target="_blank" rel="noopener noreferrer" aria-label="알파브릿지 유튜브 채널 새 창에서 열기">
+          <span className="floatingChannelLogo" aria-hidden="true"><Play /></span>
+          <span className="floatingChannelCopy"><strong>유튜브</strong><small>공식 채널</small></span>
+        </a>
       </nav>
 
       {detail ? (
@@ -462,7 +456,7 @@ export default function Home() {
           <section className="detailModal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
             <button className="modalClose" type="button" aria-label="팝업 닫기" onClick={() => setDetail(null)}><X /></button>
             <header><h2 id="detail-title">{detail.title}</h2></header>
-            <div className="modalImage"><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
+            <div className={detail.id === "water-solution" ? "modalImage contain" : "modalImage"}><Image src={detail.image} alt={`${detail.title} 대표 이미지`} fill sizes="(max-width: 640px) 95vw, 760px" /></div>
             <div className="modalBody"><p>{detail.description}</p><ul>{detail.bullets.map((bullet) => <li key={bullet}><Check />{bullet}</li>)}</ul><strong>{detail.message}</strong><a href="#partner" onClick={() => setDetail(null)}>상담 문의하기<ArrowRight /></a></div>
           </section>
         </div>

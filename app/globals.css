@@ -106,15 +106,16 @@
   .sectionHeading > span { margin-top: 8px; display: block; color: var(--muted); font-size: 13px; }
   .sectionHeading.left { text-align: left; }
   .serviceGrid { margin-top: 38px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-  .serviceCard { position: relative; min-height: 326px; padding: 30px 22px 25px; overflow: hidden; border: 1px solid var(--line); border-radius: 13px; background: #fff; color: var(--text); text-align: left; cursor: pointer; box-shadow: 0 8px 25px rgba(4,48,96,.055); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .serviceCard { position: relative; min-height: 366px; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 13px; background: #fff; color: var(--text); text-align: left; cursor: pointer; box-shadow: 0 8px 25px rgba(4,48,96,.055); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
   .serviceCard:hover { transform: translateY(-7px); border-color: #8dc9ed; box-shadow: var(--shadow); }
-  .serviceCard::before { content: ""; position: absolute; right: -30px; top: -34px; width: 120px; height: 120px; border-radius: 50%; background: var(--water-soft); }
-  .serviceNumber { position: relative; color: var(--blue); font-size: 13px; font-weight: 900; }
-  .serviceCard > i { position: relative; width: 65px; height: 65px; margin-top: 28px; display: grid; place-items: center; border-radius: 16px; background: var(--water-soft); color: var(--blue); }
-  .serviceCard > i svg { width: 34px; height: 34px; stroke-width: 1.55; }
+  .serviceCardImage { position: relative; height: 154px; display: block; overflow: hidden; background: #edf5fa; }
+  .serviceCardImage img { object-fit: cover; transition: transform .45s ease; }
+  .serviceCard:hover .serviceCardImage img { transform: scale(1.045); }
+  .serviceCardBody { padding: 22px 20px 24px; display: block; }
+  .serviceNumber { color: var(--blue); font-size: 13px; font-weight: 900; }
   .serviceCard h3 { margin-top: 20px; color: var(--ink); font-size: 21px; font-weight: 900; }
-  .serviceCard p { margin-top: 10px; min-height: 60px; font-size: 13px; line-height: 1.65; }
-  .serviceCard b { margin-top: 20px; display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 12px; }
+  .serviceCard p { margin-top: 9px; min-height: 64px; font-size: 13px; line-height: 1.65; }
+  .serviceCard b { margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 12px; }
   .serviceCard b svg { width: 15px; }
 
   .expertiseSection { position: relative; padding: 88px 0; overflow: hidden; background: radial-gradient(circle at 82% 18%, rgba(25,103,176,.34), transparent 32%), linear-gradient(135deg, #02162f, #062d64 62%, #031d42); color: #fff; }
@@ -162,6 +163,8 @@
   .certificateSeal small { margin-top: 4px; color: var(--gold-light); font-size: 8px; font-weight: 900; }
   .certificateSeal strong { margin-top: 8px; font-size: 18px; line-height: 1.25; }
   .certificateSeal span { margin-top: 8px; color: rgba(255,255,255,.55); font-size: 6px; letter-spacing: .08em; }
+  .certificatePhoto { position: relative; min-height: 430px; overflow: hidden; border-radius: 16px; background: #ede9e2; box-shadow: 0 18px 38px rgba(3,37,81,.18); }
+  .certificatePhoto img { object-fit: cover; }
   .caseStudy { margin-top: 28px; min-height: 360px; display: grid; grid-template-columns: .42fr .58fr; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
   .caseCopy { padding: 48px 40px; }
   .caseCopy h2 { color: var(--ink); font-size: 29px; font-weight: 900; letter-spacing: -.04em; line-height: 1.38; }
@@ -212,11 +215,10 @@
   .evidenceThumbnails small { position: absolute; right: 7px; bottom: 4px; font-size: 8px; font-weight: 900; }
 
   .spacesSection { padding: 78px 0 86px; }
-  .spacesGrid { margin-top: 36px; display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; }
-  .spacesGrid article { min-height: 122px; padding: 21px 8px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; border: 1px solid var(--line); border-radius: 11px; background: #fff; color: var(--blue); text-align: center; transition: transform .2s ease, border-color .2s ease; }
-  .spacesGrid article:hover { transform: translateY(-4px); border-color: #9ed5f1; }
-  .spacesGrid svg { width: 31px; height: 31px; stroke-width: 1.5; }
-  .spacesGrid strong { color: var(--ink); font-size: 11px; }
+  .managedSpacesImage { width: 100%; height: auto; margin-top: 36px; border-radius: 16px; box-shadow: 0 18px 48px rgba(3,46,91,.1); }
+
+  .trackRecordSection { padding: 0 0 86px; }
+  .trackRecordImage { width: min(100%, 1060px); height: auto; margin: 34px auto 0; display: block; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 48px rgba(3,46,91,.09); }
 
   .partnerSection { padding: 0 0 8px; }
   .partnerPanel { min-height: 210px; padding: 44px 55px; display: flex; align-items: center; justify-content: space-between; gap: 35px; border-radius: 18px 18px 0 0; background: linear-gradient(120deg, #073b78, #031c40); color: #fff; }
@@ -234,6 +236,7 @@
   .footerLogo img { object-fit: contain; }
   .footerLogo strong { font-size: 20px; font-weight: 950; letter-spacing: -.03em; }
   .footerBrand p { margin-top: 8px; color: rgba(255,255,255,.48); font-size: 10px; line-height: 1.6; }
+  .footerBrand p strong { color: var(--gold-light); font-size: 11px; }
   .footerInfo { color: rgba(255,255,255,.5); font-size: 10px; line-height: 1.9; }
   .footerInfo > p:first-child { margin-bottom: 7px; color: rgba(255,255,255,.76); }
   .footerInfo a { margin-right: 24px; }
@@ -254,6 +257,10 @@
   .naverChannel .floatingChannelLogo { background: #111; }
   .naverChannel img { width: 34px; height: 34px; object-fit: contain; }
   .naverChannel .floatingChannelCopy small { color: #079447; }
+  .youtubeChannel { border-color: rgba(255,0,0,.25); color: #111; }
+  .youtubeChannel .floatingChannelLogo { border-radius: 50%; background: #f00; color: #fff; }
+  .youtubeChannel .floatingChannelLogo svg { width: 23px; height: 23px; fill: currentColor; stroke-width: 1.4; }
+  .youtubeChannel .floatingChannelCopy small { color: #d90000; }
 
   .modalBackdrop { position: fixed; z-index: 200; inset: 0; padding: 30px; display: grid; place-items: center; overflow-y: auto; background: rgba(1,16,38,.76); backdrop-filter: blur(8px); animation: fadeIn .2s ease; }
   .detailModal { position: relative; width: min(820px, 100%); max-height: calc(100vh - 60px); overflow-y: auto; border-radius: 19px; background: #fff; box-shadow: 0 30px 100px rgba(0,0,0,.35); animation: modalUp .28s ease; }
@@ -263,6 +270,8 @@
   .detailModal > header h2 { font-size: 29px; font-weight: 900; }
   .modalImage { position: relative; height: 285px; overflow: hidden; }
   .modalImage img { object-fit: cover; }
+  .modalImage.contain { background: #f3f1ed; }
+  .modalImage.contain img { object-fit: contain; }
   .modalBody { padding: 30px; }
   .modalBody > p { color: #536b80; font-size: 14px; line-height: 1.75; }
   .modalBody ul { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -296,7 +305,6 @@
     .concernGrid { gap: 8px; }
     .serviceGrid { grid-template-columns: repeat(3, 1fr); }
     .expertiseGrid { gap: 38px; }
-    .spacesGrid { grid-template-columns: repeat(4, 1fr); }
   }
 
   @media (max-width: 980px) {
@@ -362,10 +370,10 @@
     .introMessage br { display: none; }
     .serviceSection { padding: 64px 0; }
     .serviceGrid { margin-top: 30px; grid-template-columns: 1fr; }
-    .serviceCard { min-height: 216px; padding: 24px; display: grid; grid-template-columns: 70px 1fr; grid-template-rows: auto auto 1fr auto; column-gap: 18px; }
-    .serviceNumber { position: absolute; right: 20px; top: 18px; }
-    .serviceCard > i { grid-row: 1 / 4; margin-top: 0; align-self: center; }
-    .serviceCard h3 { margin-top: 6px; font-size: 20px; }
+    .serviceCard { min-height: 0; display: grid; grid-template-columns: 42% 58%; }
+    .serviceCardImage { height: 100%; min-height: 244px; }
+    .serviceCardBody { padding: 25px 22px; }
+    .serviceCard h3 { margin-top: 10px; font-size: 20px; }
     .serviceCard p { min-height: 0; margin-top: 7px; }
     .serviceCard b { margin-top: 14px; }
     .expertiseSection { padding: 64px 0; }
@@ -382,10 +390,7 @@
     .managementProcess { padding: 29px 20px; }
     .managementProcess .sectionHeading h2 { font-size: 24px; }
     .stepsGrid { grid-template-columns: repeat(2, 1fr); }
-    .certificateCard { padding: 29px 23px; grid-template-columns: 1fr 135px; }
-    .certificateCard h2 { font-size: 26px; }
-    .certificateSeal { width: 132px; height: 158px; }
-    .certificateSeal strong { font-size: 14px; }
+    .certificatePhoto { min-height: 420px; }
     .caseStudy { grid-template-columns: 1fr; }
     .caseCopy { padding: 35px 27px; }
     .caseVisual { min-height: 260px; }
@@ -407,18 +412,19 @@
     .evidenceStatus { width: 100%; }
     .evidenceThumbnails { margin-inline: -16px; padding-inline: 16px; }
     .spacesSection { padding: 60px 0; }
-    .spacesGrid { grid-template-columns: repeat(2, 1fr); }
+    .managedSpacesImage { margin-top: 28px; border-radius: 10px; }
+    .trackRecordSection { padding-bottom: 60px; }
+    .trackRecordImage { margin-top: 28px; border-radius: 10px; }
     .partnerSection { padding-top: 0; }
     .partnerPanel { width: 100%; padding: 38px 24px; align-items: flex-start; flex-direction: column; border-radius: 0; }
     .partnerPanel h2 { font-size: 24px; }
     .partnerActions { width: 100%; }
     .partnerActions a { width: 100%; min-width: 0; }
     .footerInner { grid-template-columns: 1fr; gap: 25px; padding-block: 35px; }
-    .floatingChannels { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); gap: 9px; }
-    .floatingChannel { width: 144px; height: 52px; padding-right: 11px; border-radius: 26px; }
+    .floatingChannels { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); gap: 8px; }
+    .floatingChannel { width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 50%; }
     .floatingChannelLogo { width: 36px; height: 36px; flex-basis: 36px; border-radius: 10px; }
-    .floatingChannelCopy strong { font-size: 11px; }
-    .floatingChannelCopy small { font-size: 8px; }
+    .floatingChannelCopy { display: none; }
     .kakaoChannel img { width: 36px; height: 36px; }
     .naverChannel img { width: 30px; height: 30px; }
     .modalBackdrop { padding: 0; align-items: end; }
@@ -443,8 +449,7 @@
     .brandWords small { display: none; }
     .heroInner { padding-inline: 20px; }
     .hero h1 { font-size: 44px; }
-    .certificateCard { grid-template-columns: 1fr; }
-    .certificateSeal { margin: 8px auto 0; }
+    .certificatePhoto { min-height: 285px; }
     .stepsGrid { gap: 12px; }
     .evidenceImage { height: 430px; }
     .evidenceNav { top: 215px; }
