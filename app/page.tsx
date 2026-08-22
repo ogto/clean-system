@@ -111,8 +111,8 @@ const services: Service[] = [
     number: "02",
     title: "배관세척",
     copy: "우수세척업체 인증 공법으로 배관을 깨끗이 세척합니다",
-    image: "/service-pipe-cleaning.jpg",
-    imageAlt: "배관의 오염수를 배출하며 전문적으로 세척하는 모습",
+    image: "/service-water-solution-install.jpg",
+    imageAlt: "전문가가 양자수질필터를 배관에 설치하는 모습",
     detail: {
       id: "pipe-cleaning",
       title: "배관세척",
@@ -126,8 +126,8 @@ const services: Service[] = [
     number: "03",
     title: "수질솔루션 제공",
     copy: "양자수질필터를 설치하여 더 이상의 오염을 차단합니다",
-    image: "/service-water-solution-install.jpg",
-    imageAlt: "전문가가 양자수질필터를 배관에 설치하는 모습",
+    image: "/service-regular-care.jpg",
+    imageAlt: "정기점검 결과를 태블릿으로 안내하는 모습",
     detail: {
       id: "water-solution",
       title: "수질솔루션 제공",
@@ -141,8 +141,8 @@ const services: Service[] = [
     number: "04",
     title: "정기점검",
     copy: "3개월마다 배관 및 필터를 꼼꼼히 관리합니다",
-    image: "/service-regular-care.jpg",
-    imageAlt: "정기점검 결과를 태블릿으로 안내하는 모습",
+    image: "/service-pipe-cleaning.jpg",
+    imageAlt: "배관의 오염수를 배출하며 전문적으로 세척하는 모습",
     detail: {
       id: "regular-care",
       title: "정기점검",
