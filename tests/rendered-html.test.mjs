@@ -60,7 +60,7 @@ test("preserves representative image proportions on mobile", async () => {
 
   assert.match(css, /\.heroSlide img,[^{]+\{[^}]*object-fit:\s*contain/s);
   assert.match(css, /\.serviceCardImage\s*\{[^}]*aspect-ratio:\s*3\s*\/\s*2/s);
-  assert.match(css, /\.certificatePhoto\s*\{[^}]*aspect-ratio:\s*3\s*\/\s*2/s);
+  assert.match(css, /\.managementNetwork img\s*\{[^}]*width:\s*100%[^}]*height:\s*auto/s);
   assert.match(css, /\.caseVisual\s*\{[^}]*aspect-ratio:\s*1672\s*\/\s*941/s);
   assert.match(css, /\.modalImage img\s*\{[^}]*object-fit:\s*contain/s);
 });
@@ -125,6 +125,7 @@ test("wires the supplied revision images and requested copy", async () => {
     "space-office.png",
     "space-home.png",
     "space-title.png",
+    "alpha-bridge-network.png",
     "management-track-record.jpg",
     "service-water-quality.jpg",
     "service-pipe-cleaning.jpg",

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BadgeCheck,
-  Building2,
   CalendarCheck2,
   Check,
   ChevronLeft,
@@ -14,7 +13,6 @@ import {
   Droplets,
   GraduationCap,
   Menu,
-  Microscope,
   Phone,
   Play,
   ShieldCheck,
@@ -168,15 +166,6 @@ const services: Service[] = [
     },
   },
 ];
-
-const managementSteps = [
-  [Phone, "현장 상담"],
-  [Building2, "시설·배관 확인"],
-  [Microscope, "상태 분석"],
-  [ClipboardCheck, "맞춤 솔루션 제안"],
-  [Wrench, "세척·관리 적용"],
-  [BadgeCheck, "관리 이력·인증"],
-] as const;
 
 const qualificationSteps = [
   [GraduationCap, "전문 교육"],
@@ -372,16 +361,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container managementGrid">
-          <div className="managementProcess">
-            <div className="sectionHeading left"><h2>알파브릿지의 관리 프로세스</h2></div>
-            <div className="stepsGrid">
-              {managementSteps.map(([Icon, label], index) => <div key={label}><i><Icon aria-hidden="true" /></i><span>{index + 1}</span><strong>{label}</strong></div>)}
-            </div>
-          </div>
-          <article className="certificatePhoto">
-            <Image src="/certified-site-plaque.jpg" alt="루미워터 수질관리 인증 사업장 현판" fill sizes="(max-width: 980px) 100vw, 570px" />
-          </article>
+        <div className="container managementNetwork">
+          <Image
+            src="/alpha-bridge-network.png"
+            alt="알파브릿지 전국 워터 매니지먼트 네트워크 안내"
+            width={922}
+            height={1382}
+            sizes="(max-width: 720px) calc(100vw - 32px), 922px"
+          />
         </div>
       </section>
 
